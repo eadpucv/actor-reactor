@@ -6,7 +6,7 @@ Este proyecto se basa en la unidad [Actor-Reactor](https://github.com/amereida/a
 2. Procesamiento y disponibilización Web de datos
 3. Actuador
 
-La [configuración actual](https://docs.google.com/spreadsheets/d/1H8SptrEivwXtSlFbvr6E0EB0E-gABvcepRMJ9xA1qTE/edit?usp=sharing) se optimiza para la construcción de una exposición cinética en base al movimiento del público. Cada unidad percibe el entorno mediante un sensor de distancia y translada esta intensidad a un motor y a un servicio Web con los datos normalizados para control sonoro mediante [Pure Data](https://puredata.info/). Artista invitado: 
+La [configuración actual](https://docs.google.com/spreadsheets/d/1H8SptrEivwXtSlFbvr6E0EB0E-gABvcepRMJ9xA1qTE/edit?usp=sharing) se optimiza para la construcción de una exposición cinética en base al movimiento del público. Cada unidad percibe el entorno mediante un sensor de distancia y translada esta intensidad a un motor y a un servicio Web con los datos normalizados para control sonoro mediante [Pure Data](https://puredata.info/).
 
 
 El actuador, definido mediante un motor stepper, variará su configuración estructural y de transmisión de la energía mecánica, dependiendo de la naturaleza del objeto expuesto.
@@ -18,6 +18,10 @@ El actuador, definido mediante un motor stepper, variará su configuración estr
 * [Leonardo Aravena](http://wiki.ead.pucv.cl/index.php/Leonardo_Aravena), Diseño y fabricación dispositivos
 * [Ariel Leiva](https://www.linkedin.com/in/ariel-leiva-lopez-8665b587/?ppe=1), Configuración electrónica y servicio Web
 * [Óscar Santis](https://soundcloud.com/oscarsantis), Instalación sonora
+
+#### Taller de Construcción 4 de Diseño Industrial
+
+Catalina Vergara, Camila Campos Leiva, Carolina González, Paz Orellana, Javier Andre Arancibia Romero, Javier Zambra, Sofía Soto, Ur Conejeros, Francisca Collarte Videla, Tamara Hidalgo Porzio, Doyma Henríquez Atlagić, María Ignacia Morales, Paula Sotomayor, Javiera Martinez Guajardo, Bastian Maluenda
 
 
 
