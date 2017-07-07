@@ -1,4 +1,4 @@
-# Multi Actor Reactor
+# Actor Reactor
 
 Este proyecto se basa en la unidad [Actor-Reactor](https://github.com/amereida/actor-re-actor) y se extiende como unidad expositiva multipropósito consistente en:
 
@@ -16,7 +16,7 @@ El actuador, definido mediante un motor stepper, variará su configuración estr
 * [Herbert Spencer](http://wiki.ead.pucv.cl/index.php/Herbert_Spencer), Curatoría
 * [Marcelo Araya](http://wiki.ead.pucv.cl/index.php/Marcelo_Araya), Taller de Construcción 4 de Diseño Industrial
 * [Leonardo Aravena](http://wiki.ead.pucv.cl/index.php/Leonardo_Aravena), Diseño y fabricación dispositivos
-* [Ariel Leiva](https://www.linkedin.com/in/ariel-leiva-lopez-8665b587/?ppe=1), Configuración electrónica y servicio Web
+* [Ismael Martinez](https://www.linkedin.com/in/ismael-martinez-8bb78ba3/), Configuración electrónica y servicio Web
 * [Óscar Santis](https://soundcloud.com/oscarsantis), Instalación sonora
 
 #### Taller de Construcción 4 de Diseño Industrial
