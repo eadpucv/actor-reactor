@@ -23,5 +23,16 @@ El actuador, definido mediante un motor stepper, variará su configuración estr
 
 Catalina Vergara, Camila Campos Leiva, Carolina González, Paz Orellana, Javier Andre Arancibia Romero, Javier Zambra, Sofía Soto, Ur Conejeros, Francisca Collarte Videla, Tamara Hidalgo Porzio, Doyma Henríquez Atlagić, María Ignacia Morales, Paula Sotomayor, Javiera Martinez Guajardo, Bastian Maluenda
 
+### Control
 
+Esquema de control de la unidad:
+
+![Esquema de Control](img/actor-reactor-ai.png)
+
+
+#### Construido sobre
+
+Este proyecto utiliza tecnologías libres de software y hardware abiertos. Este repositiorio documenta todos los aspectos necesarios para la replicación completa del proyecto.
+
+![Arduino](img/logo-arduino.png) ![Raspberry](img/logo-raspi.png) ![Pure Data](img/logo-puredata.png) ![P5js](img/logo-p5js.png) 
 
