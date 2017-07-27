@@ -28,3 +28,11 @@ Catalina Vergara, Camila Campos Leiva, Carolina González, Paz Orellana, Javier 
 Esquema de control de la unidad:
 
 ![Esquema de Control](img/actor-reactor-ai.png)
+
+
+#### Construido sobre
+
+Este proyecto utiliza tecnologías libres de software y hardware abiertos. 
+
+![Arduino](img/logo-arduino.png) ![Raspberry](img/logo-raspi.png) ![Pure Data](img/logo-puredata.png) ![P5js](img/logo-p5js.png) 
+
