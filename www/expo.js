@@ -10,8 +10,10 @@ var hm, vm; 			// horizontal and vertical margins
 var gvm;				// global vertical margin (for title)
 
 function setup(){
-	createCanvas(windowWidth, windowHeight);
-	
+	var myCanvas = createCanvas(windowWidth, windowHeight);
+	myCanvas.parent('underlay');
+	myCanvas.id('all-beasts');
+
 	if(windowWidth > windowHeight){
 		hu = 5;
 		vu = 3; 

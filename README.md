@@ -34,5 +34,9 @@ Esquema de control de la unidad:
 
 Este proyecto utiliza tecnologías libres de software y hardware abiertos. Este repositiorio documenta todos los aspectos necesarios para la replicación completa del proyecto.
 
-![Arduino](img/logo-arduino.png) ![Raspberry](img/logo-raspi.png) ![Pure Data](img/logo-puredata.png) ![P5js](img/logo-p5js.png) 
+<p align=center>
+![Arduino](img/logo-arduino.png)
+![Raspberry](img/logo-raspi.png)
+![Pure Data](img/logo-puredata.png)
+![P5js](img/logo-p5js.png) 
 
