@@ -305,7 +305,7 @@
 #X obj 455 404 *~ 1;
 #X obj 454 424 +~;
 #X obj 133 100 hsl 101 30 0 1 0 0 empty empty empty -2 -8 0 10 -4032
--1 -1 0 1;
+-1 -1 5076 1;
 #X obj 541 80 int;
 #X obj 541 102 change;
 #X obj 300 115 hsl 128 15 0 10 0 1 empty empty FM harmonic 3.70079
@@ -335,8 +335,8 @@
 #X obj 19 245 int;
 #X obj 19 267 change;
 #X obj 19 183 * 10;
-#X obj 300 100 hsl 128 15 0 127 0 1 empty empty frq 59 10 8 0 10 -262144
--258113 -1 5900 1;
+#X obj 300 100 hsl 128 15 0 127 0 1 empty empty frq 123.71 10 8 0
+10 -262144 -258113 -1 5900 1;
 #X msg 689 153 label frq \$1;
 #X obj 166 413 mtof;
 #X obj 48 477 t b f;
@@ -486,18 +486,18 @@
 #X restore 462 292 pd karplus 2;
 #N canvas 263 162 1026 683 fm 0;
 #X obj 461 571 *~ 0.5;
-#X obj 274 160 hsl 128 15 0 1 0 1 empty empty amp 0.861339 10 7 0
-10 -262144 -258113 -1 10939 1;
+#X obj 274 160 hsl 128 15 0 1 0 1 empty empty amp 0.729901 10 7 0
+10 -262144 -258113 -1 9270 1;
 #X obj 462 546 osc~;
-#X obj 274 100 hsl 128 15 0 127 0 1 empty empty carr 30.3586 10 7
-0 10 -262144 -258113 -1 1890 1;
+#X obj 274 100 hsl 128 15 0 127 0 1 empty empty carr 23.5262 10 7
+0 10 -262144 -258113 -1 1594 1;
 #X obj 259 378 mtof;
 #X obj 298 447 +~;
-#X obj 133 100 hsl 128 15 0 127 0 1 empty empty mod 37.1801 10 7 0
-10 -262144 -258113 -1 2261 1;
+#X obj 133 100 hsl 128 15 0 127 0 1 empty empty mod 46.335 10 7 0
+10 -262144 -258113 -1 2582 1;
 #X obj 461 284 mtof;
-#X obj 133 175 hsl 128 15 0 1000 0 1 empty empty index 246.145 10
-7 0 10 -262144 -258113 -1 3028 1;
+#X obj 133 175 hsl 128 15 0 1000 0 1 empty empty index 536.764 10
+7 0 10 -262144 -258113 -1 5712 1;
 #X obj 463 493 *~ 500;
 #X obj 461 308 +;
 #X obj 569 265 t b f;
@@ -530,7 +530,7 @@
 #X obj 209 220 nbx 5 15 -1e+37 1e+37 0 1 empty empty smooth -40 7 0
 10 -262144 -1 -1 3000 256;
 #X obj 209 205 nbx 5 15 -1e+37 1e+37 0 1 empty empty range -35 7 0
-10 -262144 -1 -1 12 256;
+10 -262144 -1 -1 93 256;
 #X obj 209 190 nbx 5 15 -1e+37 1e+37 0 1 empty empty speed -35 7 0
 10 -262144 -1 -1 8000 256;
 #X obj 569 182 metro 100;
@@ -543,7 +543,7 @@
 #X obj 209 145 nbx 5 15 -1e+37 1e+37 0 1 empty empty smooth -40 7 0
 10 -262144 -1 -1 2000 256;
 #X obj 209 130 nbx 5 15 -1e+37 1e+37 0 1 empty empty range -35 7 0
-10 -262144 -1 -1 11 256;
+10 -262144 -1 -1 12 256;
 #X obj 209 115 nbx 5 15 -1e+37 1e+37 0 1 empty empty speed -35 7 0
 10 -262144 -1 -1 7000 256;
 #X msg 662 81 label amp \$1;
@@ -560,7 +560,7 @@
 #X msg 661 21 label carr \$1;
 #X obj 685 435 *~ 500;
 #X obj 420 102 vsl 15 55 0 1000 0 1 empty empty 1 4 10 0 10 -257985
--1 -1 700 1;
+-1 -1 300 1;
 #X obj 435 102 vsl 15 55 0 1000 0 1 empty empty 2 4 10 0 10 -257985
 -1 -1 800 1;
 #X obj 450 102 vsl 15 55 0 1000 0 1 empty empty 3 4 10 0 10 -257985
@@ -603,7 +603,7 @@
 #X obj 461 365 phasor~;
 #X obj 409 390 osc~;
 #X obj 133 160 hsl 128 15 0 -1 0 1 empty empty sine----------saw 10
-7 0 10 -262144 -258113 -1 2800 1;
+7 0 10 -262144 -258113 -1 2009 1;
 #X obj 463 471 *~;
 #X obj 427 424 + 1;
 #X obj 409 457 *~;
@@ -964,7 +964,7 @@
 #X obj 431 150 vsl 30 128 0 127 0 1 empty empty empty 0 -9 0 10 -262144
 -1 -1 10200 1;
 #X obj 100 149 vsl 15 128 0 127 0 1 empty empty empty 5 10 0 10 -262144
--1 -1 8000 1;
+-1 -1 7382 1;
 #X obj 103 132 hsl 25 15 0 -1 0 1 empty empty pan 3 7 0 10 -262144
 -1 -1 1200 1;
 #X obj 120 154 vu 8 120 empty empty -1 -8 0 10 -66577 -1 0 0;
@@ -1052,10 +1052,10 @@
 #X connect 8 0 7 0;
 #X restore 642 39 pd cpu;
 #X obj 374 100 nbx 5 15 -1e+37 1e+37 0 0 empty empty cpu -25 7 0 10
--262144 -1 -66577 3 256;
+-262144 -1 -66577 20 256;
 #X obj 555 17 loadbang;
 #X obj 431 100 tgl 30 0 empty empty DSP 3 15 0 14 -262144 -258113 -1
-0 1;
+1 1;
 #X obj 297 625 dbtorms;
 #X obj 136 626 *~;
 #X obj 180 627 *~;
@@ -1614,11 +1614,11 @@
 1;
 #X obj 160 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 175 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 175 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 130 145 tgl 15 1 empty empty 2-> -20 7 0 10 -262144 -1 -1 1
+#X obj 130 145 tgl 15 1 empty empty 2-> -20 7 0 10 -262144 -1 -1 0
 1;
-#X obj 145 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 145 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 160 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -1628,9 +1628,9 @@
 1;
 #X obj 145 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 160 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 160 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 175 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 175 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 130 175 tgl 15 1 empty empty 4-> -20 7 0 10 -262144 -1 -1 1
 1;
@@ -1638,47 +1638,47 @@
 1;
 #X obj 160 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 175 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 175 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 190 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 190 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 190 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 190 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 190 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 190 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 190 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 130 190 tgl 15 1 empty empty 5-> -20 7 0 10 -262144 -1 -1 1
+#X obj 130 190 tgl 15 1 empty empty 5-> -20 7 0 10 -262144 -1 -1 0
 1;
 #X obj 145 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 160 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 160 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 175 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 175 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 190 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 205 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 130 205 tgl 15 1 empty empty 6-> -20 7 0 10 -262144 -1 -1 1
+#X obj 130 205 tgl 15 1 empty empty 6-> -20 7 0 10 -262144 -1 -1 0
 1;
 #X obj 145 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 160 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 175 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 175 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 190 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 190 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 989 183 random 2;
 #X obj 987 206 random 2;
@@ -1727,31 +1727,31 @@
 #X obj 1116 358 random 2;
 #X obj 130 220 tgl 15 1 empty empty 7-> -20 7 0 10 -262144 -1 -1 0
 1;
-#X obj 145 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 145 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 160 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 160 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 175 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 175 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 190 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 130 235 tgl 15 1 empty empty 8-> -20 7 0 10 -262144 -1 -1 0
+#X obj 130 235 tgl 15 1 empty empty 8-> -20 7 0 10 -262144 -1 -1 1
 1;
-#X obj 145 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 145 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 160 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 160 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 175 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 190 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 190 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 205 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 205 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 205 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 130 250 tgl 15 1 empty empty 9-> -20 7 0 10 -262144 -1 -1 0
+#X obj 130 250 tgl 15 1 empty empty 9-> -20 7 0 10 -262144 -1 -1 1
 1;
 #X obj 145 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -1761,9 +1761,9 @@
 1;
 #X obj 190 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 220 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 220 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 235 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 235 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 220 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -1771,52 +1771,52 @@
 1;
 #X obj 250 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 250 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 250 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 250 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 220 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 220 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 235 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 235 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 220 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 220 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 235 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 235 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 220 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 235 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 235 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 250 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 250 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 250 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 250 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 250 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 220 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 235 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 235 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 220 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 235 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 235 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 220 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 220 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 235 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 235 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 250 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 250 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 250 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 250 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 250 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 250 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 220 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 235 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 235 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg -1 80 0;
-#X obj 6 12 route /t11 /t12 /t13 /t14 /t15 /t16 /t07 /t08 /t09 /t21
+#X obj 10 18 route /t11 /t12 /t13 /t14 /t15 /t16 /t07 /t08 /t09 /t21
 /t22 /t23 /t24 /t25 /t26 /t27 /t28 /t29 /t31 /t32 /t33 /t34 /t35 /t36
 /t37 /t38 /t39 /t41 /t42 /t43 /t44 /t45 /t46 /t47 /t48 /t49 /t51 /t52
 /t53 /t54 /t55 /t56 /t57 /t58 /t59 /t61 /t62 /t63 /t64 /t65 /t66 /t67
@@ -2387,7 +2387,7 @@
 #X connect 226 80 204 0;
 #X connect 226 81 18 0;
 #X connect 226 82 38 0;
-#X connect 226 84 228 0;
+#X connect 226 83 228 0;
 #X connect 227 0 58 0;
 #X connect 228 0 227 0;
 #X connect 228 1 227 1;
@@ -2559,20 +2559,20 @@
 #X obj 251 356 osc~;
 #X obj 252 386 *~;
 #X obj 503 380 *~;
-#X obj 100 100 bng 30 250 50 0 empty empty 8 8 15 0 25 -262144 -159808
+#X obj 100 100 bng 30 250 50 0 empty empty 9 8 15 0 25 -262144 -159808
 -1;
 #X obj 100 130 tgl 30 0 empty empty empty 17 7 0 10 -228856 -1 -1 0
 1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty 10 15 0 10 -159808
--1 -1 0 1;
+-1 -1 1300 1;
 #X obj 160 132 vsl 15 55 0 1 0 1 empty empty -> 2 7 0 10 -232576 -258113
 -1 2700 1;
 #X obj 145 132 vsl 15 55 0 10000 0 1 empty empty >- 2 7 0 10 -232576
 -258113 -1 2900 1;
 #X obj 130 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -232576
 -258113 -1 1500 1;
-#X obj 256 100 hsl 128 15 0 127 0 1 empty empty mod 1975.53 10 7 0
-10 -262144 -258113 -1 9500 1;
+#X obj 256 100 hsl 128 15 0 127 0 1 empty empty mod 478.267 10 7 0
+10 -262144 -258113 -1 3200 1;
 #X obj 256 130 hsl 128 15 0 1000 0 1 empty empty a 0 10 7 0 10 -262144
 -258113 -1 0 1;
 #X msg 663 133 label a \$1;
@@ -2582,7 +2582,7 @@
 #X obj 256 160 hsl 128 15 0 2000 0 1 empty empty r 220.472 10 7 0
 10 -262144 -258113 -1 1400 1;
 #X msg 664 167 label r \$1;
-#X obj 390 100 hsl 128 15 0 127 0 1 empty empty carr 73.8842 10 7
+#X obj 390 100 hsl 128 15 0 127 0 1 empty empty carr 325.238 10 7
 0 10 -262144 -258113 -1 3811 1;
 #X msg 653 225 label carr \$1;
 #X obj 390 130 hsl 128 15 0 1000 0 1 empty empty a 7.87402 10 7 0
@@ -2639,12 +2639,12 @@
 #X obj 96 384 +;
 #X obj 115 359 t b f;
 #X obj 129 31 r \$0-/bang;
-#X obj 504 356 r~ \$0-mod_r08a;
-#X obj 383 331 r~ \$0-mod_r08;
-#X obj 249 708 s~ \$0-out_08;
-#X obj 361 706 s~ \$0-out_r08;
-#X obj 129 56 route /s08 /b08 /t08;
-#X connect 0 0 74 0;
+#X obj 129 56 route /s09 /b09 /t09;
+#X obj 504 356 r~ \$0-mod_r09a;
+#X obj 383 331 r~ \$0-mod_r09;
+#X obj 361 706 s~ \$0-out_r09;
+#X obj 249 708 s~ \$0-out_09;
+#X connect 0 0 76 0;
 #X connect 1 0 8 0;
 #X connect 2 0 75 0;
 #X connect 3 0 11 1;
@@ -2740,21 +2740,21 @@
 #X connect 69 0 51 0;
 #X connect 70 0 69 0;
 #X connect 70 1 69 1;
-#X connect 71 0 76 0;
-#X connect 72 0 12 0;
-#X connect 73 0 1 0;
-#X connect 76 0 15 0;
-#X connect 76 1 64 0;
-#X connect 76 2 14 0;
+#X connect 71 0 72 0;
+#X connect 72 0 15 0;
+#X connect 72 1 64 0;
+#X connect 72 2 14 0;
+#X connect 73 0 12 0;
+#X connect 74 0 1 0;
 #X coords 0 -1 1 1 420 90 2 100 100;
 #X restore 462 493 pd fm01;
 #N canvas 540 97 818 759 drum 0;
 #X obj 190 516 osc~;
-#X obj 255 100 hsl 128 15 0 127 0 1 empty empty penv 77.7817 10 7
+#X obj 255 100 hsl 128 15 0 127 0 1 empty empty penv -2198.22 10 7
 0 10 -262144 -258113 -1 3900 1;
 #X floatatom 362 398 0 0 0 0 - - -;
 #X obj 191 353 mtof;
-#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 41.8268 10 7 0
+#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 35.8268 10 7 0
 10 -262144 -258113 -1 1700 1;
 #X floatatom 191 408 5 0 0 0 - - -, f 5;
 #X obj 191 437 +~;
@@ -2786,7 +2786,7 @@
 #X obj 255 175 hsl 128 15 0 1 0 1 empty empty amp 1 10 7 0 10 -262144
 -258113 -1 12700 1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty -2 -8 0 10 -257985
--1 -1 0 1;
+-1 -1 4956 1;
 #X msg 266 313 0;
 #X obj 137 233 random 2000;
 #X obj 511 30 spigot;
@@ -2822,7 +2822,7 @@
 #X obj 160 132 vsl 15 55 0 1 0 0 empty empty -> 2 7 0 10 -262130 -258113
 -1 0 1;
 #X obj 145 132 vsl 15 55 0 10000 0 1 empty empty >- 2 7 0 10 -262130
--258113 -1 2100 1;
+-258113 -1 1200 1;
 #X obj 130 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -262130
 -258113 -1 700 1;
 #X obj 41 474 *~;
@@ -3063,20 +3063,20 @@
 #X obj 257 342 osc~;
 #X obj 257 380 *~;
 #X obj 503 380 *~;
-#X obj 100 100 bng 30 250 50 0 empty empty 9 8 15 0 25 -262144 -159808
+#X obj 100 100 bng 30 250 50 0 empty empty 8 8 15 0 25 -262144 -159808
 -1;
 #X obj 100 130 tgl 30 0 empty empty empty 17 7 0 10 -228856 -1 -1 0
 1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty 10 15 0 10 -159808
--1 -1 0 1;
+-1 -1 7300 1;
 #X obj 160 132 vsl 15 55 0 1 0 1 empty empty -> 2 7 0 10 -232576 -258113
 -1 1600 1;
 #X obj 145 132 vsl 15 55 0 10000 0 1 empty empty >- 2 7 0 10 -232576
 -258113 -1 2300 1;
 #X obj 130 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -232576
 -258113 -1 500 1;
-#X obj 257 100 hsl 128 15 0 127 0 1 empty empty mod 1050.83 10 7 0
-10 -262144 -258113 -1 1700 1;
+#X obj 257 100 hsl 128 15 0 127 0 1 empty empty mod 466.75 10 7 0
+10 -262144 -258113 -1 900 1;
 #X obj 255 130 hsl 128 15 0 1000 0 1 empty empty a 661.417 10 7 0
 10 -262144 -258113 -1 8400 1;
 #X msg 663 133 label a \$1;
@@ -3086,8 +3086,8 @@
 #X obj 255 160 hsl 128 15 0 2000 0 1 empty empty r 1606.3 10 7 0 10
 -262144 -258113 -1 10200 1;
 #X msg 664 167 label r \$1;
-#X obj 460 100 hsl 128 15 0 127 0 1 empty empty carr 18.354 10 7 0
-10 -262144 -258113 -1 1400 1;
+#X obj 460 100 hsl 128 15 0 127 0 1 empty empty carr 229.112 10 7
+0 10 -262144 -258113 -1 1400 1;
 #X msg 653 225 label carr \$1;
 #X obj 460 130 hsl 128 15 0 1000 0 1 empty empty a 417.323 10 7 0
 10 -262144 -258113 -1 5300 1;
@@ -3154,12 +3154,12 @@
 #X obj 198 145 nbx 5 15 -1e+37 1e+37 0 1 empty empty ms -15 7 0 10
 -262144 -1 -1 110 256;
 #X obj 82 466 expr $f1*(-$f2)+$f2+$f3;
-#X obj 129 56 route /s09 /b09 /t09;
-#X obj 249 708 s~ \$0-out_09;
-#X obj 361 706 s~ \$0-out_r09;
-#X obj 383 335 r~ \$0-mod_r09;
-#X obj 504 356 r~ \$0-mod_r09a;
-#X connect 0 0 79 0;
+#X obj 129 56 route /s08 /b08 /t08;
+#X obj 383 335 r~ \$0-mod_r08;
+#X obj 361 706 s~ \$0-out_r08;
+#X obj 249 708 s~ \$0-out_08;
+#X obj 504 356 r~ \$0-mod_r08a;
+#X connect 0 0 81 0;
 #X connect 1 0 8 0;
 #X connect 2 0 80 0;
 #X connect 3 0 11 1;
@@ -3262,16 +3262,16 @@
 #X connect 78 0 15 0;
 #X connect 78 1 63 0;
 #X connect 78 2 14 0;
-#X connect 81 0 1 0;
+#X connect 79 0 1 0;
 #X connect 82 0 12 0;
 #X coords 0 -1 1 1 490 90 2 100 100;
 #X restore 462 400 pd fm01;
 #N canvas 482 95 818 759 drum 0;
-#X obj 255 100 hsl 128 15 0 127 0 1 empty empty penv 1108.73 10 7
-0 10 -262144 -258113 -1 8500 1;
+#X obj 255 100 hsl 128 15 0 127 0 1 empty empty penv 134.73 10 7 0
+10 -262144 -258113 -1 8500 1;
 #X floatatom 387 355 0 0 0 0 - - -;
 #X obj 191 353 mtof;
-#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 170.813 10 7 0
+#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 162.813 10 7 0
 10 -262144 -258113 -1 4800 1;
 #X floatatom 191 408 5 0 0 0 - - -, f 5;
 #X obj 191 437 +~;
@@ -3303,7 +3303,7 @@
 #X obj 255 175 hsl 128 15 0 1 0 1 empty empty amp 1 10 7 0 10 -262144
 -258113 -1 12700 1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty -2 -8 0 10 -257985
--1 -1 0 1;
+-1 -1 4198 1;
 #X msg 266 313 0;
 #X obj 137 233 random 2000;
 #X obj 511 30 spigot;
@@ -3513,12 +3513,12 @@
 #X obj 300 115 hsl 128 15 0 1 0 1 empty empty kp_amp 1 10 7 0 10 -262144
 -258113 -1 12700 1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty -2 -8 0 10 -4032
--1 -1 0 1;
+-1 -1 6493 1;
 #X obj 440 604 *~ 0.99;
 #X obj 16 159 int;
 #X obj 16 176 change;
 #X obj 16 139 * 10;
-#X obj 300 100 hsl 128 15 0 127 0 1 empty empty kp_frq 58.2705 10
+#X obj 300 100 hsl 128 15 0 127 0 1 empty empty kp_frq 133.044 10
 8 0 10 -262144 -258113 -1 3400 1;
 #X obj 439 237 mtof;
 #X obj 248 336 t b f;
@@ -3796,7 +3796,7 @@
 #X obj 455 404 *~ 1;
 #X obj 454 424 +~;
 #X obj 133 100 hsl 101 30 0 1 0 0 empty empty empty -2 -8 0 10 -4032
--1 -1 0 1;
+-1 -1 7059 1;
 #X obj 541 80 int;
 #X obj 541 102 change;
 #X obj 300 115 hsl 128 15 0 10 0 1 empty empty FM harmonic 5.66929
@@ -3826,8 +3826,8 @@
 #X obj 19 245 int;
 #X obj 19 267 change;
 #X obj 19 183 * 10;
-#X obj 300 100 hsl 128 15 0 127 0 1 empty empty frq 74 10 8 0 10 -262144
--258113 -1 7400 1;
+#X obj 300 100 hsl 128 15 0 127 0 1 empty empty frq 143.886 10 8 0
+10 -262144 -258113 -1 7400 1;
 #X msg 689 153 label frq \$1;
 #X obj 166 413 mtof;
 #X obj 48 477 t b f;
@@ -3978,11 +3978,11 @@
 #X coords 0 -1 1 1 330 105 1 100 100;
 #X restore 795 199 pd karplus 2;
 #N canvas 482 95 818 759 drum 0;
-#X obj 255 100 hsl 128 15 0 127 0 1 empty empty penv 123.471 10 7
+#X obj 255 100 hsl 128 15 0 127 0 1 empty empty penv -1211.53 10 7
 0 10 -262144 -258113 -1 4700 1;
 #X floatatom 387 355 0 0 0 0 - - -;
 #X obj 191 353 mtof;
-#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 1304.66 10 7 0
+#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 1247.16 10 7 0
 10 -262144 -258113 -1 8600 1;
 #X floatatom 191 408 5 0 0 0 - - -, f 5;
 #X obj 191 437 +~;
@@ -4014,7 +4014,7 @@
 #X obj 255 175 hsl 128 15 0 1 0 1 empty empty amp 0.952756 10 7 0
 10 -262144 -258113 -1 12100 1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty -2 -8 0 10 -257985
--1 -1 0 1;
+-1 -1 6826 1;
 #X msg 266 313 0;
 #X obj 137 233 random 2000;
 #X obj 511 30 spigot;
