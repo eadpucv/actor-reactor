@@ -1,12 +1,13 @@
-
-#include <OSCMessage.h>
-#include <SPI.h>
 #include <Adafruit_GFX.h>
+#include <gfxfont.h>
 #include <Adafruit_PCD8544.h>
+
+#include <SPI.h>
 #include <OnewireKeypad.h>
 #include <AccelStepper.h>
 #include <EEPROM.h>
 #include <SoftwareSerial.h>
+#include <OSCMessage.h>
 
 #define DIR_SENSOR_MIN 0
 #define DIR_SENSOR_MAX 5
