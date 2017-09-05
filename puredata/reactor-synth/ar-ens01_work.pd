@@ -211,14 +211,14 @@
 #X obj 266 160 hsl 128 15 0 1 0 1 empty empty amp 0.729921 10 7 0
 10 -262144 -258113 -1 9270 1;
 #X obj 462 546 osc~;
-#X obj 266 100 hsl 128 15 0 127 0 1 empty empty carr 21.5304 10 7
+#X obj 266 100 hsl 128 15 0 127 0 1 empty empty carr 26.5304 10 7
 0 10 -262144 -258113 -1 1594 1;
 #X obj 259 378 mtof;
 #X obj 298 447 +~;
-#X obj 133 100 hsl 128 15 0 127 0 1 empty empty mod 41.3284 10 7 0
+#X obj 133 100 hsl 128 15 0 127 0 1 empty empty mod 42.1284 10 7 0
 10 -262144 -258113 -1 2582 1;
 #X obj 461 284 mtof;
-#X obj 133 175 hsl 128 15 0 1000 0 1 empty empty index 508.45 10 7
+#X obj 133 175 hsl 128 15 0 1000 0 1 empty empty index 498.23 10 7
 0 10 -262144 -258113 -1 5712 1;
 #X obj 463 493 *~ 500;
 #X obj 461 308 +;
@@ -774,7 +774,7 @@
 #X connect 8 0 7 0;
 #X restore 642 39 pd cpu;
 #X obj 374 100 nbx 5 15 -1e+37 1e+37 0 0 empty empty cpu -25 7 0 10
--262144 -1 -66577 3 256;
+-262144 -1 -66577 19 256;
 #X obj 555 17 loadbang;
 #X obj 431 100 tgl 30 0 empty empty DSP 3 15 0 14 -262144 -258113 -1
 0 1;
@@ -1232,7 +1232,7 @@
 #X connect 11 0 1 0;
 #X coords 0 1 100 -1 180 30 1 100 100;
 #X restore 40 350 graph;
-#N canvas 148 184 1222 652 matrix 0;
+#N canvas 148 184 1222 652 matrix 1;
 #X obj 174 486 *~;
 #X obj 203 485 *~;
 #X obj 231 485 *~;
@@ -1601,16 +1601,13 @@
 #X obj 1055 531 *~;
 #X obj 996 439 r~ \$0-out_r09;
 #X obj 109 25 route /grid /tr /br /br0;
-#N canvas 320 251 881 300 receive_grid 0;
+#N canvas 320 251 881 300 receive_grid 1;
 #X obj 108 41 unpack f f f;
 #X floatatom 108 68 5 0 0 0 - - -, f 5;
 #X floatatom 148 68 5 0 0 0 - - -, f 5;
 #X floatatom 189 68 5 0 0 0 - - -, f 5;
 #X obj 108 18 inlet;
 #X obj 5 250 outlet;
-#X obj 66 136 == 0;
-#X obj 102 136 == 0;
-#X obj 196 124 expr;
 #X obj 54 250 outlet;
 #X obj 103 250 outlet;
 #X obj 152 250 outlet;
@@ -1619,10 +1616,18 @@
 #X obj 298 250 outlet;
 #X obj 347 250 outlet;
 #X obj 395 250 outlet;
+#X text 242 13 acá llegan los mensajes de la grilla (f f f) que son:
+x \, y \, 1 cada coordenada debe mandar un valor de 0 o 1 a un outlet
+y éste activa un toggle de la matriz de modulación fm. Es un poco
+tadiosa la operación de hacer 81 separaciones \, pero para eso tengo
+paciencia. Lo que necesito saber es como asignar los valores de la
+lista a una coordenada determinada. probé con operadores lógicos
+simples \, pero no me dio resultado, f 62;
+#X text 453 229 faltan muchos outlets \, pero de esio no te preocupes.
+ni siquiera de hacer la fla. sólo aislando el mensaje de una coordenada
+queda la pega hecha;
 #X connect 0 0 1 0;
-#X connect 0 0 6 0;
 #X connect 0 1 2 0;
-#X connect 0 1 7 0;
 #X connect 0 2 3 0;
 #X connect 4 0 0 0;
 #X restore 109 49 pd receive_grid;
@@ -2423,7 +2428,7 @@
 0 10 -262144 -258113 -1 4800 1;
 #X floatatom 362 372 0 0 0 0 - - -;
 #X obj 191 353 mtof;
-#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 36.8268 10 7 0
+#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 22.8268 10 7 0
 10 -262144 -258113 -1 1700 1;
 #X floatatom 191 408 5 0 0 0 - - -, f 5;
 #X obj 191 437 +~;
@@ -2758,8 +2763,8 @@
 -258113 -1 2300 1;
 #X obj 130 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -232576
 -258113 -1 500 1;
-#X obj 257 100 hsl 128 15 0 127 0 1 empty empty mod 985.75 10 7 0
-10 -262144 -258113 -1 900 1;
+#X obj 257 100 hsl 128 15 0 127 0 1 empty empty mod 68.75 10 7 0 10
+-262144 -258113 -1 900 1;
 #X obj 255 130 hsl 128 15 0 1000 0 1 empty empty a 661.417 10 7 0
 10 -262144 -258113 -1 8400 1;
 #X msg 663 133 label a \$1;
@@ -2956,7 +2961,7 @@
 0 10 -262144 -258113 -1 7000 1;
 #X floatatom 387 355 0 0 0 0 - - -;
 #X obj 191 353 mtof;
-#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 183.591 10 7 0
+#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 155.591 10 7 0
 10 -262144 -258113 -1 4900 1;
 #X floatatom 191 408 5 0 0 0 - - -, f 5;
 #X obj 191 437 +~;
@@ -3700,7 +3705,7 @@
 0 10 -262144 -258113 -1 3200 1;
 #X floatatom 387 355 0 0 0 0 - - -;
 #X obj 191 353 mtof;
-#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 705.365 10 7 0
+#X obj 255 130 hsl 128 15 0 127 0 1 empty empty frq 568.365 10 7 0
 10 -262144 -258113 -1 7300 1;
 #X floatatom 191 408 5 0 0 0 - - -, f 5;
 #X obj 191 437 +~;
@@ -4041,7 +4046,7 @@
 -258113 -1 2300 1;
 #X obj 130 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -232576
 -258113 -1 500 1;
-#X obj 257 100 hsl 128 15 0 127 0 1 empty empty mod 2694.18 10 7 0
+#X obj 257 100 hsl 128 15 0 127 0 1 empty empty mod 347.176 10 7 0
 10 -262144 -258113 -1 0 1;
 #X obj 255 130 hsl 128 15 0 1000 0 1 empty empty a 511.811 10 7 0
 10 -262144 -258113 -1 6500 1;
