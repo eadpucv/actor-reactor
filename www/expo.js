@@ -9,7 +9,24 @@ var spacerX, spacerY;	// horizontal and vertical spacers
 var hm, vm; 			// horizontal and vertical margins
 var gvm;				// global vertical margin (for title)
 
+var layout;
+
 function setup(){
+	layout = [];
+
+	layout[0] = true;
+	layout[1] = true;
+	layout[2] = true;
+	layout[3] = true;
+	layout[4] = false;
+	layout[5] = false;
+	layout[6] = true;
+	layout[7] = true;
+	layout[8] = false;
+	layout[9] = true;
+	layout[10] = true;
+	layout[11] = true;
+
 	var myCanvas = createCanvas(windowWidth, windowHeight);
 	myCanvas.parent('underlay');
 	myCanvas.id('all-beasts');
@@ -40,7 +57,9 @@ function draw(){
 
 	for(var y = gvm; y <= height; y += spacerY){
 		for(var x = hm; x <= width; x += spacerX){
-			drawGeneric(x, y, data[i]);
+			if(layout[i] == true){
+				drawGeneric(x, y, data[i]);
+			}
 			i++;
 		}
 	}

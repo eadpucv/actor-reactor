@@ -1,5 +1,7 @@
 # Actor Reactor
 
+![Logo Actor Reactor](img/actor-reactor-logo.png)
+
 Este proyecto se basa en la unidad [Actor-Reactor](https://github.com/amereida/actor-re-actor) y se extiende como unidad expositiva multipropósito consistente en:
 
 1. Sensor
