@@ -1,0 +1,21 @@
+#N canvas 131 276 450 422 10;
+#X obj 40 78 rest;
+#X msg 40 31 GET http://www.electronicamapu.com/telematica/sonar.json
+;
+#X obj 40 110 t a a;
+#X obj 40 143 list trim;
+#X obj 40 174 route commits;
+#X obj 40 206 l2s;
+#X obj 40 242 json-decode;
+#X obj 40 280 print array-decode;
+#X obj 211 144 print data;
+#X obj 191 280 print array-done;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 2 1 8 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 6 1 9 0;
