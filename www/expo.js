@@ -10,10 +10,12 @@ var hm, vm; 			// horizontal and vertical margins
 var gvm;				// global vertical margin (for title)
 
 var layout;
+var font;
 
 function setup(){
 	layout = [];
-
+	font = loadFont('lib/Montserrat-Regular.otf');
+	textFont(font, 14);
 	layout[0] = true;
 	layout[1] = true;
 	layout[2] = true;
@@ -58,11 +60,103 @@ function draw(){
 	for(var y = gvm; y <= height; y += spacerY){
 		for(var x = hm; x <= width; x += spacerX){
 			if(layout[i] == true){
+				drawPillars(x, y);
 				drawGeneric(x, y, data[i]);
 			}
+			drawGridNumber(i, x, y);
 			i++;
 		}
 	}
+}
+
+function drawPillars(x, y){
+	var pin = 3;
+	push();
+		stroke(255);
+		noFill();
+		strokeWeight(1);
+		ellipse(x - spacerX/2, y - spacerY/2, pin * 2, pin * 2);
+		ellipse(x + spacerX/2, y - spacerY/2, pin * 4, pin * 4);
+		ellipse(x + spacerX/2, y + spacerY/2, pin * 8, pin * 8);
+
+		stroke(255, 100);
+		line(x - spacerX/2, y - spacerY/2, x + spacerX/2, y - spacerY/2);
+		line(x - spacerX/2, y - spacerY/2, x - spacerX/2, y + spacerY/2);
+	pop();
+}
+
+function drawGridNumber(n, x, y){
+	var textPadding = 16;
+	fill(255, 150);
+	text(n, x - spacerX/2 + textPadding, y + spacerY/2 - textPadding * 1.5);
+	switch (n)
+	{
+		case 0:
+		push();
+			fill(255);
+			text("entrada", x - spacerX/2 + textPadding, y - spacerY/2 + textPadding * 1.5);
+		pop();
+		break;
+		
+		case 1:
+		push();
+		strokeWeight(3);
+			stroke(255);
+			line(x - spacerX/2, y + spacerY/2, x + spacerX/2, y + spacerY/2);
+		pop();
+		break;
+		
+		case 2:
+		push();
+			strokeWeight(3);
+			stroke(255);
+			line(x - spacerX/2, y + spacerY/2, x + spacerX/2, y + spacerY/2);
+		pop();
+		
+		case 2:
+		break; 
+
+		case 3:
+		break;
+
+		case 4:
+		break;
+
+		case 5:
+		break;
+
+		case 6:
+		push();
+			strokeWeight(3);
+			stroke(255);
+			line(x - spacerX/2, y - spacerY/2, x - spacerX/2, y + spacerY/2);
+		pop();
+		break;
+
+		case 7:
+		break;
+
+		case 8:
+		break;
+
+		case 9:
+		break;
+
+		case 10:
+		push();
+			fill(255);
+			text("salida", x - spacerX/2 + textPadding, y - spacerY/2 + textPadding * 1.5);
+		pop();
+		break;
+
+		case 11:
+		break;
+
+		case 12:
+		break;
+
+	}
+
 }
 
 function updateData(){
