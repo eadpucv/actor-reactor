@@ -20,25 +20,31 @@ function setup(){
 	layout[1] = true;
 	layout[2] = true;
 	layout[3] = true;
-	layout[4] = false;
+	layout[4] = true;
 	layout[5] = false;
-	layout[6] = true;
-	layout[7] = true;
-	layout[8] = false;
-	layout[9] = true;
+	layout[6] = false;
+	layout[7] = false;
+	layout[8] = true;
+	layout[9] = false;
 	layout[10] = true;
-	layout[11] = true;
+	layout[11] = false;
+	layout[12] = false;
+	layout[13] = true;
+	layout[14] = true;
+	layout[15] = true;
+	layout[16] = false;
+	layout[17] = false;
 
 	var myCanvas = createCanvas(windowWidth, windowHeight);
 	myCanvas.parent('underlay');
 	myCanvas.id('all-beasts');
 
 	if(windowWidth > windowHeight){
-		hu = 5;
+		hu = 6;
 		vu = 3; 
 	}else{
 		hu = 3;
-		vu = 5; 
+		vu = 6; 
 	}
 
 	units = hu * vu;
@@ -46,7 +52,7 @@ function setup(){
 	gvm = windowHeight / 3;
 	vm = windowHeight / 5;
 	hm = windowWidth  / 7;
-	spacerX = (width - 2*hm)  / (hu-1);
+	spacerX = (width - hm*2)  / (hu-1);
 	spacerY = (height - vm - gvm) / (vu-1);
 }
 
@@ -58,12 +64,12 @@ function draw(){
 	var i = 0;
 
 	for(var y = gvm; y <= height; y += spacerY){
-		for(var x = hm; x <= width; x += spacerX){
-			if(layout[i] == true){
-				drawPillars(x, y);
+		for(var x = hm; x < width; x += spacerX){
+			drawPillars(x, y);
+			drawGridNumber(i, x, y);
+			if(layout[i] == true){	
 				drawGeneric(x, y, data[i]);
 			}
-			drawGridNumber(i, x, y);
 			i++;
 		}
 	}
@@ -91,14 +97,17 @@ function drawGridNumber(n, x, y){
 	text(n, x - spacerX/2 + textPadding, y + spacerY/2 - textPadding * 1.5);
 	switch (n)
 	{
-		case 0:
+		case 1:
 		push();
 			fill(255);
 			text("entrada", x - spacerX/2 + textPadding, y - spacerY/2 + textPadding * 1.5);
+			stroke(255);
+			strokeWeight(3);
+			line(x, y + spacerY/2, x + spacerX/2, y + spacerY/2);
 		pop();
 		break;
 		
-		case 1:
+		case 2:
 		push();
 		strokeWeight(3);
 			stroke(255);
@@ -106,26 +115,23 @@ function drawGridNumber(n, x, y){
 		pop();
 		break;
 		
-		case 2:
+		case 3:
 		push();
 			strokeWeight(3);
 			stroke(255);
 			line(x - spacerX/2, y + spacerY/2, x + spacerX/2, y + spacerY/2);
 		pop();
+		break;
+
 		
-		case 2:
-		break; 
-
-		case 3:
+		case 7:
+		push();
+			fill(255);
+			text("salida", x - spacerX/2 + textPadding, y - spacerY/2 + textPadding * 1.5);
+		pop();
 		break;
 
-		case 4:
-		break;
-
-		case 5:
-		break;
-
-		case 6:
+		case 8:
 		push();
 			strokeWeight(3);
 			stroke(255);
@@ -133,26 +139,12 @@ function drawGridNumber(n, x, y){
 		pop();
 		break;
 
-		case 7:
-		break;
-
-		case 8:
-		break;
-
-		case 9:
-		break;
-
-		case 10:
+		case 15:
 		push();
-			fill(255);
-			text("salida", x - spacerX/2 + textPadding, y - spacerY/2 + textPadding * 1.5);
+			strokeWeight(3);
+			stroke(255);
+			line(x - spacerX/2, y - spacerY/2, x - spacerX/2, y + spacerY/2);
 		pop();
-		break;
-
-		case 11:
-		break;
-
-		case 12:
 		break;
 
 	}

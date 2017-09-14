@@ -50,8 +50,7 @@ table {
 }
 
 body {
-    padding-left: 1em;
-    padding-right: 1em;
+    padding: 3em;
     font-family: Montserrat;
 }
 
@@ -70,14 +69,15 @@ body, head, canvas {
 	z-index: 100;
 	background-color: transparent;
 	color: white;
-	padding: 4em;
+	padding: 8em 7.5em;
 }
 
 h1{
 	font-size: 48px;
-	font-weight: 700;
+	font-weight: 200;
 }
 
-p{
-	
+#overlay p{
+	margin-top: 1em;
+	font-weight: 200;
 }
