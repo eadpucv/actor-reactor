@@ -37,7 +37,6 @@ Este proyecto utiliza tecnologías libres y abierta de software y hardware. Este
 * [Exposición: Artefactos y Creaturas](http://eadpucv.github.io/actor-reactor)
 * [Plano y datos de la sala](http://eadpucv.github.io/actor-reactor/www)
 
-<p align=center>
 ![Arduino](img/logo-arduino.png)
 ![Raspberry](img/logo-raspi.png)
 ![Pure Data](img/logo-puredata.png)
