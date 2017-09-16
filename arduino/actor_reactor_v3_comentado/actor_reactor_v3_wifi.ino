@@ -79,7 +79,7 @@ void setup () {
   mySerial.println("AT+CWMODE=1");
   resp = mySerial.find("OK\r\n");
 
-  /*
+  
     do {
     mySerial.print("AT+CWJAP=\"");
     mySerial.print(WLAN_SSID);
@@ -89,7 +89,7 @@ void setup () {
     resp = mySerial.find("OK\r\n");
     Serial.println(resp);
     } while (!resp);
-  */
+  
 
   mySerial.println("AT+CIPMUX=1");
   resp = mySerial.find("OK\r\n");
@@ -1167,7 +1167,7 @@ void automatic() {
     sonar_read = constrain(sonar_read, min_sensor, max_sensor);
     normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
     normalize = normalize / 10000;
-    //send_data();
+    send_data();
     //motor_pos = DoubleQuadraticBezier(sonar_read, bezier_A, bezier_B, bezier_C, bezier_D);
     last_motor_pos = motor_pos;
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
