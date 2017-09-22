@@ -113,7 +113,7 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
   display.display();
-  stepper.setMaxSpeed(500.0);
+  stepper.setMaxSpeed(1600.0);
   stepper.setAcceleration(10000.0);
   stepper.setCurrentPosition(0);
   stepper.moveTo(motor_pos);

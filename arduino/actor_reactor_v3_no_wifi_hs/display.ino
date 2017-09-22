@@ -20,17 +20,22 @@ void mainmenu() {
 void automatic() {
 
   mainmenu_disp = !mainmenu_disp;
+  display.clearDisplay();
+  display.display();
+  display.println("Mode auto");
+  display.println(" 0 - back ");
+  display.display();
 
   while (salir == 0) {
-
-    display.clearDisplay();
-    display.display();
-    display.println("Mode auto");
-    display.println(" 0 - back ");
-    display.print("sensor: "); display.println(sonar_read);
-    display.print("motor: "); display.print(stepper.currentPosition());
-    display.display();
-
+    /* el display lo deja demasiado lento
+      display.clearDisplay();
+      display.display();
+      display.println("Mode auto");
+      display.println(" 0 - back ");
+      display.print("sensor: "); display.println(sonar_read);
+      display.print("motor: "); display.print(stepper.currentPosition());
+      display.display();
+    */
     acum_sonar_read += analogRead(A2);
     analog_counter++;
     actual_millis = millis();
@@ -84,7 +89,7 @@ void manual() {
   display.setCursor(0, 0);
   display.print(stepper.currentPosition());
   display.display();
-  
+
   while (salir == 0) {
     key2 = KP2.Getkey();
     stepper.run();
