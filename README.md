@@ -16,7 +16,7 @@ Este proyecto se basa en la unidad [Actor-Reactor documenta 14](https://github.c
 
 * [Herbert Spencer](http://wiki.ead.pucv.cl/index.php/Herbert_Spencer), Diseño de Artefactos
 * [Marcelo Araya](http://wiki.ead.pucv.cl/index.php/Marcelo_Araya), Diseño de Creaturas
-* [Óscar Santis](https://soundcloud.com/oscarsantis), Diseño acústico
+* [Óscar Santis](https://soundcloud.com/oscarsantis), Diseño de sonido
 * [Leonardo Aravena](http://wiki.ead.pucv.cl/index.php/Leonardo_Aravena), Diseño y fabricación dispositivos
 * [Ismael Martinez](https://www.linkedin.com/in/ismael-martinez-8bb78ba3/), Diseño electrónico 
 
