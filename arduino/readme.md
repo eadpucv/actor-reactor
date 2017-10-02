@@ -2,4 +2,4 @@
 
 ![Esquema de Control](../img/actor-reactor-ai.png)
 
-Para configurar el módulo WIFI revise el [siguiente archivo](/config_esp8266)
+Para configurar el módulo WIFI revise el [siguiente archivo](config_esp8266)
