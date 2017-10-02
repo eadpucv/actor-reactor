@@ -1,0 +1,19 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: PCB_motor_v2.CMPcbDoc   11-09-2017  13:55:35
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : PCB_motor_v2.TXT
+EIA File   : PCB_motor_v2.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        0.91mm (35.827mil)       Round          16               48.26 mm (1.90 Inch)
+T2        1mm (39.37mil)           Round          8                97.17 mm (3.83 Inch)
+T3        1.02mm (40.157mil)       Round          5                10.16 mm (0.40 Inch)
+T4        1.1mm (43.307mil)        Round          3                5.08 mm (0.20 Inch)
+T5        1.3mm (51.181mil)        Round          6                56.12 mm (2.21 Inch)
+---------------------------------------------------------------------------
+Totals                                            38               216.79 mm (8.54 Inch)
+
+Total Processing Time (hh:mm:ss) : 00:00:00
