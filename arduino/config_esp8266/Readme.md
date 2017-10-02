@@ -6,7 +6,7 @@
 ![imagen1](img/img1.png)
 1. Abrir el *Monitor Serial* haciendo click acá <br />
 ![imagen2](img/img2.png)
-1. Luego escribir AT y presionar ENTER. Debería aparecer **OK** en la pantalla como se muestra en la siguiente imagen
+1. Luego escribir AT y presionar ENTER. Debería aparecer **OK** en la pantalla como se muestra en la siguiente imagen<br />
 ![imagen3](img/img3.png)
 1. Tras eso, se debe escribir el siguiente comando y luego ENTER "_AT+UART_DEF=57600,8,1,0,0_" Cabe destacar que debe ser sin comillas
 1. Tan solo será necesario insertar el Jumper nuevamente en la placa. Después de eso el dispositivo estará correctamente configurado y listo para usarse en el programa principal
