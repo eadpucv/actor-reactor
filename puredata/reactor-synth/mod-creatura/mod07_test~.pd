@@ -1,0 +1,70 @@
+#N canvas 1 75 1009 524 10;
+#X obj 362 626 *~;
+#X obj 100 105 bng 30 250 50 0 empty empty 7 8 15 0 25 -262144 -159808
+-1;
+#X obj 100 135 tgl 30 0 empty empty empty 17 7 0 10 -228856 -1 -1 0
+1;
+#X obj 133 105 hsl 100 30 0 1 0 0 empty empty empty 10 15 0 10 -159808
+-1 -1 0 1;
+#X obj 160 137 vsl 15 55 0 1 0 1 empty empty -> 2 7 0 10 -232576 -258113
+-1 4000 1;
+#X obj 145 137 vsl 15 55 0 10000 0 1 empty empty >- 2 7 0 10 -232576
+-258113 -1 2300 1;
+#X obj 130 137 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -232576
+-258113 -1 500 1;
+#X obj 23 194 * 10;
+#X obj 23 217 int;
+#X obj 23 239 change;
+#X obj 21 129 spigot;
+#X obj 21 104 t b f;
+#X text 247 725 mixer;
+#X text 360 726 fm-out;
+#X obj 249 708 outlet~;
+#X obj 361 706 outlet~;
+#X obj 35 339 inlet~;
+#X obj 99 340 inlet~;
+#X obj 36 421 *~;
+#X obj 98 422 *~;
+#X text 31 321 fm-auto;
+#X text 98 320 fm-in;
+#X obj 249 623 *~;
+#X obj 445 5 udpreceive 54321;
+#X obj 445 27 unpackOSC;
+#X obj 445 48 routeOSC /bang;
+#X obj 297 180 hsl 128 15 0 1 0 1 empty empty amp 10 8 0 10 -262144
+-258113 -1 0 1;
+#X obj 250 491 osc~;
+#X obj 444 68 route /s07 /b07 /t07;
+#X obj 19 287 r~ \$0-mod_r07a;
+#X obj 127 287 r~ \$0-mod_r07;
+#X obj 267 678 s~ \$0-out_07;
+#X obj 375 677 s~ \$0-out_r07;
+#X text 558 49 Arduino-OSC /bang/s07;
+#X connect 0 0 15 0;
+#X connect 0 0 32 0;
+#X connect 3 0 7 0;
+#X connect 4 0 0 1;
+#X connect 5 0 19 1;
+#X connect 6 0 18 1;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 1 0;
+#X connect 10 0 1 0;
+#X connect 11 0 10 0;
+#X connect 11 1 10 1;
+#X connect 16 0 18 0;
+#X connect 17 0 19 0;
+#X connect 22 0 14 0;
+#X connect 22 0 31 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 25 0 28 0;
+#X connect 26 0 22 1;
+#X connect 27 0 0 0;
+#X connect 27 0 22 0;
+#X connect 28 0 3 0;
+#X connect 28 1 11 0;
+#X connect 28 2 2 0;
+#X connect 29 0 18 0;
+#X connect 30 0 19 0;
+#X coords 0 -1 1 1 330 100 2 100 100;
