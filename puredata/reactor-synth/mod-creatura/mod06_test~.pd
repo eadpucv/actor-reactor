@@ -36,10 +36,10 @@
 -258113 -1 0 1;
 #X obj 250 491 osc~;
 #X obj 445 68 route /s06 /b06 /t06;
-#X obj 19 287 r~ \$0-mod_r06a;
-#X obj 127 287 r~ \$0-mod_r06;
-#X obj 267 678 s~ \$0-out_06;
-#X obj 375 677 s~ \$0-out_r06;
+#X obj 19 287 r~ mod_r06a;
+#X obj 127 287 r~ mod_r06;
+#X obj 267 678 s~ out_06;
+#X obj 375 677 s~ out_r06;
 #X connect 0 0 15 0;
 #X connect 0 0 33 0;
 #X connect 3 0 7 0;

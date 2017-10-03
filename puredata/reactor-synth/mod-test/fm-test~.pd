@@ -1,20 +1,20 @@
-#N canvas 1449 311 450 396 10;
+#N canvas 438 203 450 396 10;
 #X obj 275 270 osc~;
 #X obj 293 164 osc~;
 #X obj 275 235 +~;
 #X obj 294 191 *~ 500;
 #X obj 275 304 outlet~;
-#X obj 106 141 hsl 128 15 0 127 0 1 empty empty modulator_frq 10 7
+#X obj 107 141 hsl 128 15 0 127 0 1 empty empty modulator_frq 10 7
 0 10 -262144 -1 -1 5300 1;
 #X obj 293 117 mtof;
 #X floatatom 293 140 5 0 0 0 - - -, f 5;
-#X obj 106 121 hsl 128 15 0 127 0 1 empty empty carrier_frq 10 7 0
+#X obj 107 121 hsl 128 15 0 127 0 1 empty empty carrier_frq 10 7 0
 10 -4032 -258113 -1 11500 1;
 #X obj 142 198 mtof;
 #X floatatom 142 221 5 0 0 0 - - -, f 5;
 #X floatatom 345 166 5 0 0 0 - - -, f 5;
-#X obj 106 160 hsl 128 15 0 1000 0 0 empty empty mod_index 10 7 0 10
--262144 -258113 -1 3600 1;
+#X obj 107 160 hsl 128 15 0 1000 0 0 empty empty mod_index 10 7 0 10
+-262144 -258113 -1 0 1;
 #X connect 0 0 4 0;
 #X connect 1 0 3 0;
 #X connect 2 0 0 0;
