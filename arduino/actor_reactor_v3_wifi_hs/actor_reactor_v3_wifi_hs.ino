@@ -96,16 +96,7 @@ void setup () {
 
   // connect to wifi
   
-    do {
-    mySerial.print("AT+CWJAP=\"");
-    mySerial.print(WLAN_SSID);
-    mySerial.print("\",\"");
-    mySerial.print(WLAN_PASS);
-    mySerial.println("\"");
-    resp = mySerial.find("OK\r\n");
-    Serial.println(resp);
-    } while (!resp);
- 
+   
   mySerial.println("AT+CIPMUX=1");
   resp = mySerial.find("OK\r\n");
   mySerial.print("AT+CIPSTART=4,\"UDP\",\"");
@@ -118,6 +109,26 @@ void setup () {
   display.begin();
   display.setContrast(60);
   display.setRotation(2);
+  display.display();
+  display.println("Conectando...");
+  display.display();
+   do {
+    mySerial.print("AT+CWJAP=\"");
+    mySerial.print(WLAN_SSID);
+    mySerial.print("\",\"");
+    mySerial.print(WLAN_PASS);
+    mySerial.println("\"");
+    resp = mySerial.find("OK\r\n");
+    Serial.println(resp);
+    } while (!resp);
+
+  display.clearDisplay();
+  display.display();
+
+  display.setTextSize(1);
+  display.setTextColor(BLACK);
+  display.setCursor(0, 0);
+  display.println("Conectado!");
   display.display();
   stepper.setMaxSpeed(1600.0);
   stepper.setAcceleration(10000.0);
