@@ -16,10 +16,10 @@
 #include <SoftwareSerial.h>
 #include <OSCMessage.h>
 
-#define DIR_SENSOR_MIN 0
-#define DIR_SENSOR_MAX 5
-#define DIR_ACTUATOR_MIN 10
-#define DIR_ACTUATOR_MAX 15
+#define DIR_SENSOR_MIN 5
+#define DIR_SENSOR_MAX 444
+#define DIR_ACTUATOR_MIN 1
+#define DIR_ACTUATOR_MAX 800
 
 #define DIR_BEZIER_A 20
 #define DIR_BEZIER_B 25
@@ -27,13 +27,14 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-#define WLAN_ADDR  "192.168.1.139"     // Dirección IP del PC que recibe
+#define WLAN_ADDR  "224.0.0.1" //"192.168.1.139"        // Dirección IP del PC que recibe
 #define PORT  1112
-#define WLAN_SSID  "VTR-6517395"       // SSID de la red Wi-Fi
-#define WLAN_PASS  "dhPxnntG8yvs"      // Password de la red Wi-Fi
 
-// #define WLAN_SSID  "Artefactos y Creaturas"       // SSID de la red Wi-Fi
-// #define WLAN_PASS  "actor-reactor"                // Password de la red Wi-Fi
+// #define WLAN_SSID  "VTR-6517395"       // SSID de la red Wi-Fi
+// #define WLAN_PASS  "dhPxnntG8yvs"      // Password de la red Wi-Fi
+
+#define WLAN_SSID  "AC"                // SSID de la red Wi-Fi
+#define WLAN_PASS  "actor-reactor"     // Password de la red Wi-Fi
 
 
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
@@ -112,7 +113,7 @@ void setup () {
   display.display();
   display.println("Conectando...");
   display.display();
-   
+   /*
    do {
     mySerial.print("AT+CWJAP=\"");
     mySerial.print(WLAN_SSID);
@@ -122,7 +123,7 @@ void setup () {
     resp = mySerial.find("OK\r\n");
     Serial.println(resp);
     } while (!resp);
-
+*/
   display.clearDisplay();
   display.display();
 
@@ -138,11 +139,20 @@ void setup () {
   previous_millis = 0;
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);
+
+  /*
   EEPROM.get(DIR_SENSOR_MIN, min_sensor);
   EEPROM.get(DIR_SENSOR_MAX, max_sensor);
   EEPROM.get(DIR_ACTUATOR_MIN, min_actuator);
   EEPROM.get(DIR_ACTUATOR_MAX, max_actuator);
+  */
 
+  EEPROM.put(DIR_SENSOR_MIN, 10);
+  EEPROM.put(DIR_SENSOR_MAX, 400);
+  EEPROM.put(DIR_ACTUATOR_MIN, 0);
+  EEPROM.put(DIR_ACTUATOR_MAX, 400);
+
+  
   EEPROM.get(DIR_BEZIER_A, bezier_A);
   EEPROM.get(DIR_BEZIER_B, bezier_B);
   EEPROM.get(DIR_BEZIER_C, bezier_C);
