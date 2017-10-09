@@ -26,13 +26,13 @@ void automatic() {
   display.println(" 0-F keys to exit");
   display.display();
 
-  while (!salir == 1) {
+  while (!exit == 1) {
     acum_sonar_read += analogRead(A2);
     analog_counter++;
     actual_millis = millis();
-    diferencia = actual_millis - previous_millis;
+    diff = actual_millis - previous_millis;
 
-    if (diferencia > 300) {
+    if (diff > 300) {
       previous_millis = actual_millis;
       sonar_read = acum_sonar_read / analog_counter * 1.26;
       acum_sonar_read = 0;
@@ -43,7 +43,7 @@ void automatic() {
     normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
     normalize = normalize / 10000;
     
-    send_data();
+    if(wifi) send_data(); // only send data if connection available 
     
     //motor_pos = DoubleQuadraticBezier(sonar_read, bezier_A, bezier_B, bezier_C, bezier_D);
     last_motor_pos = motor_pos;
@@ -61,25 +61,25 @@ void automatic() {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
           case 'A':
-            salir = !salir;
+            leave = !leave;
             break;
           case 'B':
-            salir = !salir;
+            leave = !leave;
             break;
           case 'C':
-            salir = !salir;
+            leave = !leave;
             break;
           case 'D':
-            salir = !salir;
+            leave = !leave;
             break;
           case '0':
-            salir = !salir;
+            leave = !leave;
             break;
         }
       }
     }
   }
-  salir = !salir;
+  leave = !leave;
 }
 
 
@@ -96,7 +96,7 @@ void manual() {
   display.print(stepper.currentPosition());
   display.display();
 
-  while (salir == 0) {
+  while (exit == 0) {
     key2 = KP2.Getkey();
     stepper.run();
     if (key2 == '6') {
@@ -132,23 +132,23 @@ void manual() {
     }
     switch (key2) {
       case 'A':
-        salir = !salir;
+        leave = !leave;
         break;
       case 'B':
-        salir = !salir;
+        leave = !leave;
         break;
       case 'C':
-        salir = !salir;
+        leave = !leave;
         break;
       case 'D':
-        salir = !salir;
+        leave = !leave;
         break;
       case '0':
-        salir = !salir;
+        leave = !leave;
         break;
     }
   }
-  salir = !salir;
+  leave = !leave;
 }
 
 /* F3 */
@@ -166,17 +166,17 @@ void adjust() {
   display.print("   Min: "); display.println(min_actuator, 0);
   display.print("   Max: "); display.println(max_actuator, 0);
   display.display();
-  while (!salir == 1) {
+  while (!exit == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
           case '0':
-            salir = !salir;
+            leave = !leave;
             break;
           case 'A':
             adjust_sensor();
-            salir = !salir;
+            leave = !leave;
             break;
           case 3:
             break;
@@ -187,13 +187,13 @@ void adjust() {
 
     }
   }
-  salir = !salir;
+  leave = !leave;
 }
 
 
 /* F4 */
 void bezier() {
-  while (!salir == 1) {
+  while (!exit == 1) {
     if (show_adjust == 0) {
       display.clearDisplay();
       display.display();
@@ -215,7 +215,7 @@ void bezier() {
         switch (key) {
           case '0':
             show_adjust = 0;
-            salir = !salir;
+            leave = !leave;
             break;
           case 'B':
             adjust_B();
@@ -238,5 +238,5 @@ void bezier() {
 
     }
   }
-  salir = !salir;
+  leave = !leave;
 }

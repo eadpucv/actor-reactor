@@ -1,4 +1,6 @@
 void write_eeprom(){
+
+  /* smart defaults */ 
   min_sensor = 5;
   min_actuator = 0;
   max_sensor = 450;

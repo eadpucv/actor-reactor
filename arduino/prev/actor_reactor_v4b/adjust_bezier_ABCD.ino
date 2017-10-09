@@ -54,7 +54,7 @@ void adjust_A() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!exit == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -62,7 +62,7 @@ void adjust_A() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            leave = !leave;
             break;
           case '1':
             insert[i] = key;
@@ -134,7 +134,7 @@ void adjust_A() {
   EEPROM.put(DIR_BEZIER_A, bezier_A);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  leave = !leave;
 }
 
 void adjust_B() {
@@ -146,7 +146,7 @@ void adjust_B() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!exit == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -154,7 +154,7 @@ void adjust_B() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            leave = !leave;
             break;
           case '1':
             insert[i] = key;
@@ -225,7 +225,7 @@ void adjust_B() {
   EEPROM.put(DIR_BEZIER_B, bezier_B);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  leave = !leave;
 }
 
 void adjust_C() {
@@ -237,7 +237,7 @@ void adjust_C() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!exit == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -245,7 +245,7 @@ void adjust_C() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            leave = !leave;
             break;
           case '1':
             insert[i] = key;
@@ -316,7 +316,7 @@ void adjust_C() {
   EEPROM.put(DIR_BEZIER_C, bezier_C);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  leave = !leave;
 }
 
 void adjust_D() {
@@ -328,7 +328,7 @@ void adjust_D() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!exit == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -336,7 +336,7 @@ void adjust_D() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            leave = !leave;
             break;
           case '1':
             insert[i] = key;
@@ -407,5 +407,5 @@ void adjust_D() {
   EEPROM.put(DIR_BEZIER_D, bezier_D);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  leave = !leave;
 }

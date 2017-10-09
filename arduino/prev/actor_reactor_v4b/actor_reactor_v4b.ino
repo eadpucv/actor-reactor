@@ -27,28 +27,29 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-#define WLAN_ADDR  "224.0.0.1"      // receiving Router ip
+#define WLAN_ADDR  "192.168.1.139"      // receiving PC ip
 #define PORT  1112
 #define WLAN_SSID  "AC"                 // wifi SSID
 #define WLAN_PASS  "actor-reactor"      // wifi password 
-#define HOSTNAME   "s01"                // hostname
+
+String HOSTNAME = String("s01");        // hostname
 
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0, last_motor_pos;
 float EPSILON = 9.999999747378752E-5f;
-
+boolean wifi = false;
 
 char insert[10];
 int i = 0;
 double normalize;
 boolean mainmenu_disp = 0, resp;
-boolean salir = 0;
+boolean leave = 0;
 boolean endstop, endstop_activation = 0, endstop_position = 0;
 boolean show_adjust = 0;
 long motor_pos_previous = 0;
 float sonar_read, acum_sonar_read;
 int analog_counter = 0;
-word previous_millis, actual_millis, diferencia;
+word previous_millis, actual_millis, diff;
 
 // Software SPI (slower updates, more flexible pin options):
 // pin 7 - Serial clock out (SCLK)
@@ -72,7 +73,7 @@ SoftwareSerial wifiLink(11, 10);
 
 void setup () {
   Serial.begin(57600);
-  pinMode(12, INPUT); // no se pueden poner todos los pinMode juntos?
+  pinMode(12, INPUT); 
   wifiLink.begin(57600);
 
   Serial.setTimeout(10000);
@@ -81,15 +82,19 @@ void setup () {
   pinMode(13, OUTPUT);
   delay(10);
   pinMode(13, INPUT);
+  
   resp = wifiLink.find("ready\r\n");
   wifiLink.println("AT+CWMODE=1");
   resp = wifiLink.find("OK\r\n");
 
-  // se puede definir un hostname
-  // connect to wifi
+  /* connect to wifi */
 
   wifiLink.println("AT+CIPMUX=1");
-  wifiLink.println("AT+CWHOSTNAME= HOSTNAME");
+
+  // define hostname
+  String msg = String("AT+CWHOSTNAME="+HOSTNAME);
+  wifiLink.println(msg);     
+  
   resp = wifiLink.find("OK\r\n");
   wifiLink.print("AT+CIPSTART=4,\"UDP\",\"");
   wifiLink.print(WLAN_ADDR);
@@ -110,6 +115,9 @@ void setup () {
   display.println("detecting wifi...");
   display.display();
 
+  int attempts = 20;
+  int count = 0;
+
   do {
     wifiLink.print("AT+CWJAP=\"");
     wifiLink.print(WLAN_SSID);
@@ -117,12 +125,18 @@ void setup () {
     wifiLink.print(WLAN_PASS);
     wifiLink.println("\"");
     resp = wifiLink.find("OK\r\n");
-    Serial.println(resp);
-  } while (!resp);
+    
+    if(resp){
+      wifi = true;
+      Serial.println(resp);
+      Serial.println("connected!");
+      count = attempts;
+    }
+    count ++;
+  } while (count < attempts);
 
   display.clearDisplay();
   display.display();
-
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(0, 0);
@@ -179,8 +193,8 @@ void endstop_action() {
 void loop() {
   sonar_read = analogRead(A2) * 1.26;
   actual_millis = millis();
-  diferencia = actual_millis - previous_millis;
-  if (diferencia > 100) {
+  diff = actual_millis - previous_millis;
+  if (diff > 100) {
     previous_millis = actual_millis;
     mainmenu();
   }
