@@ -27,19 +27,16 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-#define WLAN_ADDR  "192.168.1.139"                // Dirección IP del PC que recibe
+#define WLAN_ADDR  "192.168.1.139"      // receiving PC ip
 #define PORT  1112
-#define WLAN_SSID  "AC"                           // SSID de la red Wi-Fi
-#define WLAN_PASS  "actor-reactor"                // Password de la red Wi-Fi
+#define WLAN_SSID  "AC"                 // wifi SSID
+#define WLAN_PASS  "actor-reactor"      // wifi password 
+#define HOSTNAME   "s01"                // hostname
 
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0, last_motor_pos;
 float EPSILON = 9.999999747378752E-5f;
-boolean variable;
 
-//EEPROM.get(DIR_SENSOR_MIN, min_sensor);
-//EEPROM.get(DIR_SENSOR_MAX, max_sensor);
-//EEPROM.get(DIR_ACTUATOR_MAX, max_actuator);
 
 char insert[10];
 int i = 0;
@@ -70,15 +67,13 @@ char KEYS[] = {
   'Y', '0', 'N', 'D'
 };
 
-
-OnewireKeypad <Print, 16 > KP2(Serial, KEYS, 4, 4, A0, 4700, 1000, ExtremePrec );
-SoftwareSerial mySerial(11, 10);
-
+OnewireKeypad <Print, 16 > KP2(Serial, KEYS, 4, 4, A0, 4700, 1000, ExtremePrec);
+SoftwareSerial wifiLink(11, 10);
 
 void setup () {
   Serial.begin(57600);
-  pinMode(12, INPUT);
-  mySerial.begin(57600);
+  pinMode(12, INPUT); // no se pueden poner todos los pinMode juntos?
+  wifiLink.begin(57600);
 
   Serial.setTimeout(10000);
 
@@ -86,34 +81,52 @@ void setup () {
   pinMode(13, OUTPUT);
   delay(10);
   pinMode(13, INPUT);
-  resp = mySerial.find("ready\r\n");
-  mySerial.println("AT+CWMODE=1");
-  resp = mySerial.find("OK\r\n");
+  resp = wifiLink.find("ready\r\n");
+  wifiLink.println("AT+CWMODE=1");
+  resp = wifiLink.find("OK\r\n");
 
-  /*
-    do {
-    mySerial.print("AT+CWJAP=\"");
-    mySerial.print(WLAN_SSID);
-    mySerial.print("\",\"");
-    mySerial.print(WLAN_PASS);
-    mySerial.println("\"");
-    resp = mySerial.find("OK\r\n");
-    Serial.println(resp);
-    } while (!resp);
-  */
+  // se puede definir un hostname
+  // connect to wifi
 
-  mySerial.println("AT+CIPMUX=1");
-  resp = mySerial.find("OK\r\n");
-  mySerial.print("AT+CIPSTART=4,\"UDP\",\"");
-  mySerial.print(WLAN_ADDR);
-  mySerial.print("\",54321,");
-  mySerial.print(PORT);
-  mySerial.println(",0");
-  resp = mySerial.find("OK\r\n");
-  mySerial.setTimeout(1000);
+  wifiLink.println("AT+CIPMUX=1");
+  wifiLink.println("AT+CWHOSTNAME= HOSTNAME");
+  resp = wifiLink.find("OK\r\n");
+  wifiLink.print("AT+CIPSTART=4,\"UDP\",\"");
+  wifiLink.print(WLAN_ADDR);
+  wifiLink.print("\",54321,");
+  wifiLink.print(PORT);
+  wifiLink.println(",0");
+  resp = wifiLink.find("OK\r\n");
+  wifiLink.setTimeout(1000);
+
+  // display wifi status
+
   display.begin();
+  display.clearDisplay();
+  display.display();
   display.setContrast(60);
   display.setRotation(2);
+  display.display();
+  display.println("detecting wifi...");
+  display.display();
+
+  do {
+    wifiLink.print("AT+CWJAP=\"");
+    wifiLink.print(WLAN_SSID);
+    wifiLink.print("\",\"");
+    wifiLink.print(WLAN_PASS);
+    wifiLink.println("\"");
+    resp = wifiLink.find("OK\r\n");
+    Serial.println(resp);
+  } while (!resp);
+
+  display.clearDisplay();
+  display.display();
+
+  display.setTextSize(1);
+  display.setTextColor(BLACK);
+  display.setCursor(0, 0);
+  display.println("connected!");
   display.display();
   stepper.setMaxSpeed(1600.0);
   stepper.setAcceleration(10000.0);
@@ -133,9 +146,9 @@ void setup () {
   EEPROM.get(DIR_BEZIER_C, bezier_C);
   EEPROM.get(DIR_BEZIER_D, bezier_D);
 
-  writeEeprom();
+  write_eeprom(); // write default values if keypad not working
 
-  Serial.println("pase setup");
+  Serial.println("done setup");
 }
 
 // position = 0 -> endstop al inicio
@@ -163,17 +176,6 @@ void endstop_action() {
   motor_pos = 0;
 }
 
-void send_data() {
-  OSCMessage msg("/b02s");
-  msg.add((float)normalize);
-  mySerial.println("AT+CIPSEND=4,16");
-  mySerial.find(">");
-  msg.send(mySerial);
-  msg.empty();
-}
-
-
-
 void loop() {
   sonar_read = analogRead(A2) * 1.26;
   actual_millis = millis();
@@ -186,15 +188,23 @@ void loop() {
   if ( char key = KP2.Getkey() ) {
     if (KP2.Key_State() == PRESSED) {
       switch (key) {
-        case 'C':
-          adjust();
-          break;
-        case 'B':
-          manual();
-          break;
+
+        /* F1 */
         case 'A':
           automatic();
           break;
+
+        /* F2 */
+        case 'B': // F2
+          manual();
+          break;
+
+        /* F3 */
+        case 'C':
+          adjust();
+          break;
+
+        /* F4 */
         case 'D':
           bezier();
           break;
