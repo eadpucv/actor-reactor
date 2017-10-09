@@ -92,7 +92,7 @@ void setup () {
   resp = mySerial.find("OK\r\n");
 
   // connect to wifi
-  
+
   mySerial.println("AT+CIPMUX=1");
   resp = mySerial.find("OK\r\n");
   mySerial.print("AT+CIPSTART=4,\"UDP\",\"");
@@ -104,7 +104,7 @@ void setup () {
   mySerial.setTimeout(1000);
 
   // display wifi status
-  
+
   display.begin();
   display.clearDisplay();
   display.display();
@@ -113,8 +113,8 @@ void setup () {
   display.display();
   display.println("detecting wifi...");
   display.display();
-   
-   do {
+
+  do {
     mySerial.print("AT+CWJAP=\"");
     mySerial.print(WLAN_SSID);
     mySerial.print("\",\"");
@@ -122,7 +122,7 @@ void setup () {
     mySerial.println("\"");
     resp = mySerial.find("OK\r\n");
     Serial.println(resp);
-    } while (!resp);
+  } while (!resp);
 
   display.clearDisplay();
   display.display();
@@ -139,7 +139,7 @@ void setup () {
   previous_millis = 0;
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);
-  
+
   EEPROM.get(DIR_SENSOR_MIN, min_sensor);
   EEPROM.get(DIR_SENSOR_MAX, max_sensor);
   EEPROM.get(DIR_ACTUATOR_MIN, min_actuator);
@@ -151,7 +151,7 @@ void setup () {
   EEPROM.get(DIR_BEZIER_D, bezier_D);
 
   write_eeprom(); // write default values if keypad not working
-  
+
   Serial.println("done setup");
 }
 
@@ -192,19 +192,23 @@ void loop() {
   if ( char key = KP2.Getkey() ) {
     if (KP2.Key_State() == PRESSED) {
       switch (key) {
-   
+
+        /* F1 */
         case 'A':
           automatic();
           break;
-        
-        case 'B':
+
+        /* F2 */
+        case 'B': // F2
           manual();
           break;
-        
+
+        /* F3 */
         case 'C':
           adjust();
           break;
-        
+
+        /* F4 */
         case 'D':
           bezier();
           break;
