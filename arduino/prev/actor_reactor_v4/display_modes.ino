@@ -23,7 +23,7 @@ void automatic() {
   display.clearDisplay();
   display.display();
   display.println("Mode auto");
-  display.println(" 0 - back ");
+  display.println(" 0-F keys to exit");
   display.display();
 
   while (!salir == 1) {
@@ -42,7 +42,9 @@ void automatic() {
     sonar_read = constrain(sonar_read, min_sensor, max_sensor);
     normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
     normalize = normalize / 10000;
-    //send_data();
+    
+    send_data();
+    
     //motor_pos = DoubleQuadraticBezier(sonar_read, bezier_A, bezier_B, bezier_C, bezier_D);
     last_motor_pos = motor_pos;
 
@@ -58,13 +60,13 @@ void automatic() {
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
-          case 'C':
+          case 'A':
             salir = !salir;
             break;
           case 'B':
             salir = !salir;
             break;
-          case 'A':
+          case 'C':
             salir = !salir;
             break;
           case 'D':
@@ -128,8 +130,22 @@ void manual() {
       stepper.moveTo(motor_pos);
       stepper.run();
     }
-    if (key2 == '0') {
-      salir = !salir;
+    switch (key2) {
+      case 'A':
+        salir = !salir;
+        break;
+      case 'B':
+        salir = !salir;
+        break;
+      case 'C':
+        salir = !salir;
+        break;
+      case 'D':
+        salir = !salir;
+        break;
+      case '0':
+        salir = !salir;
+        break;
     }
   }
   salir = !salir;

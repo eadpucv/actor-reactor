@@ -16,10 +16,10 @@
 #include <SoftwareSerial.h>
 #include <OSCMessage.h>
 
-#define DIR_SENSOR_MIN 5
-#define DIR_SENSOR_MAX 444
-#define DIR_ACTUATOR_MIN 1
-#define DIR_ACTUATOR_MAX 800
+#define DIR_SENSOR_MIN 0
+#define DIR_SENSOR_MAX 5
+#define DIR_ACTUATOR_MIN 10
+#define DIR_ACTUATOR_MAX 15
 
 #define DIR_BEZIER_A 20
 #define DIR_BEZIER_B 25
@@ -27,15 +27,10 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-#define WLAN_ADDR  "224.0.0.1" //"192.168.1.139"        // Dirección IP del PC que recibe
+#define WLAN_ADDR  "192.168.1.139"                // Dirección IP del PC que recibe
 #define PORT  1112
-
-// #define WLAN_SSID  "VTR-6517395"       // SSID de la red Wi-Fi
-// #define WLAN_PASS  "dhPxnntG8yvs"      // Password de la red Wi-Fi
-
-#define WLAN_SSID  "AC"                // SSID de la red Wi-Fi
-#define WLAN_PASS  "actor-reactor"     // Password de la red Wi-Fi
-
+#define WLAN_SSID  "AC"       // SSID de la red Wi-Fi
+#define WLAN_PASS  "actor-reactor"                // Password de la red Wi-Fi
 
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0, last_motor_pos;
@@ -95,9 +90,18 @@ void setup () {
   mySerial.println("AT+CWMODE=1");
   resp = mySerial.find("OK\r\n");
 
-  // connect to wifi
-  
-   
+  /*
+    do {
+    mySerial.print("AT+CWJAP=\"");
+    mySerial.print(WLAN_SSID);
+    mySerial.print("\",\"");
+    mySerial.print(WLAN_PASS);
+    mySerial.println("\"");
+    resp = mySerial.find("OK\r\n");
+    Serial.println(resp);
+    } while (!resp);
+  */
+
   mySerial.println("AT+CIPMUX=1");
   resp = mySerial.find("OK\r\n");
   mySerial.print("AT+CIPSTART=4,\"UDP\",\"");
@@ -111,27 +115,6 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
   display.display();
-  display.println("Conectando...");
-  display.display();
-   /*
-   do {
-    mySerial.print("AT+CWJAP=\"");
-    mySerial.print(WLAN_SSID);
-    mySerial.print("\",\"");
-    mySerial.print(WLAN_PASS);
-    mySerial.println("\"");
-    resp = mySerial.find("OK\r\n");
-    Serial.println(resp);
-    } while (!resp);
-*/
-  display.clearDisplay();
-  display.display();
-
-  display.setTextSize(1);
-  display.setTextColor(BLACK);
-  display.setCursor(0, 0);
-  display.println("Conectado!");
-  display.display();
   stepper.setMaxSpeed(1600.0);
   stepper.setAcceleration(10000.0);
   stepper.setCurrentPosition(0);
@@ -140,24 +123,19 @@ void setup () {
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);
 
-  /*
   EEPROM.get(DIR_SENSOR_MIN, min_sensor);
   EEPROM.get(DIR_SENSOR_MAX, max_sensor);
   EEPROM.get(DIR_ACTUATOR_MIN, min_actuator);
   EEPROM.get(DIR_ACTUATOR_MAX, max_actuator);
-  */
 
-  EEPROM.put(DIR_SENSOR_MIN, 10);
-  EEPROM.put(DIR_SENSOR_MAX, 400);
-  EEPROM.put(DIR_ACTUATOR_MIN, 0);
-  EEPROM.put(DIR_ACTUATOR_MAX, 400);
-
-  
   EEPROM.get(DIR_BEZIER_A, bezier_A);
   EEPROM.get(DIR_BEZIER_B, bezier_B);
   EEPROM.get(DIR_BEZIER_C, bezier_C);
   EEPROM.get(DIR_BEZIER_D, bezier_D);
-  Serial.println("done setup");
+
+  writeEeprom();
+
+  Serial.println("pase setup");
 }
 
 // position = 0 -> endstop al inicio
@@ -193,6 +171,8 @@ void send_data() {
   msg.send(mySerial);
   msg.empty();
 }
+
+
 
 void loop() {
   sonar_read = analogRead(A2) * 1.26;
