@@ -159,12 +159,12 @@ void adjust() {
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(0, 0);
-  display.println("Sensor Range");
-  display.print("   Min: "); display.println(min_sensor, 0);
-  display.print("   Max: "); display.println(max_sensor, 0);
-  display.println("Act. Range");
-  display.print("   Min: "); display.println(min_actuator, 0);
-  display.print("   Max: "); display.println(max_actuator, 0);
+  display.println("sensor range");
+  display.print("   min: "); display.println(min_sensor, 0);
+  display.print("   max: "); display.println(max_sensor, 0);
+  display.println("act range");
+  display.print("   min: "); display.println(min_actuator, 0);
+  display.print("   max: "); display.println(max_actuator, 0);
   display.display();
   while (!exit == 1) {
 

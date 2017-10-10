@@ -18,10 +18,10 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-#define WLAN_ADDR  "192.168.1.139"  //Dirección IP del PC que recibe
+#define WLAN_ADDR  "192.168.1.139"    // Dirección IP del PC que recibe
 #define PORT  1112
-#define WLAN_SSID  "Reikiavik"      //SSID de la red Wi-Fi
-#define WLAN_PASS  "suspensitos"    //Password de la red Wi-Fi
+#define WLAN_SSID  "AC"               // SSID de la red Wi-Fi
+#define WLAN_PASS  "actor-reactor"    // Password de la red Wi-Fi
 
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0, last_motor_pos;

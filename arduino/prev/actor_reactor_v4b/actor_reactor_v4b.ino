@@ -112,7 +112,7 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
   display.display();
-  display.println("detecting wifi...");
+  display.println("conectando...");
   display.display();
 
   int attempts = 20;
@@ -129,7 +129,7 @@ void setup () {
     if(resp){
       wifi = true;
       Serial.println(resp);
-      Serial.println("connected!");
+      Serial.println("conectado!");
       count = attempts;
     }
     count ++;
