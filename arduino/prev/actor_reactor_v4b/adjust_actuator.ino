@@ -7,7 +7,7 @@ void adjust_actuator_max() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!exit == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -15,7 +15,7 @@ void adjust_actuator_max() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            leave = !leave;
             break;
           case '1':
             insert[i] = key;
@@ -86,7 +86,7 @@ void adjust_actuator_max() {
   EEPROM.put(DIR_ACTUATOR_MAX, max_actuator);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  leave = !leave;
 }
 
 
@@ -99,7 +99,7 @@ void adjust_actuator_min() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!exit == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -107,7 +107,7 @@ void adjust_actuator_min() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            leave = !leave;
             break;
           case '1':
             insert[i] = key;
@@ -178,5 +178,5 @@ void adjust_actuator_min() {
   EEPROM.put(DIR_ACTUATOR_MIN, min_actuator);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  leave = !leave;
 }

@@ -27,8 +27,8 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-#define WLAN_ADDR  "192.168.1.139"                // Dirección IP del PC que recibe
-#define PORT  1112
+#define WLAN_ADDR  "224.0.0.1"                // Dirección IP del Router que recibe
+#define PORT  54321
 #define WLAN_SSID  "AC"                           // SSID de la red Wi-Fi
 #define WLAN_PASS  "actor-reactor"                // Password de la red Wi-Fi
 
@@ -164,7 +164,7 @@ void endstop_action() {
 }
 
 void send_data() {
-  OSCMessage msg("/b02s");
+  OSCMessage msg("/bang/s01");
   msg.add((float)normalize);
   mySerial.println("AT+CIPSEND=4,16");
   mySerial.find(">");

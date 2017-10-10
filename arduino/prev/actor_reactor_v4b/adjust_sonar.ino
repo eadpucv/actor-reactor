@@ -1,3 +1,4 @@
+
 void adjust_sensor_min() {
   display.clearDisplay();
   display.display();
@@ -6,7 +7,7 @@ void adjust_sensor_min() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!leave == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -14,7 +15,7 @@ void adjust_sensor_min() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            leave = !leave;
             break;
           case '1':
             insert[i] = key;
@@ -84,7 +85,7 @@ void adjust_sensor_min() {
   EEPROM.put(DIR_SENSOR_MIN, min_sensor);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  leave = !leave;
 }
 
 void adjust_sensor_max() {
@@ -96,14 +97,14 @@ void adjust_sensor_max() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!leave == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
           case 'Y':
             i = 0;
-            salir = !salir;
+            leave = !leave;
             break;
           case '1':
             insert[i] = key;
@@ -174,12 +175,12 @@ void adjust_sensor_max() {
   EEPROM.put(DIR_SENSOR_MAX, max_sensor);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  leave = !leave;
 }
 
 void adjust_sensor() {
 
-  while (!salir == 1) {
+  while (!leave == 1) {
     if (show_adjust == 0) {
       display.clearDisplay();
       display.display();
@@ -201,7 +202,7 @@ void adjust_sensor() {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
           case '0':
-            salir = !salir;
+            leave = !leave;
             break;
           case 'B':
             adjust_sensor_max();
@@ -223,5 +224,5 @@ void adjust_sensor() {
       }
     }
   }
-  salir = !salir;
+  leave = !leave;
 }
