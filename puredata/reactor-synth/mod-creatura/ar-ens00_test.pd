@@ -1,16 +1,16 @@
-#N canvas 165 23 1114 650 10;
+#N canvas 0 48 1114 650 10;
 #N canvas 1 75 1009 524 fm 0;
 #X obj 266 160 hsl 128 15 0 1 0 1 empty empty amp_A 0.510787 10 7
 0 10 -262144 -258113 -1 6487 1;
 #X obj 462 547 osc~;
-#X obj 266 100 hsl 128 15 0 127 0 1 empty empty carr_A 123.471 10
+#X obj 266 100 hsl 128 15 0 127 0 1 empty empty carr_A 131.471 10
 7 0 10 -262144 -258113 -1 4700 1;
 #X obj 259 378 mtof;
 #X obj 298 447 +~;
-#X obj 133 100 hsl 128 15 0 127 0 1 empty empty mod 67.0934 10 7 0
+#X obj 133 100 hsl 128 15 0 127 0 1 empty empty mod 60.805 10 7 0
 10 -262144 -258113 -1 3445 1;
 #X obj 461 284 mtof;
-#X obj 133 175 hsl 128 15 0 1000 0 1 empty empty index 378.279 10
+#X obj 133 175 hsl 128 15 0 1000 0 1 empty empty index 391.452 10
 7 0 10 -262144 -258113 -1 4033 1;
 #X obj 463 493 *~ 500;
 #X obj 461 308 +;
