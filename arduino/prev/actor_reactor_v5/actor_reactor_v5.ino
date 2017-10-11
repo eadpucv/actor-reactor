@@ -1132,7 +1132,7 @@ void manual() {
 
 void send_data() {
   Serial.println(normalize);
-  OSCMessage msg("/bang/s01");
+  OSCMessage msg("/b02s");
   //msg.add("/");
   msg.add((float)normalize);
   mySerial.println("AT+CIPSEND=4,16");
