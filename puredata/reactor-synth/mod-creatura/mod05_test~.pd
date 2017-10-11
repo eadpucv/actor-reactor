@@ -36,31 +36,31 @@
 #X obj 84 365 *~ 0.5;
 #X obj 228 145 hsl 128 15 0 127 0 1 empty empty frq-osc_1 10 7 0 10
 -262144 -258113 -1 2800 1;
-#X obj 364 310 mtof;
-#X obj 367 485 *~ 0.5;
-#X obj 304 510 *~;
-#X obj 432 452 osc~ 80;
-#X obj 605 218 mtof;
+#X obj 143 406 mtof;
+#X obj 146 581 *~ 0.5;
+#X obj 83 606 *~;
+#X obj 211 548 osc~ 80;
+#X obj 359 259 mtof;
 #X obj 361 145 hsl 128 15 0 127 0 1 empty empty penv 10 7 0 10 -262144
 -258113 -1 0 1;
-#X obj 517 246 mtof;
+#X obj 271 287 mtof;
 #X obj 361 115 hsl 128 15 0 120 0 1 empty empty frq-osc_2 10 7 0 10
 -262144 -258113 -1 2000 1;
-#X obj 517 277 +~;
-#X obj 556 248 *~;
-#X obj 518 351 *~;
+#X obj 271 318 +~;
+#X obj 310 289 *~;
+#X obj 272 392 *~;
 #X obj 361 130 hsl 128 15 1.27 800 0 1 empty empty decay-osc_2 10 7
 0 10 -262144 -258113 -1 6800 1;
 #X obj 361 175 hsl 128 15 0 1 0 1 empty empty amp-osc_2 10 7 0 10 -262144
 -258113 -1 8600 1;
-#X msg 542 297 0;
-#X obj 518 387 *~ 0.9;
-#X obj 302 396 +~;
-#X obj 432 423 +~ 100;
-#X obj 303 338 *~ 1000;
+#X msg 296 338 0;
+#X obj 272 428 *~ 0.9;
+#X obj 81 492 +~;
+#X obj 211 519 +~ 100;
+#X obj 82 434 *~ 1000;
 #X obj 228 160 hsl 128 15 1.27 20000 0 1 empty empty decay-osc_1 10
 7 0 10 -262144 -258113 -1 12700 1;
-#X obj 292 544 *~;
+#X obj 71 640 *~;
 #N canvas 456 208 450 300 env 0;
 #X obj 15 18 inlet;
 #X obj 83 18 inlet;
@@ -89,7 +89,7 @@
 #X connect 10 0 7 0;
 #X connect 10 0 6 0;
 #X connect 10 0 5 0;
-#X restore 555 218 pd env;
+#X restore 309 259 pd env;
 #X obj 361 160 hsl 128 15 1.27 800 0 1 empty empty penv-dec 10 7 0
 10 -262144 -258113 -1 6700 1;
 #N canvas 426 311 450 300 env 0;
@@ -120,7 +120,7 @@
 #X connect 10 0 7 0;
 #X connect 10 0 6 0;
 #X connect 10 0 5 0;
-#X restore 581 324 pd env;
+#X restore 335 365 pd env;
 #N canvas 456 208 450 300 env 0;
 #X obj 15 18 inlet;
 #X obj 83 18 inlet;
@@ -149,20 +149,20 @@
 #X connect 10 0 7 0;
 #X connect 10 0 6 0;
 #X connect 10 0 5 0;
-#X restore 335 510 pd env;
+#X restore 114 606 pd env;
 #X obj 304 130 nbx 5 15 -1e+037 1e+037 0 1 empty empty r-range 0 -8
 0 10 -262144 -1 -1 124 256;
-#X obj 364 339 +;
-#X obj 400 310 t b f;
+#X obj 143 435 +;
+#X obj 179 406 t b f;
 #X obj 84 399 +~;
-#X obj 303 366 +~;
+#X obj 82 462 +~;
 #X obj 254 574 *~ 1;
 #X obj 273 68 * 127;
 #X obj 357 588 dac~;
-#X obj 303 452 osc~ 300;
-#X obj 368 452 osc~ 500;
-#X obj 368 424 +~ 50;
-#X obj 517 323 osc~ 400;
+#X obj 82 548 osc~ 300;
+#X obj 147 548 osc~ 500;
+#X obj 147 520 +~ 50;
+#X obj 271 364 osc~ 400;
 #X obj 73 189 * 10;
 #X connect 0 0 42 0;
 #X connect 0 0 49 0;

@@ -1,5 +1,5 @@
-#N canvas 34 1 1362 695 10;
-#X obj 362 626 *~;
+#N canvas -8 -8 1366 695 10;
+#X obj 655 282 *~;
 #X obj 100 105 bng 30 250 50 0 empty empty 6 8 15 0 25 -262144 -4032
 -1;
 #X obj 100 135 tgl 30 0 empty empty empty 17 7 0 10 -228856 -1 -1 0
@@ -19,15 +19,15 @@
 #X obj 21 104 t b f;
 #X text 247 725 mixer;
 #X text 360 726 fm-out;
-#X obj 249 708 outlet~;
-#X obj 361 706 outlet~;
+#X obj 542 364 outlet~;
+#X obj 654 362 outlet~;
 #X obj 35 339 inlet~;
 #X obj 99 340 inlet~;
 #X obj 36 421 *~;
 #X obj 98 422 *~;
 #X text 31 321 fm-auto;
 #X text 98 320 fm-in;
-#X obj 249 623 *~;
+#X obj 542 279 *~;
 #X obj 445 5 udpreceive 54321;
 #X obj 445 27 unpackOSC;
 #X obj 445 48 routeOSC /bang;
@@ -37,56 +37,56 @@
 #X obj 445 68 route /s06 /b06 /t06;
 #X obj 19 287 r~ mod_r06a;
 #X obj 127 287 r~ mod_r06;
-#X obj 267 678 s~ out_06;
-#X obj 375 677 s~ out_r06;
+#X obj 560 334 s~ out_06;
+#X obj 668 333 s~ out_r06;
 #X obj 454 107 udpreceive 54321;
 #X obj 454 129 unpackOSC;
 #X obj 454 150 routeOSC /bang;
 #X text 567 151 Arduino-OSC /bang/s04;
-#X obj 728 529 osc~;
-#X obj 901 240 mtof;
+#X obj 222 583 osc~;
+#X obj 395 294 mtof;
 #X obj 312 136 hsl 128 15 1.7 800 0 1 empty empty penv 10 7 0 10 -262144
 -1 -1 802 1;
-#X floatatom 900 386 5 0 0 0 - - -, f 5;
-#X obj 729 239 mtof;
+#X floatatom 394 440 5 0 0 0 - - -, f 5;
+#X obj 223 293 mtof;
 #X obj 312 166 hsl 128 15 0 127 0 1 empty empty frq 10 7 0 10 -262144
 -1 -1 5400 1;
-#X floatatom 729 271 5 0 0 0 - - -, f 5;
-#X obj 729 452 +~;
-#X obj 966 357 line~;
-#X obj 962 423 *~;
-#X obj 900 410 *;
-#X obj 964 478 *~;
-#X obj 963 449 lop~ 200;
-#X msg 873 325 1 0;
-#X obj 844 284 del;
-#X msg 862 261 0;
+#X floatatom 223 325 5 0 0 0 - - -, f 5;
+#X obj 223 506 +~;
+#X obj 460 411 line~;
+#X obj 456 477 *~;
+#X obj 394 464 *;
+#X obj 458 532 *~;
+#X obj 457 503 lop~ 200;
+#X msg 367 379 1 0;
+#X obj 338 338 del;
+#X msg 356 315 0;
 #X obj 312 121 hsl 128 15 1.27 800 0 1 empty empty penv-dec 10 7 0
 10 -262144 -1 -1 12400 1;
-#X msg 966 295 set 0 \$1;
-#X msg 966 321 0 781.132;
+#X msg 460 349 set 0 \$1;
+#X msg 460 375 0 781.132;
 #X obj 271 182 hradio 15 1 1 2 empty empty pol 0 -8 0 10 -262144 -1
 -1 0;
 #X obj 271 213 * 2;
-#X obj 1099 239 - 1;
-#X obj 728 660 *~;
+#X obj 392 229 - 1;
+#X obj 222 714 *~;
 #X obj 312 151 hsl 128 15 1.27 800 0 1 empty empty penv-dec 10 7 0
 10 -262144 -1 -1 12700 1;
-#X msg 813 422 set 0 \$1;
-#X msg 813 448 0 800;
-#X obj 813 515 line~;
-#X obj 810 582 lop~ 120;
-#X obj 809 554 *~;
+#X msg 307 476 set 0 \$1;
+#X msg 307 502 0 800;
+#X obj 307 569 line~;
+#X obj 304 636 lop~ 120;
+#X obj 303 608 *~;
 #X obj 312 106 hsl 128 15 0 1 0 1 empty empty amp 10 7 0 10 -262144
 -1 -1 12700 1;
-#X msg 753 501 0;
-#X obj 1099 270 t b f;
-#X obj 915 129 spigot;
-#X obj 915 154 random 127;
-#X obj 801 724 dac~;
-#X obj 350 511 osc~ 200;
-#X obj 318 406 mtof;
-#X obj 728 696 *~ 0.9;
+#X msg 247 555 0;
+#X obj 392 260 t b f;
+#X obj 594 459 spigot;
+#X obj 594 484 random 127;
+#X obj 294 771 dac~;
+#X obj 581 234 osc~ 200;
+#X obj 526 202 mtof;
+#X obj 221 743 *~ 0.9;
 #X connect 0 0 15 0;
 #X connect 0 0 32 0;
 #X connect 1 0 51 0;
