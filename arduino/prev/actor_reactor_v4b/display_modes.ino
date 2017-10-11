@@ -60,6 +60,7 @@ void automatic() {
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
+          /*
           case 'A':
             leave = !leave;
             break;
@@ -72,6 +73,7 @@ void automatic() {
           case 'D':
             leave = !leave;
             break;
+            */
           case '0':
             leave = !leave;
             break;
