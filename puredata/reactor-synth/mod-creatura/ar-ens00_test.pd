@@ -3,14 +3,14 @@
 #X obj 266 160 hsl 128 15 0 1 0 1 empty empty amp_A 0.510787 10 7
 0 10 -262144 -258113 -1 6487 1;
 #X obj 462 547 osc~;
-#X obj 266 100 hsl 128 15 0 127 0 1 empty empty carr_A 123.471 10
+#X obj 266 100 hsl 128 15 0 127 0 1 empty empty carr_A 125.471 10
 7 0 10 -262144 -258113 -1 4700 1;
 #X obj 259 378 mtof;
 #X obj 298 447 +~;
-#X obj 133 100 hsl 128 15 0 127 0 1 empty empty mod 67.0934 10 7 0
+#X obj 133 100 hsl 128 15 0 127 0 1 empty empty mod 65.625 10 7 0
 10 -262144 -258113 -1 3445 1;
 #X obj 461 284 mtof;
-#X obj 133 175 hsl 128 15 0 1000 0 1 empty empty index 378.279 10
+#X obj 133 175 hsl 128 15 0 1000 0 1 empty empty index 375.559 10
 7 0 10 -262144 -258113 -1 4033 1;
 #X obj 463 493 *~ 500;
 #X obj 461 308 +;
@@ -592,7 +592,7 @@
 #X connect 22 0 23 0;
 #X connect 23 0 19 0;
 #X restore 137 327 pd amp-pan-mo;
-#X obj 100 280 tgl 15 1 empty empty 0 5 8 0 10 -262144 -1 -1 0 1;
+#X obj 100 280 tgl 15 1 empty empty 0 5 8 0 10 -262144 -1 -1 1 1;
 #X obj 466 154 vu 8 120 empty empty -1 -8 0 10 -66577 -1 0 0;
 #X obj 477 154 vu 8 120 empty empty -1 -8 0 8 -66577 -1 1 0;
 #X obj 435 337 prvu~;
@@ -625,7 +625,7 @@
 #X connect 8 0 7 0;
 #X restore 642 39 pd cpu;
 #X obj 374 100 nbx 5 15 -1e+37 1e+37 0 0 empty empty cpu -25 7 0 10
--262144 -1 -66577 10 256;
+-262144 -1 -66577 12 256;
 #X obj 555 17 loadbang;
 #X obj 431 100 tgl 30 0 empty empty DSP 3 15 0 14 -262144 -258113 -1
 0 1;
@@ -689,9 +689,9 @@
 #X restore 321 460 pd amp-pan-mo;
 #X obj 324 73 * 127;
 #X obj 298 149 vsl 15 128 0 127 0 1 empty empty empty 5 10 0 10 -4032
--1 -1 9000 1;
+-1 -1 9200 1;
 #X obj 318 154 vu 8 120 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 298 280 tgl 15 1 empty empty 6 5 8 0 10 -262144 -1 -1 0 1;
+#X obj 298 280 tgl 15 1 empty empty 6 5 8 0 10 -262144 -1 -1 1 1;
 #X obj 301 132 hsl 25 15 0 -1 0 1 empty empty pan 3 7 0 10 -262144
 -1 -1 1600 1;
 #X obj 438 484 prvu~;
