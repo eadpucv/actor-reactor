@@ -1,11 +1,22 @@
 #include <SoftwareSerial.h>
 SoftwareSerial ESP(11, 10); // RX | TX
 
-//AT+UART_DEF=57600,8,1,0,0
+/* 
 
+ 
+AT+UART_DEF=57600,8,1,0,0
+
+
+
+*/
 void setup()
-  {  Serial.begin(57600);
+  {  
+    
+     Serial.begin(57600);
      ESP.begin(57600);
+
+      //Serial.begin(115200);
+      //ESP.begin(115200);
   }
 
 void loop()

@@ -27,10 +27,14 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
+<<<<<<< HEAD
 #define WLAN_ADDR  "240.0.0.1"      // receiving PC ip
+=======
+#define WLAN_ADDR  "192.168.1.255"      // receiving PC ip
+>>>>>>> 1f8546508dcf0d57884f806b5198789727ca9be8
 #define PORT  1112
-#define WLAN_SSID  "AC"                 // wifi SSID
-#define WLAN_PASS  "actor-reactor"      // wifi password 
+#define WLAN_SSID  "MadLab"                 // wifi SSID
+#define WLAN_PASS  "12345678"      // wifi password 
 
 String HOSTNAME = String("s01");        // hostname
 
@@ -79,6 +83,8 @@ void setup () {
   Serial.setTimeout(10000);
 
   digitalWrite(4, 0);
+
+  /* Reset */
   pinMode(13, OUTPUT);
   delay(10);
   pinMode(13, INPUT);
@@ -112,7 +118,7 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
   display.display();
-  display.println("detecting wifi...");
+  display.println("conectando...");
   display.display();
 
   int attempts = 20;
@@ -129,7 +135,8 @@ void setup () {
     if(resp){
       wifi = true;
       Serial.println(resp);
-      Serial.println("connected!");
+      Serial.println("conectado!");
+      break;
       count = attempts;
     }
     count ++;

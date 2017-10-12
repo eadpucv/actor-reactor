@@ -18,15 +18,14 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-#define WLAN_ADDR  "192.168.1.139"    // Dirección IP del PC que recibe
+#define WLAN_ADDR  "192.168.1.255"
 #define PORT  1112
-#define WLAN_SSID  "AC"               // SSID de la red Wi-Fi
-#define WLAN_PASS  "actor-reactor"    // Password de la red Wi-Fi
+#define WLAN_SSID  "MadLab"
+#define WLAN_PASS  "12345678"
 
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
-float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0, last_motor_pos;
+float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0;
 float EPSILON = 9.999999747378752E-5f;
-boolean variable;
 
 //EEPROM.get(DIR_SENSOR_MIN, min_sensor);
 //EEPROM.get(DIR_SENSOR_MAX, max_sensor);
@@ -36,10 +35,10 @@ int i = 0;
 double normalize;
 boolean mainmenu_disp = 0, resp;
 boolean salir = 0;
-boolean endstop, endstop_activation = 0, endstop_position = 0;
+boolean endstop = 1, endstop_activation = 0, endstop_position = 0;
 boolean show_adjust = 0;
 long motor_pos_previous = 0;
-float sonar_read, acum_sonar_read;
+float sonar_read, acum_sonar_read, last_motor_pos;
 int analog_counter = 0;
 word previous_millis, actual_millis, diferencia;
 
@@ -66,11 +65,10 @@ SoftwareSerial mySerial(11, 10);
 
 void setup () {
   Serial.begin(57600);
-  pinMode(12, INPUT);
   mySerial.begin(57600);
 
   Serial.setTimeout(10000);
-  
+  pinMode(12, INPUT);
   digitalWrite(4, 0);
   pinMode(13, OUTPUT);
   delay(10);
@@ -1069,23 +1067,14 @@ void mainmenu() {
 void endstop_action() {
   stepper.setCurrentPosition(0);
   if (last_motor_pos < motor_pos){
-    do{
-      motor_pos--;
-      stepper.moveTo(motor_pos);
-      stepper.run();
-    }while(digitalRead(12) == 0);
     stepper.runToNewPosition(-10);
     stepper.setCurrentPosition(0);
   }
-  else if (last_motor_pos > motor_pos){
-    do{
-      motor_pos++;
-      stepper.moveTo(motor_pos);
-      stepper.run();
-    }while(digitalRead(12) == 0);
+  if (last_motor_pos > motor_pos){
+    stepper.runToNewPosition(10);
+    stepper.setCurrentPosition(0);
   }
-  stepper.setCurrentPosition(0);
-  motor_pos = 0;
+  
 }
 
 void manual() {
@@ -1105,14 +1094,14 @@ void manual() {
     stepper.run();
     if (key2 == '6') {
       //stepper.setSpeed(100.0);
+      
       display.clearDisplay();
       display.display();
       display.print(stepper.currentPosition());
       display.display();
-      last_motor_pos = motor_pos;
       motor_pos++;
       endstop = digitalRead(12);
-      Serial.println(endstop);
+      Serial.println(!endstop);
       if (!endstop)
         endstop_action();
         
@@ -1125,12 +1114,12 @@ void manual() {
       display.display();
       display.print(stepper.currentPosition());
       display.display();
-      last_motor_pos = motor_pos;
       motor_pos--;
       endstop = digitalRead(12);
-      Serial.println(endstop);
+      Serial.println(!endstop);
       if (!endstop)
         endstop_action();
+        
       stepper.moveTo(motor_pos);
       stepper.run();
     }
@@ -1142,7 +1131,9 @@ void manual() {
 }
 
 void send_data() {
+  Serial.println(normalize);
   OSCMessage msg("/b02s");
+  //msg.add("/");
   msg.add((float)normalize);
   mySerial.println("AT+CIPSEND=4,16");
   mySerial.find(">");
@@ -1165,12 +1156,12 @@ void automatic() {
     }
     sonar_read = constrain(sonar_read, min_sensor, max_sensor);
     normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
-    normalize = normalize / 10000;
+    normalize = normalize / 10000.0;
     send_data();
     //motor_pos = DoubleQuadraticBezier(sonar_read, bezier_A, bezier_B, bezier_C, bezier_D);
     last_motor_pos = motor_pos;
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
-    motor_pos = map(sonar_read, min_sensor, max_sensor, min_actuator, max_actuator);
+    motor_pos = map(sonar_read, min_sensor, max_sensor, min_actuator, max_actuator);  
     //Serial.println(motor_pos);
     endstop = digitalRead(12);
       if (!endstop)
@@ -1222,6 +1213,7 @@ void loop() {
     }
 
   }
+
 
 }
 
