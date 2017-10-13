@@ -32,6 +32,11 @@ float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0;
 float EPSILON = 9.999999747378752E-5f;
 
+// motor_soft 
+float motor_soft = 0;
+float A = 0.98;
+float B = 0.02;
+
 //EEPROM.get(DIR_SENSOR_MIN, min_sensor);
 //EEPROM.get(DIR_SENSOR_MAX, max_sensor);
 //EEPROM.get(DIR_ACTUATOR_MAX, max_actuator);
@@ -1167,13 +1172,18 @@ void automatic() {
     last_motor_pos = motor_pos;
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
     motor_pos = map(sonar_read, min_sensor, max_sensor, min_actuator, max_actuator);  
+    
+    motor_soft = last_motor_pos * A + motor_pos * B;
+
+    last_motor_pos = motor_soft;// motor_pos;
+    
     //Serial.println(motor_pos);
     endstop = digitalRead(12);
       if (!endstop)
         endstop_action();
         
     //Serial.println(motor_pos);
-    stepper.moveTo(motor_pos);
+    stepper.moveTo(motor_soft);
     stepper.run();
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
