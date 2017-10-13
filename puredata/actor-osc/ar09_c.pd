@@ -1,0 +1,4 @@
+#N canvas 1098 390 308 298 10;
+#X obj 54 16 receive fromGUI;
+#X obj 54 232 send toNetwork;
+#X connect 0 0 1 0;

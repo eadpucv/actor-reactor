@@ -16,7 +16,7 @@ Este proyecto se basa en la unidad [Actor-Reactor documenta 14](https://github.c
 
 * [Herbert Spencer](http://wiki.ead.pucv.cl/index.php/Herbert_Spencer), Diseño de Artefactos
 * [Marcelo Araya](http://wiki.ead.pucv.cl/index.php/Marcelo_Araya), Diseño de Creaturas
-* [Óscar Santis](https://soundcloud.com/oscarsantis), Diseño acústico
+* [Óscar Santis](https://soundcloud.com/oscarsantis), Diseño de sonido
 * [Leonardo Aravena](http://wiki.ead.pucv.cl/index.php/Leonardo_Aravena), Diseño y fabricación dispositivos
 * [Ismael Martinez](https://www.linkedin.com/in/ismael-martinez-8bb78ba3/), Diseño electrónico 
 
@@ -25,10 +25,6 @@ Este proyecto se basa en la unidad [Actor-Reactor documenta 14](https://github.c
 Catalina Vergara, Camila Campos Leiva, Carolina González, Paz Orellana, Javier Andre Arancibia Romero, Javier Zambra, Sofía Soto, Ur Conejeros, Francisca Collarte Videla, Tamara Hidalgo Porzio, Doyma Henríquez Atlagić, María Ignacia Morales, Paula Sotomayor, Javiera Martinez Guajardo, Bastian Maluenda
 
 #### Taller de Espacios Expositivos
-
-##### Esquema de Control y Configuración en Menú de Pantalla
-
-![Esquema de Control](img/actor-reactor-ai.png)
 
 #### Construido sobre
 

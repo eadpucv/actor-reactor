@@ -1,0 +1,165 @@
+#N canvas 267 253 839 405 10;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-gain 256 float 3;
+#A 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;
+#X coords 0 1 256 -0.01 512 70 1 0 0;
+#X restore 269 45 graph;
+#X text 255 36 1;
+#X text 264 209 0;
+#X text 232 103 0.01;
+#N canvas 116 189 396 652 fft-analyse 0;
+#X obj 15 164 *~;
+#X obj 14 99 inlet~;
+#X obj 15 218 rfft~;
+#X obj 14 353 *~;
+#X obj 55 353 *~;
+#X obj 74 225 *~;
+#X obj 16 539 *~;
+#X obj 74 283 /~ 768;
+#X obj 75 251 *~;
+#X obj 15 399 rifft~;
+#X obj 16 566 outlet~;
+#X text 109 237 amplification of;
+#X text 116 255 array values;
+#X text 137 285 Normalization;
+#X obj 34 140 tabreceive~ \$0-hanning;
+#X obj 73 196 tabreceive~ \$0-gain;
+#X obj 35 517 tabreceive~ \$0-hanning;
+#X obj 15 8 block~ 512 4;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 3 0 9 0;
+#X connect 4 0 9 1;
+#X connect 5 0 8 0;
+#X connect 5 0 8 1;
+#X connect 6 0 10 0;
+#X connect 7 0 3 1;
+#X connect 7 0 4 1;
+#X connect 8 0 7 0;
+#X connect 9 0 6 0;
+#X connect 14 0 0 1;
+#X connect 15 0 5 0;
+#X connect 15 0 5 1;
+#X connect 16 0 6 1;
+#X restore 76 259 pd fft-analyse;
+#N canvas 270 204 522 300 hanning 0;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array \$0-hanning 512 float 0;
+#X coords 0 1 511 0 200 120 1;
+#X restore 259 63 graph;
+#X msg 137 77 0;
+#X obj 31 126 osc~;
+#X obj 31 78 samplerate~;
+#X obj 31 149 *~ -0.5;
+#X obj 31 172 +~ 0.5;
+#X text 245 55 1;
+#X text 238 173 0;
+#X text 254 186 0;
+#X obj 31 102 / 512;
+#X obj 23 55 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X text 440 189 511;
+#X text 24 12 Hanning window:;
+#X obj 23 197 tabwrite~ \$0-hanning;
+#X obj 23 32 loadbang;
+#X connect 1 0 2 1;
+#X connect 2 0 4 0;
+#X connect 3 0 9 0;
+#X connect 4 0 5 0;
+#X connect 5 0 13 0;
+#X connect 9 0 2 0;
+#X connect 10 0 3 0;
+#X connect 10 0 1 0;
+#X connect 10 0 13 0;
+#X connect 14 0 10 0;
+#X restore 104 237 pd hanning;
+#X text 761 209 256;
+#X obj 790 44 vsl 15 70 0 1 0 0 \$0-const empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 356 356 s \$0-gain;
+#X msg 356 333 const \$1;
+#X floatatom 356 313 5 0 0 0 - - -, f 5;
+#X obj 76 353 tabwrite~ \$0-scope;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-scope 100 float 1;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 99 -1 200 140 1 0 0;
+#X restore 21 45 graph;
+#X obj 153 309 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 175 331 metro 10;
+#X obj 175 309 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 1 75 450 300 (subpatch) 0;
+#X array \$0-spectrum 256 float 1;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 512 255 0 512 70 1 0 0;
+#X restore 269 134 graph;
+#X text 258 221 0 Hz;
+#X text 761 221 22100 Hz;
+#X obj 248 300 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 270 322 metro 10;
+#X obj 270 300 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 248 354 s \$0-bang;
+#N canvas 322 559 450 300 fft-spectrum 0;
+#X obj 66 66 rfft~;
+#X obj 66 99 *~;
+#X obj 97 99 *~;
+#X obj 66 129 sqrt~;
+#X text 130 67 Fourier series;
+#X text 135 120 magnitude;
+#X text 133 105 calculate;
+#X obj 66 230 tabwrite~ \$0-spectrum;
+#X obj 128 205 r \$0-bang;
+#X obj 66 24 inlet~;
+#X obj 67 155 biquad~ 0 0 0 0 1;
+#X obj 266 39 block~ 512 4;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 0 1 2 0;
+#X connect 0 1 2 1;
+#X connect 1 0 3 0;
+#X connect 2 0 3 0;
+#X connect 3 0 10 0;
+#X connect 8 0 7 0;
+#X connect 9 0 0 0;
+#X connect 10 0 7 0;
+#X restore 90 286 pd fft-spectrum;
+#X text 254 193 0;
+#X obj 76 213 inlet~;
+#X obj 26 213 noise~;
+#X obj 356 286 r \$0-const;
+#X text 254 128 1;
+#X connect 4 0 23 0;
+#X connect 4 0 11 0;
+#X connect 9 0 8 0;
+#X connect 10 0 9 0;
+#X connect 13 0 11 0;
+#X connect 14 0 11 0;
+#X connect 15 0 14 0;
+#X connect 19 0 22 0;
+#X connect 20 0 22 0;
+#X connect 21 0 20 0;
+#X connect 25 0 4 0;
+#X connect 27 0 10 0;
