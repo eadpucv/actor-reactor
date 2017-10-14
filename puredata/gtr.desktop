@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=reactor-puredata
+Comment=Módulo de sonido para Artefactos y Creaturas
+Exec=pd /home/pi/actor-reactor/puredata/reactor-synth/mod-creatura/ar-ens00.pd
+Icon=/home/pi/actor-reactor/img/actor-reactor-logo.svg
+Path=
+Terminal=true
+StartupNotify=false
