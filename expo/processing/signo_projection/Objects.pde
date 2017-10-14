@@ -30,6 +30,7 @@ class Signo {
   void render() {
     pushMatrix();
     translate(x, y);
+    rotate(t);
     for (int i = 0; i < lin.length; i++) {
       lin[i].render();
     }
@@ -62,8 +63,6 @@ class Linea {
     }
 
     if (curve) {
-
-
       float d = dist(x1, y1, x2, y2);
       float amp = map(d, 0, radius * 2, 1, 0);
 
@@ -73,7 +72,7 @@ class Linea {
   }
 
   void render() {
-    stroke(c);
+    stroke(c, alpha);
     strokeWeight(sw);
     noFill();
     if (curve) {
@@ -92,7 +91,7 @@ class Point {
     this.x = x;
     this.y = y;
     t = random(TWO_PI);
-    s = random(.5, 1.5);
+    s = random(0, 1);
   }
 
   void move() {

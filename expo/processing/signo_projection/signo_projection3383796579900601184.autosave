@@ -6,12 +6,12 @@
  
  */
 
-
+PGraphics overlay;
 PVector[] pt;      // coordinates
 int sides;         
 float radius;
 Signo signo;
-
+boolean looping, fading, bang;
 String debugText;
 int randomText;
 PFont font;
@@ -20,20 +20,27 @@ int fs;
 color black, white, red, gold;
 color[] strokeColor = new color[3];
 
+int fadingTime, blackTime;
+int timeA, timeB;
 
-boolean fading = true;
-int fadingTime = 1000;
-float fadeFactor;
-float alpha = 255.0;
-int flag;
-float t; // rotation angle
+boolean tilt;
+
 
 void setup() {
   //fullScreen();
   size(640, 480);
   sides = 9;
   radius = width / 6;   // sign radius
-  fs = width / 48;      // font size
+  fs = width / 28;      // font size
+
+  overlay = createGraphics(width, height);
+
+  looping = false;
+  fading = false;
+  bang = false;
+
+  fadingTime = 89000;
+  blackTime = 9900;
 
 
   font = createFont("Helvetica", fs);
@@ -66,38 +73,88 @@ void setup() {
 
   debugText = "";
   background(0);
-
-  fadeFactor = 255.0 / float(fadingTime);
-  println(fadeFactor);
-  background(0);
+  timeA = millis();
+  tilt = true;
 }
 
+void keyPressed() {
+  tilt = !tilt;
+  println(tilt);
+}
 
 void draw() {
-  
+  background(0);
   signo.render();
   drawText();
-
-  alpha -= fadeFactor;
-  if (alpha < 0) {
-    fading = false;
-    alpha = 255;
-    flag = frameCount;
-    signo = new Signo(width/2, height/2);
-    background(0);
+  if (tilt) {
+    fadeOut();
+    image(overlay, 0, 0);
+  } else {
+    fadeIn();
+    blendMode(MULTIPLY);
+    image(overlay, 0, 0);
+    blendMode(NORMAL);
   }
-  
-  blendMode(DARKEST);
-  fill(0, 2);
-  noStroke();
-  rect(0, 0, width, height);
-  blendMode(NORMAL);
-  t+= 0.002;
 }
 
+void fadeOut() {
+  overlay.beginDraw();
+  overlay.blendMode(DARKEST);
+  overlay.fill(0, 1);
+  overlay.noStroke();
+  overlay.rect(0, 0, width, height);
+  overlay.endDraw();
+}
+
+void fadeIn() {
+  overlay.beginDraw();
+  overlay.blendMode(MULTIPLY);
+  overlay.fill(255, 5);
+  overlay.noStroke();
+  overlay.rect(0, 0, width, height);
+  overlay.endDraw();
+}
+
+/*
+void draw() {
+ 
+ if (millis() - timeA > blackTime) {
+ bang = true;
+ timeA = millis();
+ }
+ 
+ if (bang) {
+ signo = new Signo(width / 2, height / 2);
+ strokeWeight(1);
+ stroke(255);
+ signo.render();
+ drawText();
+ bang = false;
+ fading = true;
+ timeB = millis();
+ }
+ 
+ blendMode(BLEND);
+ signo.render();
+ blendMode(NORMAL);
+ 
+ if (fading) {
+ blendMode(DARKEST);
+ 
+ fill(0, 1);
+ noStroke();
+ rect(0, 0, width, height);
+ if (millis() - timeB > fadingTime) {
+ fading = false;
+ timeA = millis();
+ }
+ blendMode(NORMAL);
+ }
+ } 
+ */
 
 void drawText() {
-  fill(255, alpha);
+  fill(255);
   noStroke();
   textAlign(CENTER);
   pushMatrix();
