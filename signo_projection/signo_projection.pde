@@ -22,8 +22,8 @@ color[] strokeColor = new color[3];
 
 
 void setup() {
-  //fullScreen();
-  size(640, 480);
+  fullScreen();
+  // size(640, 480);
   sides = 9;
   radius = width / 10;   // sign radius
   fs = width / 48;      // font size
