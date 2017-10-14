@@ -1,8 +1,8 @@
 /*
 
- cartas de la phalène ~ documenta 14 ~ Atenas
+ Artefactos y Creaturas
  
- amereida
+ Proyección de 8 signos en transición
  
  */
 
