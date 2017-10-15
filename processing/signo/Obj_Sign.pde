@@ -31,13 +31,13 @@ class Sign {
       bitmap.text(spanish[randomWord], radius * .4, radius * .4);
       break;
     case 1: /* english */
-      bitmap.text(english[randomWord], radius * 1.6, radius * .4);
+      bitmap.text(english[randomWord], radius * 1.8, radius * .4);
       break;
     case 2: /* german */
       bitmap.text(german[randomWord], radius * .4, radius * 1.8);
       break;
     case 3: /* greek */
-      bitmap.text(greek[randomWord], radius * 1.6, radius * 1.8);
+      bitmap.text(greek[randomWord], radius * 1.8, radius * 1.8);
       break;
     }
     bitmap.endDraw();
