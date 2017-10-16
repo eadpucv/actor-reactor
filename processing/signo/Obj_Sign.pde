@@ -42,11 +42,11 @@ class Sign {
       bitmap.text(english[randomWord], radius * 1.8, radius * .4);
       break;
     case 2: /* german */
-      bitmap.text(german[randomWord], radius * .4, radius * 1.8);
+      bitmap.text(german[randomWord], radius * .4, radius * 2);
       break;
     case 3: /* greek */
       bitmap.textFont(greekFont);
-      bitmap.text(greek[randomWord], radius * 1.8, radius * 1.8);
+      bitmap.text(greek[randomWord], radius * 1.8, radius * 2);
       break;
     }
     bitmap.endDraw();
