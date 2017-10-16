@@ -34,21 +34,25 @@ class Sign {
     bitmap.fill(255);
     bitmap.textFont(font);
 
+    bitmap.pushMatrix();
+    bitmap.translate(x, y);
+    
     switch(lang) {
     case 0: /* spanish */
-      bitmap.text(spanish[randomWord], radius * .4, radius * .4);
+      bitmap.text(spanish[randomWord], -radius, 0);
       break;
     case 1: /* english */
-      bitmap.text(english[randomWord], radius * 1.8, radius * .4);
+      bitmap.text(english[randomWord], radius, 0);
       break;
     case 2: /* german */
-      bitmap.text(german[randomWord], radius * .4, radius * 2);
+      bitmap.text(german[randomWord], -radius, radius);
       break;
     case 3: /* greek */
       bitmap.textFont(greekFont);
-      bitmap.text(greek[randomWord], radius * 1.8, radius * 2);
+      bitmap.text(greek[randomWord], 0, 0);
       break;
     }
+    bitmap.popMatrix();
     bitmap.endDraw();
 
     while (count < numLines) {
