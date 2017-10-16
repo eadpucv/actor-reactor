@@ -1,6 +1,8 @@
 /*
 
  Proyección Artefactos y Creaturas
+ Octubre 2017
+ Taller de Espacios Expositivos e[ad] · PUCV
  
  */
 
@@ -12,7 +14,7 @@ Sign signA, signB;
 
 
 
-PFont font;
+PFont font, greekFont;
 
 color black, white, red, gold;
 color[] strokeColor = new color[3];
@@ -26,6 +28,7 @@ void setup() {
   
   noCursor();
   font = loadFont("Avenir.vlw");  
+  greekFont = loadFont("Hellenic.vlw");
   
   // basic 9 positions in the circle
   pt = new PVector[sides];
@@ -45,7 +48,7 @@ void setup() {
   black = color(0, 0, 0);
   white = color(255, 255, 255);
   red = color(255, 68, 0);
-  gold = color(209, 194, 143);
+  gold = color(142, 127, 80);
 
   strokeColor[0] = white;
   strokeColor[1] = red;
@@ -57,7 +60,6 @@ void setup() {
   imageMode(CENTER);
   rectMode(CENTER);
 } 
-
 
 void draw() {
   background(0);
@@ -74,4 +76,10 @@ void draw() {
   rect(10, height/2, 10, h1);
   rect(20, height/2, 10, h2);
   */ 
+  
+  /* debug lifespan
+  fill(255);
+  textFont(font);
+  text(signA.tic, 20, height - 24);
+  */
 }

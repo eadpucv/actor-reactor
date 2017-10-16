@@ -15,11 +15,11 @@ class Sign {
     this.x = x;
     this.y = y;
     reset();
-    maxalpha = 80;
+    maxalpha = 50;
   }
 
   void reset() {
-    lifespan = round(random(100, 800));
+    lifespan = round(random(70, 250));
     existence = lifespan * 1.5;
     tic = 0;
     fade = 255;
@@ -45,6 +45,7 @@ class Sign {
       bitmap.text(german[randomWord], radius * .4, radius * 1.8);
       break;
     case 3: /* greek */
+      bitmap.textFont(greekFont);
       bitmap.text(greek[randomWord], radius * 1.8, radius * 1.8);
       break;
     }

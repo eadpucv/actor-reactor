@@ -13,7 +13,7 @@ class Line {
     tinc = random(-0.0002, 0.0002);
 
     c = strokeColor[round(random(2))];
-    sw = random(.5, 2);
+    sw = random(.5, 3);
 
     if (random(1) > .5) { // curve-straight probability
       curve = true;
