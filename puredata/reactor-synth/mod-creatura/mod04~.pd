@@ -22,7 +22,7 @@
 #X obj 24 29 unpackOSC;
 #X obj 24 50 routeOSC /bang;
 #X obj 148 175 hsl 128 15 0 1 0 1 empty empty amp-osc_1 10 7 0 10 -262144
--258113 -1 7700 1;
+-258113 -1 9200 1;
 #X obj 24 70 route /s04 /b04 /t04;
 #X text 137 51 Arduino-OSC /bang/s04;
 #X obj 19 287 r~ mod_r04a;
@@ -30,7 +30,7 @@
 #X obj 253 617 s~ out_04;
 #X obj 329 617 s~ out_r04;
 #X obj 148 145 hsl 128 15 0 127 0 1 empty empty frq-osc_1 10 7 0 10
--262144 -258113 -1 6400 1;
+-204800 -258113 -1 6400 1;
 #X obj 253 457 osc~ 100;
 #X obj 314 315 mtof;
 #X obj 317 457 osc~ 150;
@@ -40,10 +40,10 @@
 #X obj 467 328 osc~;
 #X obj 556 202 mtof;
 #X obj 281 145 hsl 128 15 0 127 0 1 empty empty penv 10 7 0 10 -262144
--258113 -1 7604 1;
+-258113 -1 8852 1;
 #X obj 467 251 mtof;
 #X obj 281 115 hsl 128 15 0 120 0 1 empty empty frq-osc_2 10 7 0 10
--262144 -258113 -1 3700 1;
+-204800 -258113 -1 3700 1;
 #X obj 467 282 +~;
 #X obj 506 253 *~;
 #X obj 468 356 *~;
@@ -69,7 +69,7 @@
 #X obj 23 104 del;
 #X msg 41 83 0;
 #X msg 83 110 set 0 \$1;
-#X msg 83 136 0 114.476;
+#X msg 83 136 0 13.8484;
 #X obj 15 55 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 84 262 outlet~;
@@ -89,7 +89,7 @@
 #X connect 10 0 5 0;
 #X restore 506 201 pd env;
 #X obj 281 160 hsl 128 15 1.27 800 0 1 empty empty penv-dec 10 7 0
-10 -262144 -258113 -1 1800 1;
+10 -262144 -258113 -1 200 1;
 #N canvas 426 311 450 300 env 0;
 #X obj 15 18 inlet;
 #X obj 83 18 inlet;
