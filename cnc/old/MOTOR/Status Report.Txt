@@ -1,0 +1,13 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [Placa_Motor.PrjPcb]
+   Generated File[PCB_motor_v2.GTL]
+   Generated File[PCB_motor_v2.RUL]
+   Generated File[PCB_motor_v2.EXTREP]
+   Generated File[PCB_motor_v2.REP]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 13:54:33 On 11-09-2017
