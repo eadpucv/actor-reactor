@@ -59,7 +59,7 @@ void setup() {
 
   imageMode(CENTER);
   rectMode(CENTER);
-  textMode(CENTER);
+  // textMode(CENTER);
 } 
 
 void draw() {

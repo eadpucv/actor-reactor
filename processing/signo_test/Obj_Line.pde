@@ -40,27 +40,22 @@ class Line {
     c2.s = random(.5, 1.5);
   }
 
-  void render(PGraphics bitmap, float a) {
+  void render(PGraphics bm, float a) {
 
-    bitmap.beginDraw();
-    bitmap.pushMatrix();
-    bitmap.translate(bitmap.width/2, bitmap.height/2);
-    bitmap.rotate(t);
-    bitmap.blendMode(BLEND);
-    bitmap.stroke(c, a);
-    bitmap.strokeWeight(sw);
-    bitmap.noFill();
-
-
-    bitmap.bezier(p1.x, p1.y, c1.x, c1.y, c2.x, c2.y, p2.x, p2.y);
+    bm.rotate(t);
+    bm.blendMode(BLEND);
+    bm.stroke(c, a);
+    bm.strokeWeight(sw);
+    bm.noFill();
+    bm.bezier(p1.x, p1.y, c1.x, c1.y, c2.x, c2.y, p2.x, p2.y);
+    
     p1.move();
     p2.move();
     c1.move();
     c2.move();
 
-    bitmap.blendMode(NORMAL);
-    bitmap.popMatrix();
-    bitmap.endDraw();
+    bm.blendMode(NORMAL);
+   
     t += tinc;
   }
 }
