@@ -21,12 +21,12 @@
 #X obj 281 115 hsl 128 15 0 1 0 1 empty empty kp_amp 1 10 7 0 10 -204786
 -258113 -1 12700 1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty -2 -8 0 10 -4034
--1 -1 0 1;
+-1 -1 3300 1;
 #X obj 440 604 *~ 0.99;
 #X obj 16 159 int;
 #X obj 16 176 change;
 #X obj 16 139 * 10;
-#X obj 281 100 hsl 128 15 0 127 0 1 empty empty kp_frq 11.5623 10
+#X obj 281 100 hsl 128 15 0 127 0 1 empty empty kp_frq 20.8957 10
 8 0 10 -204786 -258113 -1 600 1;
 #X obj 534 238 mtof;
 #X obj 137 302 t b f;

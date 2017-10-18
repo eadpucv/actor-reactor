@@ -42,7 +42,7 @@
 #X connect 15 0 2 0;
 #X connect 15 1 2 1;
 #X connect 16 0 17 0;
-#X restore 287 367 pd asr;
+#X restore 284 399 pd asr;
 #N canvas 28 456 450 397 asr 0;
 #X msg 57 204 1 0;
 #X msg 57 178 set 1 \$1;
@@ -89,21 +89,21 @@
 #X obj 292 535 osc~;
 #X obj 252 463 +~;
 #X obj 293 506 +~;
-#X obj 251 367 osc~;
-#X obj 252 394 *~;
+#X obj 249 298 osc~;
+#X obj 252 418 *~;
 #X obj 9 467 *~;
 #X obj 100 100 bng 30 250 50 0 empty empty 8 8 15 0 25 -262144 -159808
 -1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty 10 15 0 10 -159808
--1 -1 0 1;
+-1 -1 4200 1;
 #X obj 130 132 vsl 15 55 0 1 0 1 empty empty -> 2 7 0 10 -228856 -258113
 -1 4000 1;
 #X obj 115 132 vsl 15 55 0 10000 0 1 empty empty >- 2 7 0 10 -232576
 -258113 -1 2300 1;
 #X obj 100 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -232576
 -258113 -1 500 1;
-#X obj 240 100 hsl 128 15 0 127 0 1 empty empty mod 105.913 10 7 0
-10 -262144 -258113 -1 500 1;
+#X obj 240 100 hsl 128 15 0 127 0 1 empty empty mod 152.301 10 7 0
+10 -262144 -258113 -1 400 1;
 #X obj 240 130 hsl 128 15 0 1000 0 1 empty empty a 0 10 7 0 10 -262144
 -258113 -1 0 1;
 #X msg 663 133 label a \$1;
@@ -113,7 +113,7 @@
 #X obj 240 160 hsl 128 15 0 2000 0 1 empty empty r 1291.34 10 7 0
 10 -262144 -258113 -1 8200 1;
 #X msg 664 167 label r \$1;
-#X obj 445 100 hsl 128 15 0 127 0 1 empty empty carr 53.4454 10 7
+#X obj 445 100 hsl 128 15 0 127 0 1 empty empty carr 86.9909 10 7
 0 10 -232576 -258113 -1 1500 1;
 #X msg 653 225 label carr \$1;
 #X obj 445 130 hsl 128 15 0 1000 0 1 empty empty a 0 10 7 0 10 -262144
@@ -126,12 +126,12 @@
 10 -262144 -258113 -1 4000 1;
 #X msg 654 276 label r \$1;
 #X msg 664 116 label mod \$1;
-#X obj 253 418 *~;
-#X obj 240 175 hsl 128 15 0 2000 0 1 empty empty index 692.913 10
-7 0 10 -262144 -258113 -1 4400 1;
+#X obj 253 442 *~;
+#X obj 240 175 hsl 128 15 0 2000 0 1 empty empty index 1322.83 10
+7 0 10 -262144 -258113 -1 8400 1;
 #X msg 664 184 label index \$1;
-#X obj 442 115 nbx 5 15 -1e+37 1e+37 0 1 empty empty spr -20 7 0 10
--262144 -1 -1 1008 256;
+#X obj 388 115 nbx 5 15 -1e+37 1e+37 0 1 empty empty spr -20 7 0 10
+-232576 -1 -1 1008 256;
 #X obj 445 175 hsl 128 15 0 1 0 1 empty empty amp 0.701654 10 7 0
 10 -262144 -258113 -1 8911 1;
 #X msg 654 293 label amp \$1;
@@ -153,12 +153,12 @@
 #X obj 23 194 * 10;
 #X obj 23 217 int;
 #X obj 23 239 change;
-#X obj 120 361 mtof;
-#X obj 155 337 t b f;
-#X obj 155 272 random 100;
-#X obj 155 297 pack f 50;
-#X obj 155 317 line;
-#X obj 155 386 +;
+#X obj 57 358 mtof;
+#X obj 92 334 t b f;
+#X obj 92 269 random 100;
+#X obj 92 294 pack f 50;
+#X obj 92 314 line;
+#X obj 92 383 +;
 #X obj 21 129 spigot;
 #X obj 21 104 t b f;
 #X obj 491 359 *;
@@ -166,8 +166,8 @@
 -262144 -1 -1 138 256;
 #X obj 410 414 +;
 #X obj 429 389 t b f;
-#X obj 156 246 metro 100;
-#X obj 230 246 random 6000;
+#X obj 93 243 metro 100;
+#X obj 168 242 random 6000;
 #X obj 180 175 nbx 5 15 -1e+37 1e+37 0 1 empty empty sm -15 7 0 10
 -262144 -1 -1 12 256;
 #X obj 180 160 nbx 5 15 -1e+37 1e+37 0 1 empty empty ra -15 7 0 10
@@ -178,7 +178,7 @@
 1;
 #X obj 180 145 nbx 5 15 -1e+37 1e+37 0 1 empty empty ms -15 7 0 10
 -262144 -1 -1 221 256;
-#X obj 101 200 expr $f1*(-$f2)+$f2+$f3;
+#X obj 77 212 expr $f1*(-$f2)+$f2+$f3;
 #X obj 130 7 udpreceive 54321;
 #X obj 130 29 unpackOSC;
 #X obj 130 50 routeOSC /bang;
@@ -188,6 +188,16 @@
 #X text 243 51 Arduino-OSC /bang/s08;
 #X obj 363 648 s~ out_r08;
 #X obj 251 650 s~ out_08;
+#X obj 288 258 phasor~;
+#X obj 278 357 *~;
+#X obj 250 328 + 1;
+#X obj 252 357 *~;
+#X obj 296 331 * -1;
+#X obj 288 282 *~ -2;
+#X obj 289 307 +~ 1;
+#X obj 240 115 hsl 128 15 0 -1 0 1 empty empty sine----------saw 10
+7 0 10 -262144 -258113 -1 8500 1;
+#X obj 252 384 +~;
 #X connect 0 0 83 0;
 #X connect 1 0 8 0;
 #X connect 2 0 82 0;
@@ -200,7 +210,7 @@
 #X connect 8 0 5 0;
 #X connect 8 0 9 0;
 #X connect 9 0 7 0;
-#X connect 10 0 11 0;
+#X connect 10 0 87 0;
 #X connect 11 0 34 0;
 #X connect 12 0 8 0;
 #X connect 13 0 3 0;
@@ -267,6 +277,7 @@
 #X connect 59 0 56 0;
 #X connect 60 0 33 0;
 #X connect 60 0 10 0;
+#X connect 60 0 84 0;
 #X connect 61 0 13 0;
 #X connect 62 0 61 0;
 #X connect 62 1 61 1;
@@ -292,4 +303,14 @@
 #X connect 79 0 1 0;
 #X connect 80 0 14 0;
 #X connect 80 1 62 0;
+#X connect 84 0 89 0;
+#X connect 85 0 92 1;
+#X connect 86 0 87 1;
+#X connect 87 0 92 0;
+#X connect 88 0 85 1;
+#X connect 89 0 90 0;
+#X connect 90 0 85 0;
+#X connect 91 0 88 0;
+#X connect 91 0 86 0;
+#X connect 92 0 11 0;
 #X coords 0 -1 1 1 475 90 2 100 100;
