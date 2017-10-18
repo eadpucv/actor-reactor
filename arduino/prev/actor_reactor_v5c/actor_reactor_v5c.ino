@@ -131,7 +131,6 @@ void setup () {
   EEPROM.get(DIR_BEZIER_C, bezier_C);
   EEPROM.get(DIR_BEZIER_D, bezier_D);
   Serial.println("pase setup");
-
 }
 
 
