@@ -1,14 +1,14 @@
-#N canvas 822 189 617 524 10;
+#N canvas 579 178 706 524 10;
 #X obj 100 100 bng 30 250 50 0 empty empty 3 8 15 0 25 -262144 -257985
 -1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty 10 15 0 10 -257985
--1 -1 3200 1;
+-1 -1 0 1;
 #X obj 130 132 vsl 15 55 0 1 0 1 empty empty -> 2 7 0 10 -228856 -258113
 -1 4000 1;
 #X obj 115 132 vsl 15 55 0 10000 0 1 empty empty >- 2 7 0 10 -262130
 -258113 -1 600 1;
 #X obj 100 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -262130
--258113 -1 2600 1;
+-258113 -1 1000 1;
 #X obj 23 194 * 10;
 #X obj 23 217 int;
 #X obj 23 239 change;
@@ -22,7 +22,7 @@
 #X obj 56 29 unpackOSC;
 #X obj 56 50 routeOSC /bang;
 #X obj 284 607 *~;
-#X obj 212 606 *~;
+#X obj 214 606 *~;
 #X obj 281 160 hsl 128 15 0 1 0 1 empty empty amp_01 10 7 0 10 -262130
 -258113 -1 9400 1;
 #X floatatom 215 257 5 0 0 0 - - -, f 5;
@@ -34,20 +34,20 @@
 #X obj 148 145 hsl 128 15 0 500 0 1 empty empty delay 10 7 0 10 -262144
 -258113 -1 200 1;
 #X obj 488 365 +~;
-#X obj 213 439 osc~;
-#X obj 211 506 +~;
+#X obj 215 439 osc~;
+#X obj 215 506 +~;
 #X floatatom 275 419 5 0 0 0 - - -, f 5;
-#X obj 212 461 *~;
-#X obj 211 527 osc~;
+#X obj 215 461 *~;
+#X obj 214 527 osc~;
 #X obj 215 280 / 10;
 #X obj 215 324 phasor~ 100;
 #X floatatom 215 303 5 0 0 0 - - -, f 5;
-#X obj 212 555 *~;
+#X obj 215 555 *~;
 #X obj 281 145 hsl 128 15 1.27 5000 0 1 empty empty decay_01 10 7 0
 10 -262130 -258113 -1 3200 1;
 #X obj 215 228 random 2000;
 #X obj 281 100 hsl 128 15 0 127 0 1 empty empty mod-02_frq 10 8 0 10
--262130 -258113 -33289 2300 1;
+-262130 -258113 -33289 2000 1;
 #N canvas 456 208 450 300 env 0;
 #X obj 15 18 inlet;
 #X obj 83 18 inlet;
@@ -76,18 +76,18 @@
 #X connect 10 0 7 0;
 #X connect 10 0 6 0;
 #X connect 10 0 5 0;
-#X restore 250 526 pd env;
+#X restore 253 526 pd env;
 #X obj 215 372 +~ 1;
 #X obj 281 115 hsl 128 15 0 1000 0 1 empty empty mod-01_index 10 7
-0 10 -262130 -258113 -1 3300 1;
-#X obj 214 393 *~;
+0 10 -262130 -258113 -1 4700 1;
+#X obj 215 393 *~;
 #X obj 37 408 +~;
 #X obj 281 130 hsl 128 15 0 127 0 1 empty empty carr_frq 10 8 0 10
--262130 -258113 -33289 1100 1;
+-262130 -258113 -33289 11000 1;
 #X obj 320 416 mtof;
 #X obj 335 346 mtof;
-#X obj 213 418 +~;
-#X obj 211 484 +~;
+#X obj 215 418 +~;
+#X obj 215 484 +~;
 #X obj 214 348 *~ 2;
 #X obj 416 517 delwrite~ \$0-d01 2000;
 #X obj 487 393 vd~ \$0-d01 2000;
@@ -132,11 +132,11 @@
 #X obj 148 160 hsl 128 15 0 0.99 0 1 empty empty feedback 10 7 0 10
 -262144 -258113 -1 12100 1;
 #X obj 488 421 *~;
-#X obj 212 580 +~;
+#X obj 214 580 +~;
 #X obj 563 307 osc~;
 #X obj 563 334 *~;
 #X obj 285 633 s~ out_r03;
-#X obj 212 633 s~ out_03;
+#X obj 214 633 s~ out_03;
 #X obj 127 287 r~ mod_r03;
 #X obj 19 287 r~ mod_r03a;
 #X text 169 51 Arduino-OSC /bang/s03;

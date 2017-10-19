@@ -2,13 +2,13 @@
 #X obj 100 100 bng 30 250 50 0 empty empty 5 8 15 0 25 -262144 -4032
 -1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty 10 15 0 10 -4032
--1 -1 4900 1;
+-1 -1 5500 1;
 #X obj 130 132 vsl 15 55 0 1 0 1 empty empty -> 2 7 0 10 -228856 -66577
--1 3700 1;
+-1 2400 1;
 #X obj 115 132 vsl 15 55 0 10000 0 1 empty empty >- 2 7 0 10 -204800
--258113 -1 2200 1;
+-258113 -1 1700 1;
 #X obj 100 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -204800
--258113 -1 2700 1;
+-258113 -1 800 1;
 #X obj 23 217 int;
 #X obj 23 239 change;
 #X obj 21 129 spigot;
@@ -22,32 +22,32 @@
 #X obj 24 29 unpackOSC;
 #X obj 24 50 routeOSC /bang;
 #X obj 148 175 hsl 128 15 0 1 0 1 empty empty amp-osc_1 10 7 0 10 -262144
--258113 -1 9900 1;
+-258113 -1 9700 1;
 #X obj 148 145 hsl 128 15 0 127 0 1 empty empty frq-osc_1 10 7 0 10
--204800 -258113 -1 800 1;
+-204800 -258113 -1 6200 1;
 #X obj 314 315 mtof;
 #X obj 317 490 *~ 0.5;
 #X obj 254 515 *~;
 #X obj 382 457 osc~ 80;
 #X obj 556 202 mtof;
 #X obj 281 145 hsl 128 15 0 127 0 1 empty empty penv 10 7 0 10 -262144
--258113 -1 6286 1;
+-258113 -1 7056 1;
 #X obj 467 251 mtof;
 #X obj 281 115 hsl 128 15 0 120 0 1 empty empty frq-osc_2 10 7 0 10
--204800 -258113 -1 0 1;
+-204800 -258113 -1 2500 1;
 #X obj 467 282 +~;
 #X obj 506 253 *~;
 #X obj 468 356 *~;
 #X obj 281 130 hsl 128 15 1.27 800 0 1 empty empty decay-osc_2 10 7
-0 10 -262144 -258113 -1 6700 1;
+0 10 -262144 -258113 -1 6000 1;
 #X obj 281 175 hsl 128 15 0 1 0 1 empty empty amp-osc_2 10 7 0 10 -262144
--258113 -1 9000 1;
+-258113 -1 5200 1;
 #X msg 492 302 0;
 #X obj 252 401 +~;
 #X obj 382 428 +~ 100;
 #X obj 253 343 *~ 1000;
 #X obj 148 160 hsl 128 15 1.27 10000 0 1 empty empty decay-osc_1 10
-7 0 10 -262144 -258113 -1 12700 1;
+7 0 10 -262144 -258113 -1 1800 1;
 #X obj 254 549 *~;
 #N canvas 456 208 450 300 env 0;
 #X obj 15 18 inlet;
@@ -90,7 +90,7 @@
 #X obj 23 104 del;
 #X msg 41 83 0;
 #X msg 83 110 set 0 \$1;
-#X msg 83 136 0 422.647;
+#X msg 83 136 0 378.623;
 #X obj 15 55 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 84 262 outlet~;
@@ -119,7 +119,7 @@
 #X obj 23 104 del;
 #X msg 41 83 0;
 #X msg 83 110 set 0 \$1;
-#X msg 83 136 0 10000;
+#X msg 83 136 0 1418.41;
 #X obj 15 55 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 84 262 outlet~;
@@ -159,7 +159,7 @@
 #X connect 7 0 3 0;
 #X restore 350 281 pd random;
 #X obj 224 130 nbx 5 15 -1e+37 1e+37 0 1 empty empty r-range -45 7
-0 10 -262144 -1 -1 124 256;
+0 10 -262144 -1 -1 122 256;
 #X obj 314 344 +;
 #X obj 350 315 t b f;
 #X obj 34 404 +~;
