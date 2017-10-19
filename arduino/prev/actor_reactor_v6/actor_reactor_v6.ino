@@ -28,7 +28,7 @@
 
 #define ID 1
 /* generic 240.0.0.1 */
-#define WLAN_ADDR  "192.168.0.5"            // receiving PC ip
+#define WLAN_ADDR  "240.0.0.1"            // receiving PC ip
 #define PORT  1112
 #define WLAN_SSID  "AC"                     // wifi SSID
 #define WLAN_PASS  "actor-reactor"          // wifi password 
