@@ -50,10 +50,14 @@ boolean mainmenu_disp = 0, resp;
 boolean back = 0;
 boolean endstop, endstop_activation = 0, endstop_position = 0;
 boolean show_adjust = 0;
-long motor_pos_previous = 0;
 float sonar_read, acum_sonar_read;
 int analog_counter = 0;
 word previous_millis, actual_millis, diferencia;
+
+float A = 0.02;
+float B = 0.98;
+float softenMotorPos = 0;
+
 
 // Software SPI (slower updates, more flexible pin options):
 // pin 7 - Serial clock out (SCLK)
@@ -79,9 +83,7 @@ void setup () {
   Serial.begin(57600);
   pinMode(12, INPUT);
   wifiLink.begin(57600);
-
   Serial.setTimeout(10000);
-
   digitalWrite(4, 0);
   pinMode(13, OUTPUT);
   delay(10);
@@ -135,6 +137,7 @@ void setup () {
       display.display();
       display.println("wifi OK!!!");
       display.display();
+      delay(1500);
       break;
       count = attempts;
     }
@@ -147,15 +150,6 @@ void setup () {
     display.display();
     count ++;
   } while (count < attempts);
-
-  display.clearDisplay();
-  display.display();
-
-  display.setTextSize(1);
-  display.setTextColor(BLACK);
-  display.setCursor(0, 0);
-  display.println("connected!");
-  display.display();
 
   previous_millis = 0;
   actual_millis = millis();
@@ -220,7 +214,7 @@ void loop() {
           break;
 
         /* F2 */
-        case 'B': // F2
+        case 'B':
           manual();
           break;
 
