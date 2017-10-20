@@ -44,7 +44,7 @@ class Sign {
 
   void drawText() {
     
-    int lang = int(random(4));
+    int lang = int(random(5));
     
     bitmap.textFont(font);
     bitmap.fill(white);
@@ -66,6 +66,9 @@ class Sign {
     case 3: /* greek */
       bitmap.textFont(greekFont);
       bitmap.text(greek[randomWord], xpos, ypos);
+      break;
+    case 4: /* french */
+      bitmap.text(french[randomWord], xpos, ypos);
       break;
     }
   }
