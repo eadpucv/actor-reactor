@@ -9,52 +9,28 @@ class Sign {
   float existence;
   float alpha, maxalpha;
   float fade;
+  boolean init;
 
   Sign (float x, float y) {
-
     this.x = x;
     this.y = y;
     reset();
-    maxalpha = 50;
+    maxalpha = 50;  // maximum line opacity
+    
   }
 
   void reset() {
+    init = true;
     lifespan = round(random(70, 250));
-    existence = lifespan * 1.5;
+    existence = lifespan * 1.5;          // lifespan + blacktime
     tic = 0;
     fade = 255;
     numLines = round(random(3, 6));
     lin = new Line[numLines];
     int count = 0;
-    int lang = round(random(-.44, 3.44));
-    randomWord = round(random(english.length - 1));
+
+    randomWord = round(random(spanish.length - 1));
     bitmap = createGraphics(int(radius * 3), int(radius * 3));
-    bitmap.beginDraw();
-    bitmap.background(0);
-    bitmap.fill(255);
-    bitmap.textFont(font);
-
-    bitmap.pushMatrix();
-    bitmap.translate(x, y);
-    
-    switch(lang) {
-    case 0: /* spanish */
-      bitmap.text(spanish[randomWord], -radius, 0);
-      break;
-    case 1: /* english */
-      bitmap.text(english[randomWord], 0, 0);
-      break;
-    case 2: /* german */
-      bitmap.text(german[randomWord], -radius, radius);
-      break;
-    case 3: /* greek */
-      bitmap.textFont(greekFont);
-      bitmap.text(greek[randomWord], 0, radius);
-      break;
-    }
-    bitmap.popMatrix();
-    bitmap.endDraw();
-
     while (count < numLines) {
       start = round(random(sides - 1));
       end = round(random(sides - 1));
@@ -65,20 +41,61 @@ class Sign {
     }
   }
 
+
+  void drawText() {
+    
+    int lang = int(random(4));
+    
+    bitmap.textFont(font);
+    bitmap.fill(white);
+
+    float k = radius * .666;
+    float xpos = random(-2*k, k/2);
+    float ypos = random(-k, k);
+
+    switch(lang) {
+    case 0: /* spanish */
+      bitmap.text(spanish[randomWord], xpos, ypos);
+      break;
+    case 1: /* english */
+      bitmap.text(english[randomWord], xpos, ypos);
+      break;
+    case 2: /* german */
+      bitmap.text(german[randomWord], xpos, ypos);
+      break;
+    case 3: /* greek */
+      bitmap.textFont(greekFont);
+      bitmap.text(greek[randomWord], xpos, ypos);
+      break;
+    }
+  }
+
   void updateGraphics() {
     bitmap.beginDraw();
+
+    bitmap.pushMatrix();
+    bitmap.translate(bitmap.width/2, bitmap.height/2);
+
+    if (init) {
+      drawText();
+      init = false;
+    }
+
     alpha = sin((float)tic*PI/(float)lifespan) * maxalpha;
     if (tic < lifespan) {
       for (int i = 0; i < lin.length; i++) {
         lin[i].render(bitmap, alpha);
       }
     } 
+    
+    bitmap.popMatrix();
     bitmap.endDraw();
   }
 
 
   void render() {
     updateGraphics();
+
     fade = sin((float)tic*PI/existence) * 255;
     tic ++;
     tint(255, fade);

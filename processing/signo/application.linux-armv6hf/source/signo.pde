@@ -59,32 +59,13 @@ void setup() {
 
   imageMode(CENTER);
   rectMode(CENTER);
+  // textMode(CENTER);
 } 
 
 void draw() {
   background(0);
-
   blendMode(ADD);
   signA.render();
   signB.render();
   blendMode(NORMAL);
-  
-  /* debug fadeout
-  float h1 = map(signA.fade, 0, 255, 0, height);
-  float h2 = map(signB.fade, 0, 255, 0, height);
-  fill(255);
-  rect(10, height/2, 10, h1);
-  rect(20, height/2, 10, h2);
-  */ 
-  
-  /* debug lifespan
-  fill(255);
-  textFont(font);
-  text(signA.tic, 20, height - 24);
-  */
-}
-
-void keyPressed(){
-  signA.reset();
-  signB.reset();
 }

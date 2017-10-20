@@ -75,34 +75,15 @@ public void setup() {
 
   imageMode(CENTER);
   rectMode(CENTER);
+  // textMode(CENTER);
 } 
 
 public void draw() {
   background(0);
-
   blendMode(ADD);
   signA.render();
   signB.render();
   blendMode(NORMAL);
-  
-  /* debug fadeout
-  float h1 = map(signA.fade, 0, 255, 0, height);
-  float h2 = map(signB.fade, 0, 255, 0, height);
-  fill(255);
-  rect(10, height/2, 10, h1);
-  rect(20, height/2, 10, h2);
-  */ 
-  
-  /* debug lifespan
-  fill(255);
-  textFont(font);
-  text(signA.tic, 20, height - 24);
-  */
-}
-
-public void keyPressed(){
-  signA.reset();
-  signB.reset();
 }
 class Line {
   Point p1, p2, c1, c2;
@@ -146,27 +127,22 @@ class Line {
     c2.s = random(.5f, 1.5f);
   }
 
-  public void render(PGraphics bitmap, float a) {
+  public void render(PGraphics bm, float a) {
 
-    bitmap.beginDraw();
-    bitmap.pushMatrix();
-    bitmap.translate(bitmap.width/2, bitmap.height/2);
-    bitmap.rotate(t);
-    bitmap.blendMode(BLEND);
-    bitmap.stroke(c, a);
-    bitmap.strokeWeight(sw);
-    bitmap.noFill();
-
-
-    bitmap.bezier(p1.x, p1.y, c1.x, c1.y, c2.x, c2.y, p2.x, p2.y);
+    bm.rotate(t);
+    bm.blendMode(BLEND);
+    bm.stroke(c, a);
+    bm.strokeWeight(sw);
+    bm.noFill();
+    bm.bezier(p1.x, p1.y, c1.x, c1.y, c2.x, c2.y, p2.x, p2.y);
+    
     p1.move();
     p2.move();
     c1.move();
     c2.move();
 
-    bitmap.blendMode(NORMAL);
-    bitmap.popMatrix();
-    bitmap.endDraw();
+    bm.blendMode(NORMAL);
+   
     t += tinc;
   }
 }
@@ -207,52 +183,28 @@ class Sign {
   float existence;
   float alpha, maxalpha;
   float fade;
+  boolean init;
 
   Sign (float x, float y) {
-
     this.x = x;
     this.y = y;
     reset();
-    maxalpha = 50;
+    maxalpha = 50;  // maximum line opacity
+    
   }
 
   public void reset() {
+    init = true;
     lifespan = round(random(70, 250));
-    existence = lifespan * 1.5f;
+    existence = lifespan * 1.5f;          // lifespan + blacktime
     tic = 0;
     fade = 255;
     numLines = round(random(3, 6));
     lin = new Line[numLines];
     int count = 0;
-    int lang = round(random(-.44f, 3.44f));
-    randomWord = round(random(english.length - 1));
+
+    randomWord = round(random(spanish.length - 1));
     bitmap = createGraphics(PApplet.parseInt(radius * 3), PApplet.parseInt(radius * 3));
-    bitmap.beginDraw();
-    bitmap.background(0);
-    bitmap.fill(255);
-    bitmap.textFont(font);
-
-    bitmap.pushMatrix();
-    bitmap.translate(x, y);
-    
-    switch(lang) {
-    case 0: /* spanish */
-      bitmap.text(spanish[randomWord], -radius, 0);
-      break;
-    case 1: /* english */
-      bitmap.text(english[randomWord], 0, 0);
-      break;
-    case 2: /* german */
-      bitmap.text(german[randomWord], -radius, radius);
-      break;
-    case 3: /* greek */
-      bitmap.textFont(greekFont);
-      bitmap.text(greek[randomWord], 0, radius);
-      break;
-    }
-    bitmap.popMatrix();
-    bitmap.endDraw();
-
     while (count < numLines) {
       start = round(random(sides - 1));
       end = round(random(sides - 1));
@@ -263,20 +215,61 @@ class Sign {
     }
   }
 
+
+  public void drawText() {
+    
+    int lang = PApplet.parseInt(random(4));
+    
+    bitmap.textFont(font);
+    bitmap.fill(white);
+
+    float k = radius * .666f;
+    float xpos = random(-2*k, k/2);
+    float ypos = random(-k, k);
+
+    switch(lang) {
+    case 0: /* spanish */
+      bitmap.text(spanish[randomWord], xpos, ypos);
+      break;
+    case 1: /* english */
+      bitmap.text(english[randomWord], xpos, ypos);
+      break;
+    case 2: /* german */
+      bitmap.text(german[randomWord], xpos, ypos);
+      break;
+    case 3: /* greek */
+      bitmap.textFont(greekFont);
+      bitmap.text(greek[randomWord], xpos, ypos);
+      break;
+    }
+  }
+
   public void updateGraphics() {
     bitmap.beginDraw();
+
+    bitmap.pushMatrix();
+    bitmap.translate(bitmap.width/2, bitmap.height/2);
+
+    if (init) {
+      drawText();
+      init = false;
+    }
+
     alpha = sin((float)tic*PI/(float)lifespan) * maxalpha;
     if (tic < lifespan) {
       for (int i = 0; i < lin.length; i++) {
         lin[i].render(bitmap, alpha);
       }
     } 
+    
+    bitmap.popMatrix();
     bitmap.endDraw();
   }
 
 
   public void render() {
     updateGraphics();
+
     fade = sin((float)tic*PI/existence) * 255;
     tic ++;
     tint(255, fade);
