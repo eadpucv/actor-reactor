@@ -27,28 +27,32 @@ class Sign {
     lin = new Line[numLines];
     int count = 0;
     int lang = round(random(-.44, 3.44));
-    randomWord = round(random(spanish.length - 1));
+    randomWord = round(random(english.length - 1));
     bitmap = createGraphics(int(radius * 3), int(radius * 3));
     bitmap.beginDraw();
     bitmap.background(0);
     bitmap.fill(255);
     bitmap.textFont(font);
 
+    bitmap.pushMatrix();
+    bitmap.translate(x, y);
+    
     switch(lang) {
     case 0: /* spanish */
-      bitmap.text(spanish[randomWord], radius * .4, radius * .4);
+      bitmap.text(spanish[randomWord], -radius, 0);
       break;
     case 1: /* english */
-      bitmap.text(english[randomWord], radius * 1.8, radius * .4);
+      bitmap.text(english[randomWord], 0, 0);
       break;
     case 2: /* german */
-      bitmap.text(german[randomWord], radius * .4, radius * 1.8);
+      bitmap.text(german[randomWord], -radius, radius);
       break;
     case 3: /* greek */
       bitmap.textFont(greekFont);
-      bitmap.text(greek[randomWord], radius * 1.8, radius * 1.8);
+      bitmap.text(greek[randomWord], 0, radius);
       break;
     }
+    bitmap.popMatrix();
     bitmap.endDraw();
 
     while (count < numLines) {
