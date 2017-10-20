@@ -1,4 +1,3 @@
-
 float DoubleQuadraticBezier (float x, float a, float b, float c, float d) {
   
   // functionName = "Double Quadratic Bezier";

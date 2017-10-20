@@ -27,32 +27,33 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-
-// #define WLAN_ADDR  "240.0.0.1"      // receiving PC ip
-
-#define WLAN_ADDR  "192.168.0.255"      // receiving PC ip
+#define WLAN_ADDR  "224.0.0.1"          // receiving Router ip
 #define PORT  1112
-#define WLAN_SSID  "MadLab"                 // wifi SSID
-#define WLAN_PASS  "12345678"      // wifi password 
+#define WLAN_SSID  "AC"                 // wifi SSID
+#define WLAN_PASS  "actor-reactor"      // wifi password 
 
-String HOSTNAME = String("s01");        // hostname
 
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0, last_motor_pos;
 float EPSILON = 9.999999747378752E-5f;
+boolean variable;
 boolean wifi = false;
+
+//EEPROM.get(DIR_SENSOR_MIN, min_sensor);
+//EEPROM.get(DIR_SENSOR_MAX, max_sensor);
+//EEPROM.get(DIR_ACTUATOR_MAX, max_actuator);
 
 char insert[10];
 int i = 0;
 double normalize;
 boolean mainmenu_disp = 0, resp;
-boolean leave = 0;
+boolean back = 0;
 boolean endstop, endstop_activation = 0, endstop_position = 0;
 boolean show_adjust = 0;
 long motor_pos_previous = 0;
 float sonar_read, acum_sonar_read;
 int analog_counter = 0;
-word previous_millis, actual_millis, diff;
+word previous_millis, actual_millis, diferencia;
 
 // Software SPI (slower updates, more flexible pin options):
 // pin 7 - Serial clock out (SCLK)
@@ -71,39 +72,33 @@ char KEYS[] = {
   'Y', '0', 'N', 'D'
 };
 
-OnewireKeypad <Print, 16 > KP2(Serial, KEYS, 4, 4, A0, 4700, 1000, ExtremePrec);
+
+OnewireKeypad <Print, 16 > KP2(Serial, KEYS, 4, 4, A0, 4700, 1000, ExtremePrec );
 SoftwareSerial wifiLink(11, 10);
+
 
 void setup () {
   Serial.begin(57600);
-  pinMode(12, INPUT); 
+  pinMode(12, INPUT);
   wifiLink.begin(57600);
 
   Serial.setTimeout(10000);
 
   digitalWrite(4, 0);
-
-  /* Reset */
   pinMode(13, OUTPUT);
   delay(10);
   pinMode(13, INPUT);
-  
   resp = wifiLink.find("ready\r\n");
   wifiLink.println("AT+CWMODE=1");
   resp = wifiLink.find("OK\r\n");
 
-  /* connect to wifi */
+  // connect to wifi
 
   wifiLink.println("AT+CIPMUX=1");
-
-  // define hostname
-  String msg = String("AT+CWHOSTNAME="+HOSTNAME);
-  wifiLink.println(msg);     
-  
   resp = wifiLink.find("OK\r\n");
   wifiLink.print("AT+CIPSTART=4,\"UDP\",\"");
   wifiLink.print(WLAN_ADDR);
-  wifiLink.print("\",54321,");
+  wifiLink.print("\",54321,"); // osc port
   wifiLink.print(PORT);
   wifiLink.println(",0");
   resp = wifiLink.find("OK\r\n");
@@ -117,7 +112,7 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
   display.display();
-  display.println("conectando...");
+  display.println("detecting wifi...");
   display.display();
 
   int attempts = 20;
@@ -131,7 +126,7 @@ void setup () {
     wifiLink.println("\"");
     resp = wifiLink.find("OK\r\n");
     
-    if(resp){
+    if (resp) {
       wifi = true;
       Serial.println(resp);
       Serial.println("conectado!");
@@ -143,6 +138,7 @@ void setup () {
 
   display.clearDisplay();
   display.display();
+
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(0, 0);
@@ -199,8 +195,8 @@ void endstop_action() {
 void loop() {
   sonar_read = analogRead(A2) * 1.26;
   actual_millis = millis();
-  diff = actual_millis - previous_millis;
-  if (diff > 100) {
+  diferencia = actual_millis - previous_millis;
+  if (diferencia > 100) {
     previous_millis = actual_millis;
     mainmenu();
   }

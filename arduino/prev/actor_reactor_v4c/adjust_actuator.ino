@@ -1,7 +1,7 @@
-
-void adjust_sensor_min() {
+void adjust_actuator_max() {
   display.clearDisplay();
   display.display();
+
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(0, 0);
@@ -79,16 +79,18 @@ void adjust_sensor_min() {
             break;
         }
       }
+
     }
   }
-  min_sensor = atof(insert);
-  EEPROM.put(DIR_SENSOR_MIN, min_sensor);
+  max_actuator = atof(insert);
+  EEPROM.put(DIR_ACTUATOR_MAX, max_actuator);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
   back = !back;
 }
 
-void adjust_sensor_max() {
+
+void adjust_actuator_min() {
   display.clearDisplay();
   display.display();
 
@@ -102,6 +104,7 @@ void adjust_sensor_max() {
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
+
           case 'Y':
             i = 0;
             back = !back;
@@ -168,61 +171,12 @@ void adjust_sensor_max() {
             break;
         }
       }
+
     }
   }
-  
-  max_sensor = atof(insert);
-  EEPROM.put(DIR_SENSOR_MAX, max_sensor);
+  min_actuator = atof(insert);
+  EEPROM.put(DIR_ACTUATOR_MIN, min_actuator);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  back = !back;
-}
-
-void adjust_sensor() {
-
-  while (!back == 1) {
-    if (show_adjust == 0) {
-      display.clearDisplay();
-      display.display();
-
-      display.setTextSize(1);
-      display.setTextColor(BLACK);
-      display.setCursor(0, 0);
-      display.println("Set Sensor");
-      display.println("   Min: F1");
-      display.println("   Max: F2");
-      display.println("Set Motor");
-      display.println("   Min: F3");
-      display.println("   Max: F4");
-      display.display();
-      show_adjust = 1;
-    }
-
-    if ( char key = KP2.Getkey() ) {
-      if (KP2.Key_State() == PRESSED) {
-        switch (key) {
-          case '0':
-            back = !back;
-            break;
-          case 'B':
-            adjust_sensor_max();
-            show_adjust = 0;
-            break;
-          case 'A':
-            adjust_sensor_min();
-            show_adjust = 0;
-            break;
-          case 'C':
-            adjust_actuator_min();
-            show_adjust = 0;
-            break;
-          case 'D':
-            adjust_actuator_max();
-            show_adjust = 0;
-            break;
-        }
-      }
-    }
-  }
   back = !back;
 }

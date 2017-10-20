@@ -29,8 +29,8 @@
 #define ID 1
 #define WLAN_ADDR  "192.168.1.139"     // Dirección IP del PC que recibe
 #define PORT  1112
-#define WLAN_SSID  "VTR-6517395"       // SSID de la red Wi-Fi
-#define WLAN_PASS  "dhPxnntG8yvs"      // Password de la red Wi-Fi
+#define WLAN_SSID  "AC"                 // SSID de la red Wi-Fi
+#define WLAN_PASS  "actor-reactor"      // Password de la red Wi-Fi
 
 // #define WLAN_SSID  "Artefactos y Creaturas"       // SSID de la red Wi-Fi
 // #define WLAN_PASS  "actor-reactor"                // Password de la red Wi-Fi
@@ -49,7 +49,7 @@ char insert[10];
 int i = 0;
 double normalize;
 boolean mainmenu_disp = 0, resp;
-boolean salir = 0;
+boolean back = 0;
 boolean endstop, endstop_activation = 0, endstop_position = 0;
 boolean show_adjust = 0;
 long motor_pos_previous = 0;
@@ -90,6 +90,12 @@ void setup () {
   pinMode(13, OUTPUT);
   delay(10);
   pinMode(13, INPUT);
+
+  stepper.setMaxSpeed(500.0);
+  stepper.setAcceleration(10000.0);
+  stepper.setCurrentPosition(0);
+  stepper.moveTo(motor_pos);
+  
   resp = mySerial.find("ready\r\n");
   mySerial.println("AT+CWMODE=1");
   resp = mySerial.find("OK\r\n");
@@ -131,10 +137,7 @@ void setup () {
   display.setCursor(0, 0);
   display.println("Conectado!");
   display.display();
-  stepper.setMaxSpeed(1600.0);
-  stepper.setAcceleration(10000.0);
-  stepper.setCurrentPosition(0);
-  stepper.moveTo(motor_pos);
+
   previous_millis = 0;
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);

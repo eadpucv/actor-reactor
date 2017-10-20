@@ -23,7 +23,7 @@ void automatic() {
   display.clearDisplay();
   display.display();
   display.println("Mode auto");
-  display.println(" 0 - back ");
+  display.println(" 0-F keys to exit");
   display.display();
 
   while (!back == 1) {
@@ -42,13 +42,15 @@ void automatic() {
     sonar_read = constrain(sonar_read, min_sensor, max_sensor);
     normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
     normalize = normalize / 10000;
-    send_data();
+    
+    if(wifi)send_data();
+    
     //motor_pos = DoubleQuadraticBezier(sonar_read, bezier_A, bezier_B, bezier_C, bezier_D);
     last_motor_pos = motor_pos;
-    
+
     motor_pos = map(sonar_read, min_sensor, max_sensor, min_actuator, max_actuator);
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
-    
+
     endstop = digitalRead(12);
     if (!endstop)
       endstop_action();
@@ -58,6 +60,18 @@ void automatic() {
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
+          case 'A':
+            back = !back;
+            break;
+          case 'B':
+            back = !back;
+            break;
+          case 'C':
+            back = !back;
+            break;
+          case 'D':
+            back = !back;
+            break;
           case '0':
             back = !back;
             break;
@@ -81,8 +95,8 @@ void manual() {
   display.setCursor(0, 0);
   display.print(stepper.currentPosition());
   display.display();
-
-  while (back == 0) {
+  while (!back == 1) {
+    
     key2 = KP2.Getkey();
     stepper.run();
     if (key2 == '6') {
@@ -97,7 +111,7 @@ void manual() {
       Serial.println(endstop);
       if (!endstop)
         endstop_action();
-
+        
       stepper.moveTo(motor_pos);
       stepper.run();
     }

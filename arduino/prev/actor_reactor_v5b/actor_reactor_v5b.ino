@@ -112,13 +112,16 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
   display.display();
-  stepper.setMaxSpeed(500.0);
+  
+  stepper.setMaxSpeed(200.0);
   stepper.setAcceleration(10000.0);
   stepper.setCurrentPosition(0);
   stepper.moveTo(motor_pos);
+  
   previous_millis = 0;
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);
+  
   EEPROM.get(DIR_SENSOR_MIN, min_sensor);
   EEPROM.get(DIR_SENSOR_MAX, max_sensor);
   EEPROM.get(DIR_ACTUATOR_MIN, min_actuator);

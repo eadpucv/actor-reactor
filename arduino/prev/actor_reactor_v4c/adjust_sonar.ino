@@ -1,4 +1,3 @@
-
 void adjust_sensor_min() {
   display.clearDisplay();
   display.display();

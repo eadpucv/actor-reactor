@@ -18,10 +18,10 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-#define WLAN_ADDR  "192.168.1.139"  //Dirección IP del PC que recibe
+#define WLAN_ADDR  "192.168.0.1"  //Dirección IP del PC que recibe
 #define PORT  1112
-#define WLAN_SSID  "Reikiavik"      //SSID de la red Wi-Fi
-#define WLAN_PASS  "suspensitos"    //Password de la red Wi-Fi
+#define WLAN_SSID  "AC"      //SSID de la red Wi-Fi
+#define WLAN_PASS  "actor-reactor"    //Password de la red Wi-Fi
 
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0, last_motor_pos;
@@ -35,7 +35,7 @@ char insert[10];
 int i = 0;
 double normalize;
 boolean mainmenu_disp = 0, resp;
-boolean salir = 0;
+boolean back = 0;
 boolean endstop, endstop_activation = 0, endstop_position = 0;
 boolean show_adjust = 0;
 long motor_pos_previous = 0;
@@ -79,7 +79,7 @@ void setup () {
   mySerial.println("AT+CWMODE=1");
   resp = mySerial.find("OK\r\n");
 
-  
+  /*
     do {
     mySerial.print("AT+CWJAP=\"");
     mySerial.print(WLAN_SSID);
@@ -89,7 +89,7 @@ void setup () {
     resp = mySerial.find("OK\r\n");
     Serial.println(resp);
     } while (!resp);
-  
+  */
 
   mySerial.println("AT+CIPMUX=1");
   resp = mySerial.find("OK\r\n");
@@ -104,7 +104,7 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
   display.display();
-  stepper.setMaxSpeed(500.0);
+  stepper.setMaxSpeed(100.0);
   stepper.setAcceleration(10000.0);
   stepper.setCurrentPosition(0);
   stepper.moveTo(motor_pos);
@@ -180,7 +180,7 @@ void adjust_A() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -188,7 +188,7 @@ void adjust_A() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            back = !back;
             break;
           case '1':
             insert[i] = key;
@@ -260,7 +260,7 @@ void adjust_A() {
   EEPROM.put(DIR_BEZIER_A, bezier_A);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  back = !back;
 }
 
 void adjust_B() {
@@ -272,7 +272,7 @@ void adjust_B() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -280,7 +280,7 @@ void adjust_B() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            back = !back;
             break;
           case '1':
             insert[i] = key;
@@ -351,7 +351,7 @@ void adjust_B() {
   EEPROM.put(DIR_BEZIER_B, bezier_B);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  back = !back;
 }
 
 void adjust_C() {
@@ -363,7 +363,7 @@ void adjust_C() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -371,7 +371,7 @@ void adjust_C() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            back = !back;
             break;
           case '1':
             insert[i] = key;
@@ -442,7 +442,7 @@ void adjust_C() {
   EEPROM.put(DIR_BEZIER_C, bezier_C);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  back = !back;
 }
 
 void adjust_D() {
@@ -454,7 +454,7 @@ void adjust_D() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -462,7 +462,7 @@ void adjust_D() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            back = !back;
             break;
           case '1':
             insert[i] = key;
@@ -533,13 +533,13 @@ void adjust_D() {
   EEPROM.put(DIR_BEZIER_D, bezier_D);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  back = !back;
 }
 
 
 
 void bezier() {
-  while (!salir == 1) {
+  while (!back == 1) {
     if (show_adjust == 0) {
       display.clearDisplay();
       display.display();
@@ -561,7 +561,7 @@ void bezier() {
         switch (key) {
           case '0':
             show_adjust = 0;
-            salir = !salir;
+            back = !back;
             break;
           case 'B':
             adjust_B();
@@ -584,7 +584,7 @@ void bezier() {
 
     }
   }
-  salir = !salir;
+  back = !back;
 }
 
 
@@ -600,7 +600,7 @@ void adjust_actuator_max() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -608,7 +608,7 @@ void adjust_actuator_max() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            back = !back;
             break;
           case '1':
             insert[i] = key;
@@ -679,7 +679,7 @@ void adjust_actuator_max() {
   EEPROM.put(DIR_ACTUATOR_MAX, max_actuator);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  back = !back;
 }
 
 
@@ -692,7 +692,7 @@ void adjust_actuator_min() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -700,7 +700,7 @@ void adjust_actuator_min() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            back = !back;
             break;
           case '1':
             insert[i] = key;
@@ -771,7 +771,7 @@ void adjust_actuator_min() {
   EEPROM.put(DIR_ACTUATOR_MIN, min_actuator);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  back = !back;
 }
 
 void adjust_sensor_min() {
@@ -783,7 +783,7 @@ void adjust_sensor_min() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
@@ -791,7 +791,7 @@ void adjust_sensor_min() {
 
           case 'Y':
             i = 0;
-            salir = !salir;
+            back = !back;
             break;
           case '1':
             insert[i] = key;
@@ -862,7 +862,7 @@ void adjust_sensor_min() {
   EEPROM.put(DIR_SENSOR_MIN, min_sensor);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  back = !back;
 }
 
 
@@ -877,14 +877,14 @@ void adjust_sensor_max() {
   display.setCursor(0, 0);
   display.println("Insert number");
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
           case 'Y':
             i = 0;
-            salir = !salir;
+            back = !back;
             break;
           case '1':
             insert[i] = key;
@@ -955,12 +955,12 @@ void adjust_sensor_max() {
   EEPROM.put(DIR_SENSOR_MAX, max_sensor);
   for ( int i = 0; i < sizeof(insert);  ++i )
     insert[i] = (char)0;
-  salir = !salir;
+  back = !back;
 }
 
 void adjust_sensor() {
 
-  while (!salir == 1) {
+  while (!back == 1) {
     if (show_adjust == 0) {
       display.clearDisplay();
       display.display();
@@ -982,7 +982,7 @@ void adjust_sensor() {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
           case '0':
-            salir = !salir;
+            back = !back;
             break;
           case 'B':
             adjust_sensor_max();
@@ -1005,7 +1005,7 @@ void adjust_sensor() {
 
     }
   }
-  salir = !salir;
+  back = !back;
 }
 
 
@@ -1026,17 +1026,17 @@ void adjust() {
   display.print("   Min: "); display.println(min_actuator, 0);
   display.print("   Max: "); display.println(max_actuator, 0);
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
 
     if ( char key = KP2.Getkey() ) {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
           case '0':
-            salir = !salir;
+            back = !back;
             break;
           case 'A':
             adjust_sensor();
-            salir = !salir;
+            back = !back;
             break;
           case 3:
             break;
@@ -1047,7 +1047,7 @@ void adjust() {
 
     }
   }
-  salir = !salir;
+  back = !back;
 }
 
 void mainmenu() {
@@ -1100,7 +1100,7 @@ void manual() {
   display.setCursor(0, 0);
   display.print(stepper.currentPosition());
   display.display();
-  while (!salir == 1) {
+  while (!back == 1) {
     
     key2 = KP2.Getkey();
     stepper.run();
@@ -1136,10 +1136,10 @@ void manual() {
       stepper.run();
     }
     if (key2 == '0') {
-      salir = !salir;
+      back = !back;
     }
   }
-  salir = !salir;
+  back = !back;
 }
 
 void send_data() {
@@ -1153,7 +1153,7 @@ void send_data() {
 
 
 void automatic() {
-  while (!salir == 1) {
+  while (!back == 1) {
     acum_sonar_read += analogRead(A2);
     analog_counter++;
     actual_millis = millis();
@@ -1167,7 +1167,7 @@ void automatic() {
     sonar_read = constrain(sonar_read, min_sensor, max_sensor);
     normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
     normalize = normalize / 10000;
-    send_data();
+    //send_data();
     //motor_pos = DoubleQuadraticBezier(sonar_read, bezier_A, bezier_B, bezier_C, bezier_D);
     last_motor_pos = motor_pos;
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
@@ -1184,14 +1184,14 @@ void automatic() {
       if (KP2.Key_State() == PRESSED) {
         switch (key) {
           case '0':
-            salir = !salir;
+            back = !back;
             break;
         }
       }
 
     }
   }
-  salir = !salir;
+  back = !back;
 }
 
 

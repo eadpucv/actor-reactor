@@ -1,3 +1,52 @@
+/* F4 */
+void bezier() {
+  while (!back == 1) {
+    if (show_adjust == 0) {
+      display.clearDisplay();
+      display.display();
+
+      display.setTextSize(1);
+      display.setTextColor(BLACK);
+      display.setCursor(0, 0);
+      display.println("Set Variables");
+      display.print("   A: F1 "); display.println(bezier_A, 3);
+      display.print("   B: F2 "); display.println(bezier_B, 3);
+      display.print("   C: F3 "); display.println(bezier_C, 3);
+      display.print("   D: F4 "); display.println(bezier_D, 3);
+      display.display();
+      show_adjust = 1;
+    }
+
+    if ( char key = KP2.Getkey() ) {
+      if (KP2.Key_State() == PRESSED) {
+        switch (key) {
+          case '0':
+            show_adjust = 0;
+            back = !back;
+            break;
+          case 'B':
+            adjust_B();
+            show_adjust = 0;
+            break;
+          case 'A':
+            adjust_A();
+            show_adjust = 0;
+            break;
+          case 'C':
+            adjust_C();
+            show_adjust = 0;
+            break;
+          case 'D':
+            adjust_D();
+            show_adjust = 0;
+            break;
+        }
+      }
+
+    }
+  }
+  back = !back;
+}
 
 float DoubleQuadraticBezier (float x, float a, float b, float c, float d) {
   
