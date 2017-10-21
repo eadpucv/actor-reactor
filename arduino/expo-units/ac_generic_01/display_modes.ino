@@ -33,6 +33,12 @@ void automatic() {
     diferencia = actual_millis - previous_millis;
     last_motor_pos = motor_pos;
 
+    Serial.print("motor pos ");
+    Serial.println(motor_pos);
+    Serial.print("soft pos ");
+    Serial.println(softenMotorPos);
+    delay(10);
+    
     if (diferencia > 300) {
       previous_millis = actual_millis;
       sonar_read = acum_sonar_read / analog_counter * 1.26;

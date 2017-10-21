@@ -18,7 +18,7 @@
 #define DIR_BEZIER_D 35
 
 #define ID 1
-#define WLAN_ADDR  "192.168.1.139"    // Dirección IP del PC que recibe
+#define WLAN_ADDR  "192.168.0.255"    // Dirección IP del PC que recibe
 #define PORT  1112
 #define WLAN_SSID  "AC"               // SSID de la red Wi-Fi
 #define WLAN_PASS  "actor-reactor"    // Password de la red Wi-Fi
