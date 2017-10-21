@@ -27,6 +27,8 @@ float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0;
 float EPSILON = 9.999999747378752E-5f;
 
+boolean wifi;
+
 //EEPROM.get(DIR_SENSOR_MIN, min_sensor);
 //EEPROM.get(DIR_SENSOR_MAX, max_sensor);
 //EEPROM.get(DIR_ACTUATOR_MAX, max_actuator);
@@ -103,6 +105,7 @@ void setup () {
   previous_millis = 0;
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);
+  
   EEPROM.get(DIR_SENSOR_MIN, min_sensor);
   EEPROM.get(DIR_SENSOR_MAX, max_sensor);
   EEPROM.get(DIR_ACTUATOR_MIN, min_actuator);

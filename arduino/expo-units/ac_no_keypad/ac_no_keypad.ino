@@ -55,7 +55,7 @@ word previous_millis, actual_millis, diferencia;
 
 float A = 0.02;
 float B = 0.98;
-float softenMotorPos = 0;
+int softenMotorPos = 0;
 
 // Software SPI (slower updates, more flexible pin options):
 // pin 7 - Serial clock out (SCLK)
@@ -79,7 +79,7 @@ SoftwareSerial wifiLink(11, 10);
 
 void setup () {
   Serial.begin(57600);
-  pinMode(12, INPUT);
+  pinMode(12, INPUT); // sensor
   wifiLink.begin(57600);
   Serial.setTimeout(10000);
   digitalWrite(4, 0);
@@ -197,36 +197,10 @@ void loop() {
   sonar_read = analogRead(A2) * 1.26;
   actual_millis = millis();
   diferencia = actual_millis - previous_millis;
-  if (diferencia > 100) {
+  if (diferencia > 10) {
     previous_millis = actual_millis;
-    mainmenu();
+    powerMode();
   }
   stepper.run();
-  if ( char key = KP2.Getkey() ) {
-    if (KP2.Key_State() == PRESSED) {
-      switch (key) {
-
-        /* F1 */
-        case 'A':
-          automatic();
-          break;
-
-        /* F2 */
-        case 'B':
-          manual();
-          break;
-
-        /* F3 */
-        case 'C':
-          adjust();
-          break;
-
-        /* F4 */
-        case 'D':
-          bezier();
-          break;
-      }
-    }
-  }
 }
 

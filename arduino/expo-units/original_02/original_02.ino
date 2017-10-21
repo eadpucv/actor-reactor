@@ -23,9 +23,13 @@
 #define WLAN_SSID  "AC"
 #define WLAN_PASS  "actor-reactor"
 
+String NAME = "Asincronía Elevada";
+
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0;
 float EPSILON = 9.999999747378752E-5f;
+
+boolean wifi = false;
 
 //EEPROM.get(DIR_SENSOR_MIN, min_sensor);
 //EEPROM.get(DIR_SENSOR_MAX, max_sensor);
@@ -74,6 +78,15 @@ void setup () {
   resp = mySerial.find("ready\r\n");
   mySerial.println("AT+CWMODE=1");
   resp = mySerial.find("OK\r\n");
+  
+  display.begin();
+  display.setContrast(60);
+  display.setRotation(2);
+  display.display();
+  
+  int attempts = 20;
+  int count = 0;
+
   do {
     mySerial.print("AT+CWJAP=\"");
     mySerial.print(WLAN_SSID);
@@ -81,8 +94,31 @@ void setup () {
     mySerial.print(WLAN_PASS);
     mySerial.println("\"");
     resp = mySerial.find("OK\r\n");
+    
+    if (resp) {
+      wifi = true;
+      Serial.println(resp);
+      Serial.println("conectado!");
+      display.clearDisplay();
+      display.display();
+      display.println("wifi OK!!!");
+      display.display();
+      delay(1500);
+      break;
+      count = attempts;
+    }
+    
+    display.clearDisplay();
+    display.display();
+    display.println("wifi attempt");
+    display.print(count);
+    display.print("/");
+    display.print(attempts);
+    display.display();
+    count ++;
+  } while (count < attempts);
 
-  } while (!resp);
+
   mySerial.println("AT+CIPMUX=1");
   resp = mySerial.find("OK\r\n");
   mySerial.print("AT+CIPSTART=4,\"UDP\",\"");
@@ -92,10 +128,7 @@ void setup () {
   mySerial.println(",0");
   resp = mySerial.find("OK\r\n");
   mySerial.setTimeout(1000);
-  display.begin();
-  display.setContrast(60);
-  display.setRotation(2);
-  display.display();
+
   stepper.setMaxSpeed(500.0);
   stepper.setAcceleration(10000.0);
   stepper.setCurrentPosition(0);
@@ -103,6 +136,7 @@ void setup () {
   previous_millis = 0;
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);
+
   EEPROM.get(DIR_SENSOR_MIN, min_sensor);
   EEPROM.get(DIR_SENSOR_MAX, max_sensor);
   EEPROM.get(DIR_ACTUATOR_MIN, min_actuator);
@@ -999,10 +1033,6 @@ void adjust_sensor() {
   salir = !salir;
 }
 
-
-
-
-
 void adjust() {
   mainmenu_disp = !mainmenu_disp;
   display.clearDisplay();
@@ -1049,8 +1079,8 @@ void mainmenu() {
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(0, 0);
-  display.println("Main Menu");
-  display.println("name");
+  display.println("Actor Reactor");
+  display.println(NAME);
   display.print("Sensor: "); display.println(sonar_read);
   display.display();
 }
@@ -1123,7 +1153,7 @@ void automatic() {
     sonar_read = constrain(sonar_read, min_sensor, max_sensor);
     normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
     normalize = normalize / 10000;
-    send_data();
+    if(wifi)send_data();
     //motor_pos = DoubleQuadraticBezier(sonar_read, bezier_A, bezier_B, bezier_C, bezier_D);
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
     motor_pos = map(sonar_read, min_sensor, max_sensor, min_actuator, max_actuator);

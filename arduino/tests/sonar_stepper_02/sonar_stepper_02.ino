@@ -5,7 +5,7 @@ AccelStepper stepper(2, 9, 8);   // EN+, CLK+, CW+, LIB ACCEL
 //Variables
 float cm = 0.00;                          //conversión valor de lectura
 float pcm = cm;                           //cm previo = cm actual
-int SonarPin = A0;                        //pin de lectura
+int SonarPin = A1;                        //pin de lectura
 int sensorValue;                          //valor de lectura
 float newPos;                             //valor de escritura
 int pasos;                                //valor de movimiento
@@ -15,6 +15,7 @@ boolean debug = false;                    //boolean para consola
 void setup() {
   pinMode(SonarPin, INPUT);
   Serial.begin(9600);
+  
   // Stepper config
   stepper.setMaxSpeed(6000.0);
   stepper.setSpeed(2000.0);

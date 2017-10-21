@@ -13,12 +13,15 @@ void setup()
   Serial.begin(57600);
   ESP.begin(57600);
 
-  // Serial.begin(115200);
-  // ESP.begin(115200);
+  //Serial.begin(115200);
+  //ESP.begin(115200);
+
+  Serial.println("escriba AT para comunicarse");
 }
 
 void loop()
 {
+
   // Repetir lo recibido por el ESP8266 hacia el monitor serial
   if (ESP.available())
   { char c = ESP.read() ;
