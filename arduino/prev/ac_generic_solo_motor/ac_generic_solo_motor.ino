@@ -10,15 +10,13 @@
 #include <Adafruit_PCD8544.h>
 #include <OnewireKeypad.h>
 #include <AccelStepper.h>
-#include <EEPROM.h>
-#include <SoftwareSerial.h>
-#include <OSCMessage.h>
 
 Adafruit_PCD8544 display = Adafruit_PCD8544(7, 5, 6, 4, 3);
 AccelStepper stepper(AccelStepper::DRIVER, 9, 8); // CLK+(paso) -> pin 9 --- CW+(direccion) -> pin 8
 
 int stepToGo;
 float bounce;
+int halfMaxSteps = 4000;
 
 void setup () {
 
@@ -30,9 +28,11 @@ void setup () {
   delay(10);
   pinMode(13, INPUT);
 
-  stepper.setMaxSpeed(4000.0);
+  stepper.setMaxSpeed(1500.0);
+  stepper.setSpeed(120.0);
   stepper.setAcceleration(2000.0);
 
+  display.begin();
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(0, 0);
@@ -42,26 +42,22 @@ void setup () {
   display.display();
 }
 
-int halfMaxSteps = 400;
+
 
 void loop() {
 
   bounce = sin(float(millis()) / 300.0) * halfMaxSteps;
   stepToGo = halfMaxSteps + round(bounce);
+  
   stepper.moveTo(stepToGo);
   stepper.run();
+  
+  //stepper.runToNewPosition(stepToGo);
   Serial.println(stepToGo);
 
   display.clearDisplay();
   display.display();
   display.println("solo motor");
   display.display();
-
-  /*
-    // If at the end of travel go to the other end
-    if (stepper.distanceToGo() == 0)
-    stepper.moveTo(-stepper.currentPosition());
-
-  */
 }
 

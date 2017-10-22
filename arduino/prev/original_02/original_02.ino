@@ -23,7 +23,7 @@
 #define WLAN_SSID  "AC"
 #define WLAN_PASS  "actor-reactor"
 
-String NAME = "Asincronía Elevada";
+String NAME = "Asincronia\nElevada";
 
 float min_sensor = 0, min_actuator = 0, max_sensor = 0, max_actuator = 0;
 float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0;
@@ -78,12 +78,12 @@ void setup () {
   resp = mySerial.find("ready\r\n");
   mySerial.println("AT+CWMODE=1");
   resp = mySerial.find("OK\r\n");
-  
+
   display.begin();
   display.setContrast(60);
   display.setRotation(2);
   display.display();
-  
+
   int attempts = 20;
   int count = 0;
 
@@ -94,7 +94,7 @@ void setup () {
     mySerial.print(WLAN_PASS);
     mySerial.println("\"");
     resp = mySerial.find("OK\r\n");
-    
+
     if (resp) {
       wifi = true;
       Serial.println(resp);
@@ -107,7 +107,7 @@ void setup () {
       break;
       count = attempts;
     }
-    
+
     display.clearDisplay();
     display.display();
     display.println("wifi attempt");
@@ -1086,7 +1086,6 @@ void mainmenu() {
 }
 
 
-
 void manual() {
   mainmenu_disp = !mainmenu_disp;
   char key2;
@@ -1101,6 +1100,7 @@ void manual() {
   while (!salir == 1) {
     key2 = KP2.Getkey();
     stepper.run();
+    
     if (key2 == '6') {
       //stepper.setSpeed(100.0);
       display.clearDisplay();
@@ -1111,6 +1111,7 @@ void manual() {
       stepper.moveTo(motor_pos);
       stepper.run();
     }
+    
     if (key2 == '4') {
       //stepper.setSpeed(-100.0);
       display.clearDisplay();
@@ -1121,6 +1122,7 @@ void manual() {
       stepper.moveTo(motor_pos);
       stepper.run();
     }
+    
     if (key2 == '0') {
       salir = !salir;
     }
@@ -1144,6 +1146,13 @@ void automatic() {
     analog_counter++;
     actual_millis = millis();
     diferencia = actual_millis - previous_millis;
+
+    display.clearDisplay();
+    display.display();
+    display.println("Mode auto");
+    display.println(" 0-F to exit");
+    display.display();
+
     if (diferencia > 300) {
       previous_millis = actual_millis;
       sonar_read = acum_sonar_read / analog_counter * 1.26;
@@ -1153,7 +1162,7 @@ void automatic() {
     sonar_read = constrain(sonar_read, min_sensor, max_sensor);
     normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
     normalize = normalize / 10000;
-    if(wifi)send_data();
+    if (wifi)send_data();
     //motor_pos = DoubleQuadraticBezier(sonar_read, bezier_A, bezier_B, bezier_C, bezier_D);
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
     motor_pos = map(sonar_read, min_sensor, max_sensor, min_actuator, max_actuator);
@@ -1203,9 +1212,6 @@ void loop() {
           break;
       }
     }
-
   }
-
-
 }
 
