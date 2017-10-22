@@ -27,7 +27,7 @@
 #define DIR_BEZIER_D 35
 
 
-String NAME = "Creatura 1";
+String NAME = "Vinculo\nSinuoso";
 
 
 // #define WLAN_ADDR  "224.0.0.1"         // receiving Router ip
@@ -84,16 +84,20 @@ boolean starting = true;  // para que se vaya a automático al partir
 
 void setup () {
   Serial.begin(57600);
+  pinMode(2, OUTPUT);
   pinMode(12, INPUT);
   wifiLink.begin(57600);
   Serial.setTimeout(10000);
+  
   digitalWrite(4, 0);
+  digitalWrite(2, 0);
+  
   pinMode(13, OUTPUT);
   delay(10);
   pinMode(13, INPUT);
 
-  stepper.setSpeed(150.0);
-  stepper.setMaxSpeed(200.0);
+  stepper.setSpeed(250.0);
+  stepper.setMaxSpeed(360.0);
   stepper.setAcceleration(100.0);
   stepper.setCurrentPosition(0);
   stepper.moveTo(motor_pos);
@@ -122,8 +126,7 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
 
- /*
-  int attempts = 10;
+  int attempts = 20;
   int count = 0;
 
   do {
@@ -165,7 +168,6 @@ void setup () {
       Serial.println("CONNECTION FAILED");
       }
   } while (count < attempts);
-*/
 
   previous_millis = 0;
   actual_millis = millis();
@@ -220,7 +222,7 @@ void loop() {
     mainmenu();
   }
 
-  //if (starting) automatic(); // vaya a automático al partir
+  if (starting) automatic(); // vaya a automático al partir
 
   stepper.run();
   if ( Serial.available() ) {

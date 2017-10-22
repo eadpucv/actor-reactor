@@ -23,12 +23,7 @@ void automatic() {
   starting = false; // se apaga el switch de inicio
   
   mainmenu_disp = !mainmenu_disp;
-  display.clearDisplay();
-  display.display();
-  display.println("Automatic");
-  display.println(" 0-F to exit");
-  display.display();
-
+  
   while (!back == 1) {
     acum_sonar_read += analogRead(A2);
     analog_counter++;
