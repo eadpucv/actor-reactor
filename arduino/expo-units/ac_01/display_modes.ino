@@ -20,7 +20,7 @@ void mainmenu() {
 void automatic() {
 
   //!back = 1;
-  starting = false;
+  starting = false; // se apaga el switch de inicio
   
   mainmenu_disp = !mainmenu_disp;
   display.clearDisplay();
