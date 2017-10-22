@@ -24,10 +24,10 @@
 #define DIR_BEZIER_C 30
 #define DIR_BEZIER_D 35
 
-#define ID 1
+String NAME = "Creatura 1";
 
-#define WLAN_ADDR  "224.0.0.1"         // receiving Router ip
-//#define WLAN_ADDR  "192.168.0.1"          // receiving Router ip
+//#define WLAN_ADDR  "224.0.0.1"         // receiving Router ip
+#define WLAN_ADDR  "192.168.0.1"          // receiving Router ip
 
 #define PORT  1112
 #define WLAN_SSID  "AC"                   // wifi SSID
@@ -79,7 +79,7 @@ char KEYS[] = {
   'Y', '0', 'N', 'D'
 };
 
-OnewireKeypad <Print, 16 > KP2(Serial, KEYS, 4, 4, A0, 4700, 1000, ExtremePrec );
+OnewireKeypad <Print, 16 > KP2(Serial, KEYS, 4, 4, A0, 4700, 1000, ExtremePrec);
 SoftwareSerial wifiLink(11, 10);
 
 boolean starting = true;  // para que se vaya a automático al partir
@@ -94,9 +94,9 @@ void setup () {
   delay(10);
   pinMode(13, INPUT);
 
-  stepper.setSpeed(400.0);
-  stepper.setMaxSpeed(600.0);
-  stepper.setAcceleration(10000.0);
+  stepper.setMaxSpeed(200.0);
+  stepper.setSpeed(150.0);
+  stepper.setAcceleration(100.0);
   stepper.setCurrentPosition(0);
   stepper.moveTo(motor_pos);
 
@@ -124,6 +124,7 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
 
+  /*
   int attempts = 10;
   int count = 0;
 
@@ -138,7 +139,7 @@ void setup () {
     if (resp) {
       wifi = true;
       Serial.println(resp);
-      Serial.println("conectado!");
+      Serial.println("wifi OK!!!");
       display.clearDisplay();
       display.display();
       display.println("wifi OK!!!");
@@ -147,17 +148,26 @@ void setup () {
       break;
       count = attempts;
     }
+    
+    Serial.print("wifi attempt\t");
+    Serial.print(count);
+    Serial.print(" / ");
+    Serial.println(attempts);
+    
     display.clearDisplay();
     display.display();
-    display.println("wifi attempt");
+    display.println("wifi attempt ");
     display.print(count);
-    display.print("/");
+    display.print(" / ");
     display.print(attempts);
     display.display();
     delay(100);
     count ++;
+    if(attempts == count){
+      Serial.println("CONNECTION FAILED");
+      }
   } while (count < attempts);
-
+*/
   previous_millis = 0;
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);
@@ -174,7 +184,7 @@ void setup () {
 
   write_eeprom(); // write default values if keypad not working
 
-  Serial.println("done setup");
+  Serial.println("Done Setup");
 }
 
 // position = 0 -> endstop al inicio

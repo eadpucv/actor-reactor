@@ -23,11 +23,8 @@ void automatic() {
   starting = false; // se apaga el switch de inicio
 
   mainmenu_disp = !mainmenu_disp;
-  display.clearDisplay();
-  display.display();
-  display.println("Automatic");
-  display.println(" 0-F to exit");
-  display.display();
+
+
 
   while (!back == 1) {
     acum_sonar_read += analogRead(A2);
@@ -41,11 +38,6 @@ void automatic() {
       sonar_read = acum_sonar_read / analog_counter * 1.26;
       acum_sonar_read = 0;
       analog_counter = 0;
-
-      Serial.print("motor pos ");
-      Serial.println(motor_pos);
-      Serial.print("soft pos ");
-      Serial.println(softenMotorPos);
     }
 
     sonar_read = constrain(sonar_read, min_sensor, max_sensor);
@@ -58,9 +50,20 @@ void automatic() {
 
     last_motor_pos = stepper.currentPosition();
 
-    motor_pos = map(sonar_read, min_sensor, max_sensor, min_actuator, max_actuator);
+    motor_pos = map(sonar_read, max_sensor, min_sensor, min_actuator, max_actuator);
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
     softenMotorPos = soften(motor_pos);
+
+    display.clearDisplay();
+    display.display();
+    display.println(NAME);
+    display.println("\n");
+    display.print("sonar ");
+    display.println(sonar_read);
+    display.print("motor ");
+    display.println(motor_pos);
+    display.display();
+
 
     endstop = digitalRead(12);
     if (!endstop)
@@ -135,15 +138,15 @@ void manual() {
       display.display();
       display.print(stepper.currentPosition());
       display.display();
-      
+
       last_motor_pos = motor_pos;
       motor_pos--;
       endstop = digitalRead(12);
       Serial.println(endstop);
-      
+
       if (!endstop)
         endstop_action();
-      
+
       stepper.moveTo(motor_pos);
       stepper.run();
     }

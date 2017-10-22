@@ -16,13 +16,15 @@ AccelStepper stepper(2, 9, 8);
 
 void setup()
 {  
-  stepper.setMaxSpeed(1000.0);
-  stepper.setSpeed(50.0);
-  stepper.setAcceleration(8000.0);
+  stepper.setMaxSpeed(200.0);
+  stepper.setSpeed(150.0);
+  stepper.setAcceleration(100.0);
 }
 
 void loop()
 {    
-    stepper.runToNewPosition(-2400);
-    stepper.runToNewPosition(2400);
+    stepper.runToNewPosition(-800);
+    delay(2000);
+    stepper.runToNewPosition(800);
+    delay(2000);
 }
