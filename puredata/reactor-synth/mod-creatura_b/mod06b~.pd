@@ -19,12 +19,12 @@
 #X obj 281 115 hsl 128 15 0 1 0 1 empty empty kp_amp 0.338583 10 7
 0 10 -204786 -258113 -1 4300 1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty -2 -8 0 10 -4034
--1 -1 9207 1;
+-1 -1 2681 1;
 #X obj 440 604 *~ 0.99;
 #X obj 16 159 int;
 #X obj 16 176 change;
 #X obj 16 139 * 10;
-#X obj 281 100 hsl 128 15 0 127 0 1 empty empty kp_frq 260.444 10
+#X obj 281 100 hsl 128 15 0 127 0 1 empty empty kp_frq 423.875 10
 8 0 10 -204786 -258113 -1 1400 1;
 #X obj 455 249 mtof;
 #X obj 135 307 t b f;
@@ -75,7 +75,7 @@
 10 7 0 10 -262144 -258113 -1 4300 1;
 #X obj 157 501 *~;
 #X msg 675 94 label kp_frq \$1;
-#X obj 281 145 hsl 128 15 0 127 0 1 empty empty noise_frq 288.27 10
+#X obj 281 145 hsl 128 15 0 127 0 1 empty empty noise_frq 460.27 10
 8 0 10 -262144 -258113 -1 3400 1;
 #X obj 429 213 mtof;
 #X msg 674 131 label noise_frq \$1;
@@ -132,6 +132,7 @@
 #X obj 486 553 expr $f1 / 10000 + 0.95;
 #X obj 486 530 random 500;
 #X floatatom 482 360 5 0 0 0 - - -, f 5;
+#X obj 243 72 r rnd_06;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 103 0;
@@ -290,4 +291,5 @@
 #X connect 113 0 10 0;
 #X connect 114 0 113 0;
 #X connect 115 0 5 1;
+#X connect 116 0 17 0;
 #X coords 0 -1 1 1 311 90 2 100 100;
