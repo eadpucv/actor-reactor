@@ -39,12 +39,14 @@ float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0, las
 float EPSILON = 9.999999747378752E-5f;
 boolean variable;
 boolean wifi = false;
+int char_2_int=0;;
 
 // EEPROM.get(DIR_SENSOR_MIN, min_sensor);
 // EEPROM.get(DIR_SENSOR_MAX, max_sensor);
 // EEPROM.get(DIR_ACTUATOR_MAX, max_actuator);
 
-char insert[10];
+char insert[10], serialdata;
+char serialdata_motor[10];
 int i = 0;
 double normalize;
 boolean mainmenu_disp = 0, resp;
@@ -94,9 +96,9 @@ void setup () {
   delay(10);
   pinMode(13, INPUT);
 
-  stepper.setSpeed(400.0);
-  stepper.setMaxSpeed(600.0);
-  stepper.setAcceleration(10000.0);
+  stepper.setSpeed(150.0);
+  stepper.setMaxSpeed(200.0);
+  stepper.setAcceleration(100.0);
   stepper.setCurrentPosition(0);
   stepper.moveTo(motor_pos);
 
@@ -124,7 +126,7 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
 
-  int attempts = 20;
+  int attempts = 2;
   int count = 0;
 
   do {
@@ -209,35 +211,44 @@ void loop() {
     previous_millis = actual_millis;
     mainmenu();
   }
-  
-  if(starting) automatic(); // vaya a automático al partir
-  
+
+  //if (starting) automatic(); // vaya a automático al partir
+
   stepper.run();
-  if ( char key = KP2.Getkey() ) {
-    if (KP2.Key_State() == PRESSED) {
-      switch (key) {
+  if ( Serial.available() ) {
+    getSerial();
+    Serial.println(serialdata);
+    switch (serialdata) {
 
-        /* F1 */
-        case 'A':
-          automatic();
-          break;
+      /* F1 */
+      case 'A':
+        Serial.println("Automatic mode");
+        memset(serialdata, 0, sizeof(serialdata));
+        automatic();
+        break;
 
-        /* F2 */
-        case 'B':
-          manual();
-          break;
+      /* F2 */
+      case 'B':
+        Serial.println("Manual mode");
+        memset(serialdata, 0, sizeof(serialdata));
+        manual();
+        break;
 
-        /* F3 */
-        case 'C':
-          adjust();
-          break;
+      /* F3 */
+      case 'C':
+        Serial.println("Adjust values");
+        memset(serialdata, 0, sizeof(serialdata));
+        adjust();
+        break;
 
-        /* F4 */
-        case 'D':
-          bezier();
-          break;
-      }
+      /* F4 */
+      case 'D':
+        Serial.println("Bezier mode");
+        memset(serialdata, 0, sizeof(serialdata));
+        bezier();
+        break;
     }
+    
   }
 }
 

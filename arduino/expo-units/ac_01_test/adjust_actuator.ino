@@ -9,75 +9,85 @@ void adjust_actuator_max() {
   display.display();
   while (!back == 1) {
 
-    if ( char key = KP2.Getkey() ) {
-      if (KP2.Key_State() == PRESSED) {
-        switch (key) {
+    if ( Serial.available() ) {
+      getSerial();
+      switch (serialdata) {
 
-          case 'Y':
-            i = 0;
-            back = !back;
-            break;
-          case '1':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-          case '2':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-          case '3':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-          case '4':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-          case '5':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-          case '6':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-          case '7':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-          case '8':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-          case '9':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-          case '0':
-            insert[i] = key;
-            display.print(insert[i]);
-            display.display();
-            i++;
-            break;
-        }
+        case 'Y':
+        memset(serialdata, 0, sizeof(serialdata));
+          i = 0;
+          back = !back;
+          break;
+        case '1':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
+        case '2':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
+        case '3':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
+        case '4':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
+        case '5':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
+        case '6':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
+        case '7':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
+        case '8':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
+        case '9':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
+        case '0':
+        memset(serialdata, 0, sizeof(serialdata));
+          insert[i] = serialdata;
+          display.print(insert[i]);
+          display.display();
+          i++;
+          break;
       }
 
     }
@@ -101,76 +111,86 @@ void adjust_actuator_min() {
   display.display();
   while (!back == 1) {
 
-    if ( char key = KP2.Getkey() ) {
-      if (KP2.Key_State() == PRESSED) {
-        switch (key) {
+    if ( Serial.available() ) {
+      getSerial();
+      switch (serialdata) {
 
           case 'Y':
+          memset(serialdata, 0, sizeof(serialdata));
             i = 0;
             back = !back;
             break;
           case '1':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '2':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '3':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '4':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '5':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '6':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '7':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '8':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '9':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '0':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
         }
-      }
 
     }
   }

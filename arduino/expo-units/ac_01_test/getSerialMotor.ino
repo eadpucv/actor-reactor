@@ -1,5 +1,5 @@
-void getSerial(){
-  memset(serialdata, 0, sizeof(serialdata));
+void getSerialMotor(){
+  memset(serialdata_motor, 0, sizeof(serialdata));
   
   int n = 0;
   int inbyte = 0;
@@ -9,11 +9,11 @@ void getSerial(){
     inbyte = Serial.read();  
     if (inbyte > 0 && inbyte != '/')
     { 
-      serialdata[n] = (char)inbyte;
+      serialdata_motor[n] = (char)inbyte;
       n++;
     }
   }
   
-  
+  //Serial.println(n);
   inbyte = 0;
 }

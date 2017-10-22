@@ -8,76 +8,87 @@ void adjust_sensor_min() {
   display.display();
   while (!back == 1) {
 
-    if ( char key = KP2.Getkey() ) {
-      if (KP2.Key_State() == PRESSED) {
-        switch (key) {
+    if ( Serial.available() ) {
+      getSerial();
+      switch (serialdata) {
 
           case 'Y':
+          memset(serialdata, 0, sizeof(serialdata));
             i = 0;
             back = !back;
             break;
           case '1':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '2':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '3':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '4':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '5':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '6':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '7':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '8':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '9':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '0':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
         }
-      }
+
     }
   }
   min_sensor = atof(insert);
@@ -98,75 +109,87 @@ void adjust_sensor_max() {
   display.display();
   while (!back == 1) {
 
-    if ( char key = KP2.Getkey() ) {
-      if (KP2.Key_State() == PRESSED) {
-        switch (key) {
+    if ( Serial.available() ) {
+      getSerial();
+      switch (serialdata) {
+
           case 'Y':
+          memset(serialdata, 0, sizeof(serialdata));
             i = 0;
             back = !back;
             break;
           case '1':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '2':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '3':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '4':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '5':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '6':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '7':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '8':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '9':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
           case '0':
-            insert[i] = key;
+          memset(serialdata, 0, sizeof(serialdata));
+            insert[i] = serialdata;
             display.print(insert[i]);
             display.display();
             i++;
             break;
         }
-      }
+
     }
   }
   
@@ -197,30 +220,35 @@ void adjust_sensor() {
       show_adjust = 1;
     }
 
-    if ( char key = KP2.Getkey() ) {
-      if (KP2.Key_State() == PRESSED) {
-        switch (key) {
+    if ( Serial.available() ) {
+      getSerial();
+      switch (serialdata) {
+
           case '0':
+          memset(serialdata, 0, sizeof(serialdata));
             back = !back;
             break;
           case 'B':
+          memset(serialdata, 0, sizeof(serialdata));
             adjust_sensor_max();
             show_adjust = 0;
             break;
           case 'A':
+          memset(serialdata, 0, sizeof(serialdata));
             adjust_sensor_min();
             show_adjust = 0;
             break;
           case 'C':
+          memset(serialdata, 0, sizeof(serialdata));
             adjust_actuator_min();
             show_adjust = 0;
             break;
           case 'D':
+          memset(serialdata, 0, sizeof(serialdata));
             adjust_actuator_max();
             show_adjust = 0;
             break;
         }
-      }
     }
   }
   back = !back;

@@ -9,11 +9,11 @@ void getSerial(){
     inbyte = Serial.read();  
     if (inbyte > 0 && inbyte != '/')
     { 
-      serialdata[n] = (char)inbyte;
+      serialdata = (char)inbyte;
       n++;
     }
   }
   
-  
+  Serial.println(n);
   inbyte = 0;
 }

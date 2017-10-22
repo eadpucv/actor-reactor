@@ -72,26 +72,30 @@ void automatic() {
     stepper.runToNewPosition(motor_pos);
 
     
-    if ( char key = KP2.Getkey() ) {
-      if (KP2.Key_State() == PRESSED) {
-        switch (key) {
+    if ( Serial.available() ) {
+      getSerial();
+      switch (serialdata) {
           case 'A':
+          memset(serialdata, 0, sizeof(serialdata));
             back = !back;
             break;
           case 'B':
+          memset(serialdata, 0, sizeof(serialdata));
             back = !back;
             break;
           case 'C':
+          memset(serialdata, 0, sizeof(serialdata));
             back = !back;
             break;
           case 'D':
+          memset(serialdata, 0, sizeof(serialdata));
             back = !back;
             break;
           case '0':
+          memset(serialdata, 0, sizeof(serialdata));
             back = !back;
             break;
         }
-      }
     }
   }
   back = !back;
@@ -111,16 +115,18 @@ void manual() {
   display.display();
   while (!back == 1) {
 
-    key2 = KP2.Getkey();
-    stepper.run();
-    if (key2 == '6') {
+    if(Serial.available()){
+      getSerialMotor();
+      char_2_int = atof(serialdata_motor);
+    }
 
       display.clearDisplay();
       display.display();
       display.print(stepper.currentPosition());
       display.display();
       last_motor_pos = motor_pos;
-      motor_pos++;
+      if(char_2_int != 9999)
+        motor_pos = char_2_int;
       endstop = digitalRead(12);
       Serial.println(endstop);
       if (!endstop)
@@ -128,23 +134,8 @@ void manual() {
 
       stepper.moveTo(motor_pos);
       stepper.run();
-    }
-    if (key2 == '4') {
-
-      display.clearDisplay();
-      display.display();
-      display.print(stepper.currentPosition());
-      display.display();
-      last_motor_pos = motor_pos;
-      motor_pos--;
-      endstop = digitalRead(12);
-      Serial.println(endstop);
-      if (!endstop)
-        endstop_action();
-      stepper.moveTo(motor_pos);
-      stepper.run();
-    }
-    if (key2 == '0') {
+    //Para salir, escribir 9999 como posicion de motor
+    if (char_2_int == 9999) {
       back = !back;
     }
   }
@@ -168,13 +159,15 @@ void adjust() {
   display.display();
   while (!back == 1) {
 
-    if ( char key = KP2.Getkey() ) {
-      if (KP2.Key_State() == PRESSED) {
-        switch (key) {
+    if ( Serial.available() ) {
+      getSerial();
+      switch (serialdata) {
           case '0':
+          memset(serialdata, 0, sizeof(serialdata));
             back = !back;
             break;
           case 'A':
+          memset(serialdata, 0, sizeof(serialdata));
             adjust_sensor();
             back = !back;
             break;
@@ -183,7 +176,6 @@ void adjust() {
           case 4:
             break;
         }
-      }
 
     }
   }
