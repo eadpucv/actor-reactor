@@ -1,4 +1,4 @@
-#N canvas 209 75 906 762 10;
+#N canvas 206 75 906 762 10;
 #X obj 130 8 udpreceive 54321;
 #X obj 130 30 unpackOSC;
 #X obj 130 51 routeOSC /bang;
@@ -16,16 +16,16 @@
 #X obj 567 472 *~ 0.5;
 #X obj 507 495 +~;
 #X obj 524 343 expr 44100/($f1*1.09545)*0.025;
-#X obj 281 115 hsl 128 15 0 1 0 1 empty empty kp_amp 0.338583 10 7
-0 10 -204786 -258113 -1 4300 1;
+#X obj 281 115 hsl 128 15 0 1 0 1 empty empty kp_amp 1 10 7 0 10 -204786
+-258113 -1 12700 1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty -2 -8 0 10 -4034
--1 -1 9207 1;
+-1 -1 5400 1;
 #X obj 440 604 *~ 0.99;
 #X obj 16 159 int;
 #X obj 16 176 change;
 #X obj 16 139 * 10;
-#X obj 281 100 hsl 128 15 0 127 0 1 empty empty kp_frq 260.444 10
-8 0 10 -204786 -258113 -1 1400 1;
+#X obj 281 100 hsl 128 15 0 127 0 1 empty empty kp_frq 531.392 10
+8 0 10 -204786 -258113 -1 6200 1;
 #X obj 455 249 mtof;
 #X obj 135 307 t b f;
 #X obj 134 218 random 100;
@@ -64,7 +64,7 @@
 #X msg 16 455 1 0;
 #X msg 24 414 set \$1 0;
 #X obj 210 590 +~;
-#X msg 49 456 0 1040;
+#X msg 49 456 0 1180;
 #X obj 24 392 > 0;
 #X obj 321 438 random 10;
 #X obj 321 460 - 5;
@@ -75,7 +75,7 @@
 10 7 0 10 -262144 -258113 -1 4300 1;
 #X obj 157 501 *~;
 #X msg 675 94 label kp_frq \$1;
-#X obj 281 145 hsl 128 15 0 127 0 1 empty empty noise_frq 288.27 10
+#X obj 281 145 hsl 128 15 0 127 0 1 empty empty noise_frq 251.27 10
 8 0 10 -262144 -258113 -1 3400 1;
 #X obj 429 213 mtof;
 #X msg 674 131 label noise_frq \$1;
@@ -95,21 +95,21 @@
 #X obj 262 295 random 100;
 #X obj 134 339 +;
 #X obj 301 628 *~;
-#X obj 281 130 hsl 128 15 0 1 0 1 empty empty osc_amp 0.708661 10
-7 0 10 -262144 -258113 -1 9000 1;
+#X obj 281 130 hsl 128 15 0 1 0 1 empty empty osc_amp 0.362205 10
+7 0 10 -262144 -258113 -1 4600 1;
 #X msg 674 148 label osc_amp \$1;
 #X obj 210 641 *~;
 #X obj 321 351 expr~ $v1*$v2*1000;
 #X obj 118 440 vcf~ 5;
 #X msg 49 373 set 0 \$1;
-#X obj 175 145 hsl 101 15 0 2000 0 1 empty empty osc_dec 1040 10 7
-0 10 -262144 -258113 -1 5200 1;
+#X obj 175 145 hsl 101 15 0 2000 0 1 empty empty osc_dec 1180 10 7
+0 10 -262144 -258113 -1 5900 1;
 #X msg 674 77 label osc_dec \$1;
 #X obj 135 283 spigot;
 #X obj 235 115 tgl 15 1 empty empty empty 17 7 0 10 -204786 -1 -1 1
 1;
 #X obj 172 130 nbx 5 15 -1e+37 1e+37 0 1 empty empty empty 0 -8 0 10
--204786 -1 -1 13 256;
+-204786 -1 -1 82 256;
 #X obj 550 228 *;
 #X obj 550 201 t b f;
 #X obj 550 250 t b f;
@@ -132,6 +132,7 @@
 #X obj 486 553 expr $f1 / 10000 + 0.95;
 #X obj 486 530 random 500;
 #X floatatom 482 360 5 0 0 0 - - -, f 5;
+#X obj 255 72 inlet;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 103 0;
@@ -290,4 +291,5 @@
 #X connect 113 0 10 0;
 #X connect 114 0 113 0;
 #X connect 115 0 5 1;
+#X connect 116 0 17 0;
 #X coords 0 -1 1 1 311 90 2 100 100;

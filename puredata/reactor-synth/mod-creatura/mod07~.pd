@@ -1,4 +1,4 @@
-#N canvas 108 89 999 524 10;
+#N canvas 107 89 999 524 10;
 #X obj 131 10 udpreceive 54321;
 #X obj 131 32 unpackOSC;
 #X obj 131 53 routeOSC /bang;
@@ -24,7 +24,7 @@
 #X obj 283 385 *~ 1;
 #X obj 282 405 +~;
 #X obj 133 100 hsl 101 30 0 1 0 0 empty empty empty -2 -8 0 10 -4034
--1 -1 7910 1;
+-1 -1 0 1;
 #X obj 281 115 hsl 128 15 0 10 0 1 empty empty FM harmonic 0.708661
 4 8 0 10 -262144 -258113 -1 900 1;
 #X msg 516 79 label FM harmonic \$1;
@@ -48,8 +48,8 @@
 #X obj 19 201 int;
 #X obj 19 223 change;
 #X obj 19 173 * 10;
-#X obj 281 100 hsl 128 15 0 127 0 1 empty empty frq 138.145 10 8 0
-10 -204786 -258113 -1 3600 1;
+#X obj 281 100 hsl 128 15 0 127 0 1 empty empty frq 36 10 8 0 10 -204786
+-258113 -1 3600 1;
 #X msg 518 55 label frq \$1;
 #X obj 416 253 mtof;
 #X obj 199 294 t b f;
@@ -95,6 +95,7 @@
 #X obj 356 629 s~ out_r07;
 #X obj 455 459 *~ 5;
 #X obj 454 435 vcf~ 10;
+#X obj 255 71 inlet;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 72 0;
@@ -193,4 +194,5 @@
 #X connect 75 0 51 0;
 #X connect 78 0 4 0;
 #X connect 79 0 78 0;
+#X connect 80 0 22 0;
 #X coords 0 -1 1 1 311 90 2 100 100;

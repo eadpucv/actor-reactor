@@ -1,4 +1,4 @@
-#N canvas 348 179 1009 524 10;
+#N canvas 347 179 1009 524 10;
 #X obj 98 465 *~;
 #X obj 364 615 *~;
 #N canvas 775 218 450 397 asr 0;
@@ -94,14 +94,14 @@
 #X obj 100 100 bng 30 250 50 0 empty empty 9 8 15 0 25 -262144 -159808
 -1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty 10 15 0 10 -159808
--1 -1 5891 1;
+-1 -1 0 1;
 #X obj 130 132 vsl 15 55 0 1 0 1 empty empty -> 2 7 0 10 -228856 -258113
 -1 4000 1;
 #X obj 115 132 vsl 15 55 0 10000 0 1 empty empty >- 2 7 0 10 -232576
 -258113 -1 2300 1;
 #X obj 100 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -232576
 -258113 -1 500 1;
-#X obj 240 100 hsl 128 15 0 127 0 1 empty empty mod 2447.3 10 7 0
+#X obj 240 100 hsl 128 15 0 127 0 1 empty empty mod 2540.3 10 7 0
 10 -262144 -258113 -1 400 1;
 #X obj 240 130 hsl 128 15 0 1000 0 1 empty empty a 338.583 10 7 0
 10 -262144 -258113 -1 4300 1;
@@ -112,7 +112,7 @@
 #X obj 240 160 hsl 128 15 0 2000 0 1 empty empty r 393.701 10 7 0
 10 -262144 -258113 -1 2500 1;
 #X msg 664 167 label r \$1;
-#X obj 445 100 hsl 128 15 0 127 0 1 empty empty carr 177.067 10 7
+#X obj 445 100 hsl 128 15 0 127 0 1 empty empty carr 29.9565 10 7
 0 10 -232576 -258113 -1 2000 1;
 #X msg 653 225 label carr \$1;
 #X obj 445 130 hsl 128 15 0 1000 0 1 empty empty a 763.78 10 7 0 10
@@ -198,6 +198,7 @@
 7 0 10 -232576 -258113 -1 2600 1;
 #X obj 336 516 *~;
 #X obj 318 541 +~;
+#X obj 251 70 inlet;
 #X connect 0 0 7 0;
 #X connect 1 0 81 0;
 #X connect 2 0 10 1;
@@ -313,4 +314,5 @@
 #X connect 90 0 87 0;
 #X connect 91 0 92 1;
 #X connect 92 0 50 1;
+#X connect 93 0 13 0;
 #X coords 0 -1 1 1 475 90 2 100 100;
