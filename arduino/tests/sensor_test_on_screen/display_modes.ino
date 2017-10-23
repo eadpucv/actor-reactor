@@ -19,10 +19,12 @@ void mainmenu() {
 /* F1 */
 void automatic() {
 
-  //!back = 1;
-  starting = false; // se apaga el switch de inicio
-
   mainmenu_disp = !mainmenu_disp;
+  display.clearDisplay();
+  display.display();
+  display.println("Mode auto");
+  display.println(" 0-F to exit");
+  display.display();
 
   while (!back == 1) {
     acum_sonar_read += analogRead(A2);
@@ -36,11 +38,16 @@ void automatic() {
       sonar_read = acum_sonar_read / analog_counter * 1.26;
       acum_sonar_read = 0;
       analog_counter = 0;
+
+      Serial.print("motor pos ");
+      Serial.println(motor_pos);
+      Serial.print("soft pos ");
+      Serial.println(softenMotorPos);
     }
 
     sonar_read = constrain(sonar_read, min_sensor, max_sensor);
     normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
-    normalize = normalize / 10000.0;
+    normalize = normalize / 10000;
 
     if (wifi) send_data();
 
@@ -48,63 +55,35 @@ void automatic() {
 
     last_motor_pos = stepper.currentPosition();
 
-    motor_pos = map(soften(sonar_read), max_sensor, min_sensor, min_actuator, max_actuator);
+    motor_pos = map(sonar_read, min_sensor, max_sensor, min_actuator, max_actuator);
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
     softenMotorPos = soften(motor_pos);
-
-    display.clearDisplay();
-    display.display();
-    display.println(NAME);
-    display.println("\n");
-    display.print("sonar ");
-    display.print(sonar_read);
-    display.print("/");
-    display.print(soften(sonar_read));
-    display.print("motor ");
-    display.print(stepper.currentPosition());
-    display.print("/");
-    display.print(motor_pos);
-    display.display();
 
     endstop = digitalRead(12);
     if (!endstop)
       endstop_action();
 
-    /* movimiento original */
-    stepper.moveTo(motor_pos);
+    stepper.moveTo(soften(motor_pos));
     stepper.run();
-
-    /* movimiento suavizado */
-    // stepper.moveTo(soften(motor_pos));
-    // stepper.run();
-
-    /* movimiento de bloqueo */
-    //stepper.runToNewPosition(motor_pos);
-
-
-    if ( Serial.available() ) {
-      getSerial();
-      switch (serialdata) {
-        case 'A':
-          memset(serialdata, 0, sizeof(serialdata));
-          back = !back;
-          break;
-        case 'B':
-          memset(serialdata, 0, sizeof(serialdata));
-          back = !back;
-          break;
-        case 'C':
-          memset(serialdata, 0, sizeof(serialdata));
-          back = !back;
-          break;
-        case 'D':
-          memset(serialdata, 0, sizeof(serialdata));
-          back = !back;
-          break;
-        case '0':
-          memset(serialdata, 0, sizeof(serialdata));
-          back = !back;
-          break;
+    if ( char key = KP2.Getkey() ) {
+      if (KP2.Key_State() == PRESSED) {
+        switch (key) {
+          case 'A':
+            back = !back;
+            break;
+          case 'B':
+            back = !back;
+            break;
+          case 'C':
+            back = !back;
+            break;
+          case 'D':
+            back = !back;
+            break;
+          case '0':
+            back = !back;
+            break;
+        }
       }
     }
   }
@@ -125,27 +104,40 @@ void manual() {
   display.display();
   while (!back == 1) {
 
-    if (Serial.available()) {
-      getSerialMotor();
-      char_2_int = atof(serialdata_motor);
-    }
-
-    display.clearDisplay();
-    display.display();
-    display.print(stepper.currentPosition());
-    display.display();
-    last_motor_pos = motor_pos;
-    if (char_2_int != 9999)
-      motor_pos = char_2_int;
-    endstop = digitalRead(12);
-    Serial.println(endstop);
-    if (!endstop)
-      endstop_action();
-
-    stepper.moveTo(motor_pos);
+    key2 = KP2.Getkey();
     stepper.run();
-    //Para salir, escribir 9999 como posicion de motor
-    if (char_2_int == 9999) {
+    if (key2 == '6') {
+
+      display.clearDisplay();
+      display.display();
+      display.print(stepper.currentPosition());
+      display.display();
+      last_motor_pos = motor_pos;
+      motor_pos++;
+      endstop = digitalRead(12);
+      Serial.println(endstop);
+      if (!endstop)
+        endstop_action();
+
+      stepper.moveTo(motor_pos);
+      stepper.run();
+    }
+    if (key2 == '4') {
+
+      display.clearDisplay();
+      display.display();
+      display.print(stepper.currentPosition());
+      display.display();
+      last_motor_pos = motor_pos;
+      motor_pos--;
+      endstop = digitalRead(12);
+      Serial.println(endstop);
+      if (!endstop)
+        endstop_action();
+      stepper.moveTo(motor_pos);
+      stepper.run();
+    }
+    if (key2 == '0') {
       back = !back;
     }
   }
@@ -169,22 +161,21 @@ void adjust() {
   display.display();
   while (!back == 1) {
 
-    if ( Serial.available() ) {
-      getSerial();
-      switch (serialdata) {
-        case '0':
-          memset(serialdata, 0, sizeof(serialdata));
-          back = !back;
-          break;
-        case 'A':
-          memset(serialdata, 0, sizeof(serialdata));
-          adjust_sensor();
-          back = !back;
-          break;
-        case 3:
-          break;
-        case 4:
-          break;
+    if ( char key = KP2.Getkey() ) {
+      if (KP2.Key_State() == PRESSED) {
+        switch (key) {
+          case '0':
+            back = !back;
+            break;
+          case 'A':
+            adjust_sensor();
+            back = !back;
+            break;
+          case 3:
+            break;
+          case 4:
+            break;
+        }
       }
 
     }

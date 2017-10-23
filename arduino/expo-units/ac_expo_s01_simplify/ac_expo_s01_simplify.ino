@@ -42,7 +42,7 @@ float bezier_A = 0, bezier_B = 0, bezier_C = 0, bezier_D = 0, motor_pos = 0, las
 float EPSILON = 9.999999747378752E-5f;
 boolean variable;
 boolean wifi = false;
-int char_2_int=0;
+int char_2_int = 0;
 
 char insert[10], serialdata;
 char serialdata_motor[10];
@@ -50,7 +50,6 @@ int i = 0;
 double normalize;
 boolean mainmenu_disp = 0, resp;
 boolean back = 0;
-boolean endstop, endstop_activation = 0, endstop_position = 0;
 boolean show_adjust = 0;
 
 float sonar_read, acum_sonar_read;
@@ -88,18 +87,18 @@ void setup () {
   pinMode(12, INPUT);
   wifiLink.begin(57600);
   Serial.setTimeout(10000);
-  
+
   digitalWrite(4, 0);
   digitalWrite(2, 0);
-  
+
   pinMode(13, OUTPUT);
   delay(10);
   pinMode(13, INPUT);
 
   /***************************************************************************/
-  stepper.setSpeed(2500.0);
-  stepper.setMaxSpeed(4360.0);
-  stepper.setAcceleration(800.0);
+  stepper.setMaxSpeed(350.0);
+  stepper.setSpeed(250.0);
+  stepper.setAcceleration(40);
   stepper.setCurrentPosition(0);
   stepper.moveTo(motor_pos);
 
@@ -150,12 +149,12 @@ void setup () {
       break;
       count = attempts;
     }
-    
+
     Serial.print("wifi attempt\t");
     Serial.print(count);
     Serial.print(" / ");
     Serial.println(attempts);
-    
+
     display.clearDisplay();
     display.display();
     display.println("wifi attempt ");
@@ -165,9 +164,9 @@ void setup () {
     display.display();
     delay(100);
     count ++;
-    if(attempts == count){
+    if (attempts == count) {
       Serial.println("CONNECTION FAILED");
-      }
+    }
   } while (count < attempts);
 
   previous_millis = 0;
@@ -186,46 +185,25 @@ void setup () {
 
   write_eeprom(); // write default values if keypad not working
 
-  Serial.println("done setup");
+  display.clearDisplay();
+  display.display();
+  display.println("\n\n");
+  display.println(NAME);
+  display.display();
 }
 
-// position = 0 -> endstop al inicio
-// position = 1 -> endstop al final
-
-void endstop_action() {
-  stepper.setCurrentPosition(0);
-  if (last_motor_pos < motor_pos) {
-    do {
-      motor_pos--;
-      stepper.moveTo(motor_pos);
-      stepper.run();
-    } while (digitalRead(12) == 0);
-    stepper.runToNewPosition(-10);
-    stepper.setCurrentPosition(0);
-  }
-  else if (last_motor_pos > motor_pos) {
-    do {
-      motor_pos++;
-      stepper.moveTo(motor_pos);
-      stepper.run();
-    } while (digitalRead(12) == 0);
-  }
-  stepper.setCurrentPosition(0);
-  motor_pos = 0;
-}
 
 void loop() {
   sonar_read = analogRead(A2) * 1.26;
   actual_millis = millis();
   diferencia = actual_millis - previous_millis;
-  if (diferencia > 100) {
-    previous_millis = actual_millis;
-    mainmenu();
+  sonar_read = constrain(sonar_read, min_sensor, max_sensor);
+  normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
+  normalize = normalize / 10000;
+  if (wifi) send_data();
+  if(sonar_read < 200){
+    bounce();
   }
-
-  if (starting) automatic(); // vaya a automático al partir
-
-  stepper.run();
   if ( Serial.available() ) {
     getSerial();
     Serial.println(serialdata);
@@ -244,22 +222,7 @@ void loop() {
         memset(serialdata, 0, sizeof(serialdata));
         manual();
         break;
-
-      /* F3 */
-      case 'C':
-        Serial.println("Adjust values");
-        memset(serialdata, 0, sizeof(serialdata));
-        adjust();
-        break;
-
-      /* F4 */
-      case 'D':
-        Serial.println("Bezier mode");
-        memset(serialdata, 0, sizeof(serialdata));
-        bezier();
-        break;
     }
-    
   }
 }
 
