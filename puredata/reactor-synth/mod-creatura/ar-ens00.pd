@@ -3,15 +3,15 @@
 #X obj 236 160 hsl 128 15 0 1 0 1 empty empty amp_A 1 10 7 0 10 -262144
 -258113 -1 12700 1;
 #X obj 462 547 osc~;
-#X obj 236 100 hsl 128 15 0 127 0 1 empty empty carr_A 49.3133 10
+#X obj 236 100 hsl 128 15 0 127 0 1 empty empty carr_A 51.0893 10
 7 0 10 -262144 -258113 -1 2994 1;
 #X obj 259 378 mtof;
 #X obj 298 447 +~;
-#X obj 103 100 hsl 128 15 0 127 0 1 empty empty mod 57.0465 10 7 0
+#X obj 103 100 hsl 128 15 0 127 0 1 empty empty mod 53.649 10 7 0
 10 -262144 -258113 -1 3181 1;
 #X obj 461 284 mtof;
-#X obj 103 175 hsl 128 15 0 1000 0 1 empty empty index 506.875 10
-7 0 10 -262144 -258113 -1 6244 1;
+#X obj 103 175 hsl 128 15 0 1000 0 1 empty empty index 503.833 10
+7 0 10 -262144 -258113 -1 6144 1;
 #X obj 463 493 *~ 500;
 #X obj 461 308 +;
 #X obj 659 277 t b f;
