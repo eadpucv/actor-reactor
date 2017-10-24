@@ -1,12 +1,12 @@
-#N canvas 484 250 796 524 10;
+#N canvas 482 250 796 524 10;
 #X obj 100 100 bng 30 250 50 0 empty empty 4 8 15 0 25 -262144 -4032
 -1;
 #X obj 133 100 hsl 100 30 0 1 0 0 empty empty empty 10 15 0 10 -4032
--1 -1 2600 1;
+-1 -1 3237 1;
 #X obj 130 132 vsl 15 55 0 1 0 1 empty empty -> 2 7 0 10 -228856 -258113
--1 3700 1;
+-1 1200 1;
 #X obj 115 132 vsl 15 55 0 10000 0 1 empty empty >- 2 7 0 10 -204800
--258113 -1 0 1;
+-258113 -1 500 1;
 #X obj 100 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -204800
 -258113 -1 0 1;
 #X obj 23 217 int;
@@ -36,7 +36,7 @@
 #X obj 515 328 osc~;
 #X obj 604 202 mtof;
 #X obj 281 145 hsl 128 15 0 127 0 1 empty empty penv 10 7 0 10 -262144
--258113 -1 3335 1;
+-258113 -1 4153 1;
 #X obj 515 251 mtof;
 #X obj 281 115 hsl 128 15 0 120 0 1 empty empty frq-osc_2 10 7 0 10
 -204800 -258113 -1 2500 1;
@@ -63,7 +63,7 @@
 #X obj 23 104 del;
 #X msg 41 83 0;
 #X msg 83 110 set 0 \$1;
-#X msg 83 136 0 284.285;
+#X msg 83 136 0 32.7161;
 #X obj 15 55 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 84 262 outlet~;
@@ -83,7 +83,7 @@
 #X connect 10 0 5 0;
 #X restore 554 201 pd env;
 #X obj 281 160 hsl 128 15 1.27 800 0 1 empty empty penv-dec 10 7 0
-10 -262144 -258113 -1 4500 1;
+10 -262144 -258113 -1 500 1;
 #N canvas 426 311 450 300 env 0;
 #X obj 15 18 inlet;
 #X obj 83 18 inlet;

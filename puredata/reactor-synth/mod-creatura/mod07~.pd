@@ -1,4 +1,4 @@
-#N canvas 107 89 999 524 10;
+#N canvas 103 89 999 524 10;
 #X obj 131 10 udpreceive 54321;
 #X obj 131 32 unpackOSC;
 #X obj 131 53 routeOSC /bang;
@@ -24,21 +24,21 @@
 #X obj 283 385 *~ 1;
 #X obj 282 405 +~;
 #X obj 133 100 hsl 101 30 0 1 0 0 empty empty empty -2 -8 0 10 -4034
--1 -1 7480 1;
-#X obj 281 115 hsl 128 15 0 10 0 1 empty empty FM harmonic 5.59055
-4 8 0 10 -262144 -258113 -1 7100 1;
+-1 -1 4448 1;
+#X obj 281 115 hsl 128 15 0 10 0 1 empty empty FM harmonic 1.49606
+4 8 0 10 -262144 -258113 -1 1900 1;
 #X msg 516 79 label FM harmonic \$1;
-#X obj 281 130 hsl 128 15 0 2 0 1 empty empty FM amount 0.598425
-4 8 0 10 -262144 -258113 -1 3800 1;
-#X obj 148 175 hsl 128 15 0.0101 0.999 0 1 empty empty decay 0.983795
-5 8 0 10 -262144 -258113 -1 12300 1;
+#X obj 281 130 hsl 128 15 0 2 0 1 empty empty FM amount 0.188976
+4 8 0 10 -262144 -258113 -1 1200 1;
+#X obj 148 175 hsl 128 15 0.0101 0.999 0 1 empty empty decay 0.9995
+5 8 0 10 -262144 -258113 -1 12700 1;
 #X obj 392 428 sqrt;
 #X msg 515 157 label decay \$1;
 #X obj 281 160 hsl 128 15 20 15000 0 1 empty empty LP 15000 4 8 0
 10 -262144 -258113 -1 12700 1;
 #X msg 516 137 label LP \$1;
-#X obj 281 145 hsl 128 15 0 10000 0 1 empty empty BP 5275.59 4 8 0
-10 -262144 -258113 -1 6700 1;
+#X obj 281 145 hsl 128 15 0 10000 0 1 empty empty BP 5354.33 4 8 0
+10 -262144 -258113 -1 6800 1;
 #X msg 517 117 label BP \$1;
 #X msg 516 98 label FM amount \$1;
 #X msg 343 321 1;
@@ -48,8 +48,8 @@
 #X obj 19 201 int;
 #X obj 19 223 change;
 #X obj 19 173 * 10;
-#X obj 281 100 hsl 128 15 0 127 0 1 empty empty frq 145.06 10 8 0
-10 -204786 -258113 -1 3600 1;
+#X obj 281 100 hsl 128 15 0 127 0 1 empty empty frq 123.26 10 8 0
+10 -204786 -258113 -1 4500 1;
 #X msg 518 55 label frq \$1;
 #X obj 416 253 mtof;
 #X obj 199 294 t b f;
@@ -64,11 +64,11 @@
 #X obj 108 296 *~;
 #X obj 355 602 *~;
 #X obj 130 132 vsl 15 55 0 1 0 1 empty empty -> 2 7 0 10 -228856 -258113
--1 3900 1;
+-1 800 1;
 #X obj 115 132 vsl 15 55 0 1000 0 1 empty empty >- 2 7 0 10 -204786
 -258113 -1 600 1;
 #X obj 100 132 vsl 15 55 0 1000 0 1 empty empty >a 2 7 0 10 -204786
--258113 -1 1500 1;
+-258113 -1 300 1;
 #X obj 20 296 *~;
 #X obj 301 287 sig~;
 #X obj 283 318 +~;
