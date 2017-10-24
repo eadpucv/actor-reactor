@@ -34,12 +34,12 @@ float min_sensor = 30;
 float max_sensor = 450;
 
 float min_actuator = 0;
-float max_actuator = 3900;
+float max_actuator = 280;
 
 float sonar_read = 0;
-float triggerDist  = 210;    // distancia de activación
+float triggerDist  = 180;    // distancia de activación
 
-String NAME = "Elegancia\nSegmentada";
+String NAME = "Distension\nPalpitante";
 
 Adafruit_PCD8544 display = Adafruit_PCD8544(7, 5, 6, 4, 3);
 AccelStepper stepper(2, 9, 8);
@@ -52,9 +52,9 @@ void setup() {
   digitalWrite(4, 0);
   digitalWrite(2, 0);     // turn on screen backlight 2
 
-  stepper.setMaxSpeed(300);
-  stepper.setSpeed(250);
-  stepper.setAcceleration(150);
+  stepper.setMaxSpeed(150);
+  stepper.setSpeed(50);
+  stepper.setAcceleration(50);
 
   display.begin();
   display.clearDisplay();

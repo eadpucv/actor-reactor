@@ -34,12 +34,12 @@ float min_sensor = 30;
 float max_sensor = 450;
 
 float min_actuator = 0;
-float max_actuator = 3900;
+float max_actuator = 200;
 
 float sonar_read = 0;
-float triggerDist  = 210;    // distancia de activación
+float triggerDist  = 1¨¨¨¨¨¨¨¨¨¡¡¡¡¡¡¡¡¡¡¡00;    // distancia de activación
 
-String NAME = "Elegancia\nSegmentada";
+String NAME = "Expansion\nHibrida";
 
 Adafruit_PCD8544 display = Adafruit_PCD8544(7, 5, 6, 4, 3);
 AccelStepper stepper(2, 9, 8);
@@ -52,9 +52,9 @@ void setup() {
   digitalWrite(4, 0);
   digitalWrite(2, 0);     // turn on screen backlight 2
 
-  stepper.setMaxSpeed(300);
-  stepper.setSpeed(250);
-  stepper.setAcceleration(150);
+  stepper.setMaxSpeed(500);
+  stepper.setSpeed(300);
+  stepper.setAcceleration(100);
 
   display.begin();
   display.clearDisplay();
@@ -70,9 +70,12 @@ void loop() {
   sonar_read = constrain(sonar_read, min_sensor, max_sensor);
   Serial.println(sonar_read);
   
+  
   if (sonar_read < triggerDist) {
+    //sinusoidal();
     bounce();
   }
+  
 }
 
 void sinusoidal() {
@@ -89,11 +92,10 @@ void sinusoidal() {
 }
 
 void bounce() {
-  Serial.println("bounce!");
+  Serial.println("running...");
   stepper.runToNewPosition(max_actuator);
   delay(100);
   stepper.runToNewPosition(0);
   Serial.println("done!");
-  delay(5000);
 }
 

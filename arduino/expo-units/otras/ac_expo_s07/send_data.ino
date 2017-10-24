@@ -4,7 +4,7 @@
  */
 
 void send_data() {
-  OSCMessage msg("/bang/s02");
+  OSCMessage msg("/bang/s07");
   msg.add((float)normalize);
   wifiLink.println("AT+CIPSEND=4,16");
   wifiLink.find(">");

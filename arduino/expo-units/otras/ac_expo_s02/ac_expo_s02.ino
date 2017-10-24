@@ -45,13 +45,13 @@
 #define DIR_BEZIER_D 35
 
 
-String NAME = "Descalce\nAmpliado";
+String NAME = "Expansion\nHibrida";
 
-float MAXVEL            = 400 ;
+float MAXVEL            = 150 ;
 float maxvel = MAXVEL;
-float VEL               = 80 ;
+float VEL               = 50 ;
 float vel = VEL;
-float ACCEL             = 10 ;
+float ACCEL             = 20 ;
 float accel = ACCEL;
 float range;                      // rango temporal de movimiento
 float triggerDist       = 200;    // distancia de activación

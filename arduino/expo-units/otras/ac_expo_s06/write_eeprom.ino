@@ -1,9 +1,9 @@
 void write_eeprom() {
-  min_sensor = 30;
+  min_sensor = 80;
   max_sensor = 450;
 
   min_actuator = 0;
-  max_actuator = 8xs0;
+  max_actuator = 200;
 
   bezier_A = 0;
   bezier_B = 0;

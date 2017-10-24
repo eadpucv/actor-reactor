@@ -1,15 +1,14 @@
 
 void loop() {
-  // lectura del sensor
   sonar_read = analogRead(A2) * 1.26;
   actual_millis = millis();
   diferencia = actual_millis - previous_millis;
   sonar_read = constrain(sonar_read, min_sensor, max_sensor);
-
-  // modificar datos para pure data
   normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
   normalize = normalize / 10000;
   if (wifi) send_data();
+
+  Serial.println(sonar_read);
   
   if(sonar_read < triggerDist){
     bounce();

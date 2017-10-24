@@ -34,12 +34,12 @@ float min_sensor = 30;
 float max_sensor = 450;
 
 float min_actuator = 0;
-float max_actuator = 3900;
+float max_actuator = 200;
 
 float sonar_read = 0;
-float triggerDist  = 210;    // distancia de activación
+float triggerDist  = 180;    // distancia de activación
 
-String NAME = "Elegancia\nSegmentada";
+String NAME = "Impulso\nAcorazado";
 
 Adafruit_PCD8544 display = Adafruit_PCD8544(7, 5, 6, 4, 3);
 AccelStepper stepper(2, 9, 8);
@@ -52,9 +52,9 @@ void setup() {
   digitalWrite(4, 0);
   digitalWrite(2, 0);     // turn on screen backlight 2
 
-  stepper.setMaxSpeed(300);
-  stepper.setSpeed(250);
-  stepper.setAcceleration(150);
+  stepper.setMaxSpeed(2000);
+  stepper.setSpeed(1900);
+  stepper.setAcceleration(1200);
 
   display.begin();
   display.clearDisplay();
@@ -90,6 +90,10 @@ void sinusoidal() {
 
 void bounce() {
   Serial.println("bounce!");
+   stepper.runToNewPosition(max_actuator * .3);
+  delay(100);
+  stepper.runToNewPosition(0);
+  delay(100);
   stepper.runToNewPosition(max_actuator);
   delay(100);
   stepper.runToNewPosition(0);

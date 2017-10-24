@@ -1,8 +1,9 @@
 void bounce() {
+  Serial.println("moviendo...");
   stepper.runToNewPosition(max_actuator);
-  delay(100);
-  stepper.runToNewPosition(-max_actuator);
   delay(500);
+  stepper.runToNewPosition(-max_actuator);
+  Serial.println("terminando...");
 }
 
 void breathe() {
