@@ -1,5 +1,10 @@
 /**
 
+  Actor Reactor - CLAC
+  Taller de Espacios Expositivos e[ad]
+  Octubre 2017
+
+
   "Vínculo Sinuoso"         s01     Javier, César
 
   "Descalce Ampliado"       s02     Catalina C, Bastián
@@ -8,20 +13,15 @@
 
   "Arritmia Dispar"         s04     Doyma, Javiera
 
-  "Fragmentada Extensión"   s05     Bastián M, Monserrat
+  "Distension Palpitante"   s05     Bastián M, Monserrat
 
-  "Asincronía Elevada"      s06     MªIgnacia, Sofía S, Paul, Sam
+  "Elegancia Segmentada"    s06     MªIgnacia, Sofía S, Paul, Sam
 
-  "Impulso Acorazado"       s07     Alejandro, Dominique, Javier
+  "Fragmentada Extension"   s07     Alejandro, Dominique, Javier
 
-  "Elegancia Segmentada"    s08     Consuelo, Marcelo
+  "Impulso Acorazado"       s08     Consuelo, Marcelo
 
-  "Distensión Palpitante"   s09     Sofía V. Catalina M.
-
-
-  Actor Reactor - CLAC
-  Taller de Espacios Expositivos e[ad]
-  Octubre 2017
+  "Asincronia Elevada"      s09     Sofía V. Catalina M.
 
 */
 
@@ -45,14 +45,18 @@
 #define DIR_BEZIER_D 35
 
 
-String NAME = "Vinculo\nSinuoso";
+String NAME = "Arritmia\nDispar";
 
-float maxvel  = 10500;
-float vel     = 8000;
-float accel   = 2000;
+float MAXVEL            = 10000 ;
+float maxvel = MAXVEL;
+float VEL               = 8000 ;
+float vel = VEL;
+float ACCEL             = 1000 ;
+float accel = ACCEL;
+float range;                      // rango temporal de movimiento
+float triggerDist       = 200;    // distancia de activación
 
-// #define WLAN_ADDR  "224.0.0.1"         // receiving Router ip
-#define WLAN_ADDR  "192.168.0.1"          // receiving Router ip
+#define WLAN_ADDR  "192.168.0.1"          // receiving Router ip ex: "224.0.0.1" 
 #define PORT  1112
 #define WLAN_SSID  "AC"                   // wifi SSID
 #define WLAN_PASS  "actor-reactor"        // wifi password 
@@ -116,12 +120,7 @@ void setup () {
   delay(10);
   pinMode(13, INPUT);
 
-
-
-  /***************************************************************************/
-  stepper.setMaxSpeed(maxvel);
-  stepper.setSpeed(vel);
-  stepper.setAcceleration(accel);
+  setupStepper();
 
   stepper.setCurrentPosition(0);
   stepper.moveTo(motor_pos);
@@ -150,6 +149,7 @@ void setup () {
   display.setContrast(60);
   display.setRotation(2);
 
+  /*
   int attempts = 20;
   int count = 0;
 
@@ -192,7 +192,8 @@ void setup () {
       Serial.println("CONNECTION FAILED");
     }
   } while (count < attempts);
-
+  */
+  
   previous_millis = 0;
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);
@@ -216,37 +217,9 @@ void setup () {
   display.display();
 }
 
-
-void loop() {
-  sonar_read = analogRead(A2) * 1.26;
-  actual_millis = millis();
-  diferencia = actual_millis - previous_millis;
-  sonar_read = constrain(sonar_read, min_sensor, max_sensor);
-  normalize = map(sonar_read, min_sensor, max_sensor, 0, 10000);
-  normalize = normalize / 10000;
-  if (wifi) send_data();
-  if(sonar_read < 200){
-    bounce();
-  }
-  if ( Serial.available() ) {
-    getSerial();
-    Serial.println(serialdata);
-    switch (serialdata) {
-
-      /* F1 */
-      case 'A':
-        Serial.println("Automatic mode");
-        memset(serialdata, 0, sizeof(serialdata));
-        automatic();
-        break;
-
-      /* F2 */
-      case 'B':
-        Serial.println("Manual mode");
-        memset(serialdata, 0, sizeof(serialdata));
-        manual();
-        break;
-    }
-  }
+void setupStepper() {
+  stepper.setMaxSpeed(MAXVEL);
+  stepper.setSpeed(VEL);
+  stepper.setAcceleration(ACCEL);
 }
 

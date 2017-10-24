@@ -46,7 +46,7 @@ void automatic() {
 
     motor_pos = map(sonar_read, max_sensor, min_sensor, min_actuator, max_actuator);
     motor_pos = constrain(motor_pos, min_actuator, max_actuator);
-    softenMotorPos = soften(motor_pos);
+    softenMotorPos = soften(motor_pos, last_motor_pos);
     /*
       display.clearDisplay();
       display.display();

@@ -45,13 +45,13 @@
 #define DIR_BEZIER_D 35
 
 
-String NAME = "Asincronia\nElevada";
+String NAME = "Arritmia\nDispar";
 
-float MAXVEL            = 400 ;
+float MAXVEL            = 10000 ;
 float maxvel = MAXVEL;
-float VEL               = 280 ;
+float VEL               = 8000 ;
 float vel = VEL;
-float ACCEL             = 10 ;
+float ACCEL             = 1000 ;
 float accel = ACCEL;
 float range;                      // rango temporal de movimiento
 float triggerDist       = 200;    // distancia de activación

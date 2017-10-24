@@ -45,19 +45,19 @@
 #define DIR_BEZIER_D 35
 
 
-String NAME = "Asincronia\nElevada";
+String NAME = "Distension\nPalpitante";
 
-float MAXVEL            = 400 ;
+float MAXVEL            = 150 ;
 float maxvel = MAXVEL;
-float VEL               = 280 ;
+float VEL               = 50 ;
 float vel = VEL;
-float ACCEL             = 10 ;
+float ACCEL             = 20 ;
 float accel = ACCEL;
 float range;                      // rango temporal de movimiento
-float triggerDist       = 200;    // distancia de activación
+float triggerDist       = 100;    // distancia de activación
 
-#define WLAN_ADDR  "192.168.0.1"          // receiving Router ip ex: "224.0.0.1" 
-#define PORT  1112
+#define WLAN_ADDR  "192.168.0.8"            // receiving Router ip ex: "224.0.0.1" 
+#define PORT  54321
 #define WLAN_SSID  "AC"                   // wifi SSID
 #define WLAN_PASS  "actor-reactor"        // wifi password 
 
@@ -148,9 +148,9 @@ void setup () {
   display.display();
   display.setContrast(60);
   display.setRotation(2);
-
+  
   /*
-  int attempts = 20;
+  int attempts = 10;
   int count = 0;
 
   do {
@@ -192,8 +192,7 @@ void setup () {
       Serial.println("CONNECTION FAILED");
     }
   } while (count < attempts);
-  */
-  
+ */
   previous_millis = 0;
   actual_millis = millis();
   KP2.SetKeypadVoltage(4.7);
