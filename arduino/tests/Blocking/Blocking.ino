@@ -15,17 +15,20 @@ AccelStepper stepper(2, 9, 8);
 
 
 void setup(){  
-  stepper.setMaxSpeed(250.0);
-  stepper.setSpeed(150.0);
-  stepper.setAcceleration(40);
+  Serial.begin(57600);
+  stepper.setMaxSpeed(150.0);
+  stepper.setSpeed(50.0);
+  stepper.setAcceleration(20);
 }
 
-int range = 400;
+int range = 300;
 
 void loop()
 {    
+    Serial.println("moviendo...");
     stepper.runToNewPosition(range);
     delay(500);
     stepper.runToNewPosition(-range);
+    Serial.println("terminando...");
     delay(500);
 }

@@ -45,13 +45,13 @@
 #define DIR_BEZIER_D 35
 
 
-String NAME = "Fragmentada\nExtension";
+String NAME = "Descalce\nAmpliado";
 
-float MAXVEL            = 500;
+float MAXVEL            = 400 ;
 float maxvel = MAXVEL;
-float VEL               = 300;
+float VEL               = 80 ;
 float vel = VEL;
-float ACCEL             = 100;
+float ACCEL             = 10 ;
 float accel = ACCEL;
 float range;                      // rango temporal de movimiento
 float triggerDist       = 200;    // distancia de activación
