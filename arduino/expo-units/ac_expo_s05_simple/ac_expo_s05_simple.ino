@@ -69,7 +69,7 @@ void loop() {
   sonar_read = analogRead(A2) * 1.26;
   sonar_read = constrain(sonar_read, min_sensor, max_sensor);
   Serial.println(sonar_read);
-  
+
   if (sonar_read < triggerDist) {
     bounce();
   }
@@ -90,6 +90,10 @@ void sinusoidal() {
 
 void bounce() {
   Serial.println("bounce!");
+  stepper.runToNewPosition(max_actuator);
+  delay(100);
+  stepper.runToNewPosition(0);
+  delay(100);
   stepper.runToNewPosition(max_actuator);
   delay(100);
   stepper.runToNewPosition(0);
