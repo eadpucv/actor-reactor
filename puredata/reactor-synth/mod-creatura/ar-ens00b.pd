@@ -3,14 +3,14 @@
 #X obj 236 160 hsl 128 15 0 1 0 1 empty empty amp_A 1 10 7 0 10 -262144
 -258113 -1 12700 1;
 #X obj 462 547 osc~;
-#X obj 236 100 hsl 128 15 0 127 0 1 empty empty carr_A 54.7811 10
+#X obj 236 100 hsl 128 15 0 127 0 1 empty empty carr_A 53.7335 10
 7 0 10 -262144 -258113 -1 3194 1;
 #X obj 259 378 mtof;
 #X obj 298 447 +~;
-#X obj 103 100 hsl 128 15 0 127 0 1 empty empty mod 48.4646 10 7 0
+#X obj 103 100 hsl 128 15 0 127 0 1 empty empty mod 57.8746 10 7 0
 10 -262144 -258113 -1 3081 1;
 #X obj 461 284 mtof;
-#X obj 103 175 hsl 128 15 0 1000 0 1 empty empty index 495.78 10 7
+#X obj 103 175 hsl 128 15 0 1000 0 1 empty empty index 504.78 10 7
 0 10 -262144 -258113 -1 6144 1;
 #X obj 463 493 *~ 500;
 #X obj 461 308 +;
@@ -400,7 +400,7 @@
 #X connect 8 0 7 0;
 #X restore 642 39 pd cpu;
 #X obj 391 104 nbx 5 15 -1e+37 1e+37 0 0 empty empty cpu -25 7 0 10
--262144 -1 -66577 38 256;
+-262144 -1 -66577 18 256;
 #X obj 555 17 loadbang;
 #X obj 445 104 tgl 30 0 empty empty DSP 3 15 0 14 -262144 -258113 -1
 1 1;
@@ -971,7 +971,7 @@
 #X obj 558 445 *~;
 #X obj 662 438 *~;
 #X obj 761 440 *~;
-#X obj 130 130 tgl 15 1 empty empty 1-> -20 7 0 10 -262144 -1 -1 1
+#X obj 130 130 tgl 15 1 empty empty 1-> -20 7 0 10 -262144 -1 -1 0
 1;
 #X obj 145 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -987,19 +987,19 @@
 1;
 #X obj 175 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 130 160 tgl 15 1 empty empty 3-> -20 7 0 10 -262144 -1 -1 0
+#X obj 130 160 tgl 15 1 empty empty 3-> -20 7 0 10 -262144 -1 -1 1
 1;
-#X obj 145 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 145 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 160 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 175 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 130 175 tgl 15 1 empty empty 4-> -20 7 0 10 -262144 -1 -1 0
+#X obj 130 175 tgl 15 1 empty empty 4-> -20 7 0 10 -262144 -1 -1 1
 1;
-#X obj 145 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 145 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 160 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 160 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 175 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -1011,43 +1011,43 @@
 1;
 #X obj 190 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 130 190 tgl 15 1 empty empty 5-> -20 7 0 10 -262144 -1 -1 1
+#X obj 130 190 tgl 15 1 empty empty 5-> -20 7 0 10 -262144 -1 -1 0
 1;
-#X obj 145 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 145 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 160 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 175 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 175 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 190 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 190 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 205 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 205 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 205 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 205 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 130 205 tgl 15 1 empty empty 6-> -20 7 0 10 -262144 -1 -1 1
+#X obj 130 205 tgl 15 1 empty empty 6-> -20 7 0 10 -262144 -1 -1 0
 1;
 #X obj 145 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 160 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 160 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 175 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 190 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 190 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 130 220 tgl 15 1 empty empty 7-> -20 7 0 10 -262144 -1 -1 0
+#X obj 130 220 tgl 15 1 empty empty 7-> -20 7 0 10 -262144 -1 -1 1
 1;
-#X obj 145 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 145 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 160 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 160 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 175 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
@@ -1057,15 +1057,15 @@
 1;
 #X obj 145 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 160 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 160 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 175 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 175 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 190 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 190 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 205 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 205 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 205 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 205 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -1077,15 +1077,15 @@
 1;
 #X obj 175 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 190 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 190 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 220 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 220 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 235 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 235 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 220 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 235 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 235 235 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 250 220 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
@@ -1093,23 +1093,23 @@
 1;
 #X obj 250 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 220 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 220 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 235 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 235 250 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 220 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 220 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 235 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 220 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 220 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 235 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 235 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 250 175 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 250 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 250 190 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 250 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 250 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 220 205 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -1117,17 +1117,17 @@
 1;
 #X obj 220 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 235 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 235 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 220 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 235 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 250 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 250 130 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 250 145 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 250 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 250 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 220 160 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
@@ -3462,8 +3462,8 @@
 #X obj 102 30 unpackOSC;
 #X obj 102 51 routeOSC /bang;
 #X obj 102 72 route /t01 /t02 /t03 /t04 /t05 /t06 /t07 /t08 /t09;
-#X obj 232 10 routeOSC /mixer;
-#X obj 232 31 route /trnd;
+#X obj 215 29 routeOSC /mixer;
+#X obj 215 51 route /trnd;
 #X connect 9 0 0 0;
 #X connect 9 0 1 0;
 #X connect 9 0 2 0;
@@ -3499,53 +3499,59 @@
 #X obj 873 144 r rnd_07;
 #X obj 873 165 r rnd_08;
 #X obj 873 185 r rnd_09;
-#X obj 1049 10 nbx 5 30 -1e+37 1e+37 0 0 empty empty La_sincronía_elevada_al_aro
-0 50 0 22 -262144 -257985 -1 0.488655 256;
-#X obj 1050 83 nbx 5 30 -1e+37 1e+37 0 0 empty empty fragmenta_la_extensión_y_el_cuerpo
-0 50 0 22 -262144 -257985 -1 0.579652 256;
-#X obj 1050 153 nbx 5 30 -1e+37 1e+37 0 0 empty empty con_un_descenlace_ampliado_en_los_perfiles
-0 50 0 22 -262144 -257985 -1 0.169561 256;
-#X obj 1049 301 nbx 5 30 -1e+37 1e+37 0 0 empty empty Ah_impulsos_al_valle_acorazando
-0 50 0 22 -262144 -4032 -1 0.452319 256;
-#X obj 1048 378 nbx 5 30 -1e+37 1e+37 0 0 empty empty la_elegancia_segmentada_cuando_el
-0 50 0 22 -262144 -4032 -1 0.683212 256;
-#X obj 1047 454 nbx 5 30 -1e+37 1e+37 0 0 empty empty puño 0 50 0
-22 -262144 -258113 -1 0 256;
-#X obj 1046 531 nbx 5 30 -1e+37 1e+37 0 0 empty empty vínculo_sinuoso_a_la_flor
-0 50 0 22 -262144 -4034 -1 0.204416 256;
-#X obj 1046 608 nbx 5 30 -1e+37 1e+37 0 0 empty empty su_arritmia_dispar_en_el_vuelo
-0 50 0 22 -262144 -4034 -1 0.861919 256;
-#X obj 1046 683 nbx 5 30 -1e+37 1e+37 0 0 empty empty distingue_palpitante_una_bandada_en_la_expansión_híbrida
-0 50 0 22 -262144 -159808 -1 0.172 256;
-#X obj 1046 760 nbx 5 30 -1e+37 1e+37 0 0 empty empty del_pez 0 50
-0 22 -262144 -159808 -1 0.174215 256;
 #X obj 881 431 loadbang;
 #X obj 881 454 metro 100;
-#X obj 901 490 random 5000;
-#X obj 881 518 random 2;
-#X obj 989 454 bng 30 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 881 487 random 5000;
+#X obj 1031 9 hsl 740 70 0 1 0 0 empty empty La_sincronía_elevada_al_aro
+10 35 0 22 -1 -257985 -262144 42044 1;
+#X obj 1031 79 hsl 740 70 0 1 0 0 empty empty fragmenta_la_extensión_y_el_cuerpo
+10 35 0 22 -1 -257985 -262144 64145 1;
+#X obj 1031 149 hsl 740 70 0 1 0 0 empty empty con_un_descenlace_ampliado_en_los_perfiles
+10 35 0 22 -1 -257985 -262144 25827 1;
+#X obj 1031 289 hsl 740 70 0 1 0 0 empty empty Ah_impulsos_al_valle_acorazando
+10 35 0 22 -1 -4032 -262144 18067 1;
+#X obj 1031 360 hsl 740 70 0 1 0 0 empty empty la_elegancia_segmentada_cuando_el
+10 35 0 22 -1 -4032 -262144 63698 1;
+#X obj 1031 572 hsl 740 70 0 1 0 0 empty empty su_arritmia_dispar_en_el_vuelo
+10 35 0 22 -1 -4034 -262144 28451 1;
+#X obj 1031 431 hsl 740 70 0 1 0 0 empty empty puño 10 35 0 22 -1
+-258113 -262144 0 1;
+#X obj 1031 502 hsl 740 70 0 1 0 0 empty empty vínculo_sinuoso_a_la_flor
+10 35 0 22 -1 -4034 -262144 9582 1;
+#X obj 1031 714 hsl 740 70 0 1 0 0 empty empty del_pez 10 35 0 22 -1
+-159808 -262144 8868 1;
+#X obj 1031 643 hsl 740 70 0 1 0 0 empty empty distingue_palpitante_una_bandada_en_la_expansión_híbrida
+10 35 0 22 -1 -159808 -262144 9164 1;
+#X obj 880 524 random 2;
+#X obj 943 511 bng 30 250 50 0 empty empty empty 17 7 0 10 -262144
 -258113 -1;
+#X obj 880 564 line;
+#X obj 880 544 pack f 1000;
+#X obj 1031 219 hsl 740 70 0 1 0 0 empty empty empty 10 40 0 22 -1
+-1 -262144 0 1;
 #X connect 14 0 4 0;
-#X connect 14 0 23 0;
+#X connect 14 0 26 0;
 #X connect 15 0 5 0;
-#X connect 15 0 24 0;
+#X connect 15 0 27 0;
 #X connect 16 0 6 0;
-#X connect 16 0 25 0;
+#X connect 16 0 28 0;
 #X connect 17 0 10 0;
-#X connect 17 0 26 0;
+#X connect 17 0 29 0;
 #X connect 18 0 12 0;
-#X connect 18 0 27 0;
+#X connect 18 0 30 0;
 #X connect 19 0 11 0;
-#X connect 19 0 29 0;
+#X connect 19 0 33 0;
 #X connect 20 0 7 0;
-#X connect 20 0 30 0;
+#X connect 20 0 31 0;
 #X connect 21 0 8 0;
-#X connect 21 0 31 0;
+#X connect 21 0 35 0;
 #X connect 22 0 9 0;
-#X connect 22 0 32 0;
-#X connect 33 0 34 0;
-#X connect 34 0 35 0;
-#X connect 34 0 37 0;
-#X connect 35 0 34 1;
-#X connect 36 0 28 0;
+#X connect 22 0 34 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 24 0 37 0;
+#X connect 25 0 24 1;
+#X connect 36 0 39 0;
 #X connect 37 0 36 0;
+#X connect 38 0 32 0;
+#X connect 39 0 38 0;
